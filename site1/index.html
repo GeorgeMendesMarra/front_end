@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<!-- Declara que este documento utiliza HTML5. -->
+<html lang="pt-BR">
+<!-- Inicia o documento HTML e informa que o idioma principal é português do Brasil. -->
+<head>
+<!-- Inicia a área de configurações e metadados da página. -->
+    <meta charset="UTF-8">
+    <!-- Define a codificação UTF-8 para permitir acentos e caracteres especiais. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Faz a página se adaptar a diferentes tamanhos de tela. -->
+    <title>Programação Web I - ADS</title>
+    <!-- Define o título que aparece na aba do navegador. -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Conecta o arquivo HTML ao arquivo CSS externo chamado style.css. -->
+</head>
+<!-- Encerra a área head. -->
+<body>
+<!-- Inicia o conteúdo visual da página. -->
+
+    <header id="cabecalho">
+    <!-- Cria o cabeçalho e define o id "cabecalho", que pode ser referenciado pelo CSS e pelo JavaScript. -->
+        <h1 class="titulo">Programação Web I</h1>
+        <!-- Cria o título principal e associa a classe "titulo", referenciada no CSS por ".titulo". -->
+        <p class="subtitulo">HTML + CSS + JavaScript</p>
+        <!-- Cria um subtítulo usando a classe "subtitulo", também definida no CSS. -->
+    </header>
+    <!-- Encerra o cabeçalho. -->
+
+    <main id="conteudo">
+    <!-- Cria a área principal e define o id "conteudo". -->
+        <section class="card">
+        <!-- Cria um bloco visual usando a classe "card", estilizada no CSS. -->
+            <h2>Como as tecnologias se conectam?</h2>
+            <!-- Exibe o título da seção. -->
+            <p>HTML estrutura, CSS apresenta e JavaScript adiciona comportamento.</p>
+            <!-- Explica a função básica de cada tecnologia. -->
+
+            <div class="diagrama">
+            <!-- Cria uma área para representar visualmente a conexão entre as tecnologias. -->
+                <div class="tecnologia html">HTML</div>
+                <!-- Cria o bloco HTML usando as classes "tecnologia" e "html". -->
+                <div class="seta">→</div>
+                <!-- Exibe uma seta indicando a relação entre os elementos. -->
+                <div class="tecnologia css">CSS</div>
+                <!-- Cria o bloco CSS usando as classes "tecnologia" e "css". -->
+                <div class="seta">→</div>
+                <!-- Exibe outra seta de conexão. -->
+                <div class="tecnologia javascript">JavaScript</div>
+                <!-- Cria o bloco JavaScript usando as classes "tecnologia" e "javascript". -->
+            </div>
+            <!-- Encerra o diagrama. -->
+        </section>
+        <!-- Encerra o primeiro card. -->
+
+        <section class="card">
+        <!-- Cria outro card para apresentar a relação entre HTML e CSS. -->
+            <h2>HTML → CSS</h2>
+            <!-- Apresenta o conceito de ligação entre HTML e CSS. -->
+            <p>O HTML referencia o CSS através da tag <code>&lt;link&gt;</code>.</p>
+            <!-- Explica que a tag link conecta o HTML ao arquivo CSS. -->
+            <pre><code>&lt;link rel="stylesheet" href="style.css"&gt;</code></pre>
+            <!-- Mostra o código responsável por carregar o arquivo CSS. -->
+        </section>
+        <!-- Encerra o segundo card. -->
+
+        <section class="card">
+        <!-- Cria um card para explicar id e class. -->
+            <h2>Como o CSS encontra os elementos HTML?</h2>
+            <!-- Apresenta o conceito de seletores CSS. -->
+            <p>Se o HTML possui <code>id="cabecalho"</code>, o CSS pode usar <code>#cabecalho</code>.</p>
+            <!-- Demonstra a relação entre o atributo id do HTML e o seletor # do CSS. -->
+            <p>Se o HTML possui <code>class="titulo"</code>, o CSS pode usar <code>.titulo</code>.</p>
+            <!-- Demonstra a relação entre o atributo class do HTML e o seletor . do CSS. -->
+        </section>
+        <!-- Encerra o terceiro card. -->
+
+        <section class="card">
+        <!-- Cria um card para explicar a ligação entre HTML e JavaScript. -->
+            <h2>HTML → JavaScript</h2>
+            <!-- Apresenta a relação entre HTML e JavaScript. -->
+            <p>O JavaScript pode localizar elementos HTML usando seus ids.</p>
+            <!-- Explica que o JavaScript pode acessar elementos do DOM pelo id. -->
+            <button id="botaoMensagem">Clique para executar JavaScript</button>
+            <!-- Cria um botão com id "botaoMensagem", que será localizado pelo JavaScript. -->
+            <p id="mensagem"></p>
+            <!-- Cria um elemento vazio onde o JavaScript escreverá uma mensagem. -->
+        </section>
+        <!-- Encerra o quarto card. -->
+
+        <section class="card">
+        <!-- Cria um card para demonstrar uma interação simples. -->
+            <h2>Resumo da conexão</h2>
+            <!-- Exibe o título do resumo. -->
+            <ul>
+            <!-- Inicia uma lista de conceitos. -->
+                <li><strong>HTML:</strong> cria a estrutura e os elementos.</li>
+                <!-- Explica a função do HTML. -->
+                <li><strong>CSS:</strong> seleciona elementos e define aparência.</li>
+                <!-- Explica a função do CSS. -->
+                <li><strong>JavaScript:</strong> acessa o DOM e modifica o comportamento.</li>
+                <!-- Explica a função do JavaScript. -->
+            </ul>
+            <!-- Encerra a lista. -->
+        </section>
+        <!-- Encerra o quinto card. -->
+    </main>
+    <!-- Encerra a área principal. -->
+
+    <footer id="rodape">
+    <!-- Cria o rodapé e define o id "rodape". -->
+        <p>Disciplina: Programação Web I • Curso: ADS</p>
+        <!-- Exibe as informações acadêmicas do exemplo. -->
+    </footer>
+    <!-- Encerra o rodapé. -->
+
+    <script src="script.js"></script>
+    <!-- Conecta o HTML ao arquivo JavaScript externo chamado script.js. -->
+</body>
+<!-- Encerra o conteúdo da página. -->
+</html>
+<!-- Encerra o documento HTML. -->
