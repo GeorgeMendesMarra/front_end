@@ -1,0 +1,791 @@
+```html
+<!DOCTYPE html>
+<!-- Informa ao navegador que este documento utiliza HTML5. -->
+
+<html lang="pt-BR">
+<!-- Inicia o documento HTML e define português do Brasil como idioma. -->
+
+<head>
+    <!-- Inicia a área de configurações da página. -->
+
+    <meta charset="UTF-8">
+    <!-- Define a codificação UTF-8 para permitir acentos e caracteres especiais. -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Faz a página se adaptar a diferentes tamanhos de tela. -->
+
+    <title>Formulário Acadêmico - Programação Web I</title>
+    <!-- Define o título exibido na aba do navegador. -->
+
+    <link rel="stylesheet" href="style.css">
+    <!-- Conecta este arquivo HTML ao arquivo externo style.css. -->
+
+</head>
+<!-- Encerra a área head. -->
+
+
+<body>
+<!-- Inicia o conteúdo visual da página. -->
+
+
+<header id="cabecalho">
+    <!-- Cria o cabeçalho e define o id "cabecalho". -->
+
+    <h1 class="titulo">Cadastro Acadêmico</h1>
+    <!-- Cria o título principal utilizando a classe "titulo". -->
+
+    <p class="subtitulo">
+        Formulário de exemplo — Programação Web I
+    </p>
+    <!-- Apresenta um subtítulo explicativo. -->
+
+</header>
+<!-- Encerra o cabeçalho. -->
+
+
+<main id="conteudo">
+    <!-- Cria a área principal da página. -->
+
+
+    <section class="card">
+        <!-- Cria um cartão visual para o formulário. -->
+
+
+        <h2>Formulário de Cadastro</h2>
+        <!-- Define o título do formulário. -->
+
+
+        <p class="descricao">
+            Preencha os campos abaixo para realizar seu cadastro acadêmico.
+        </p>
+        <!-- Apresenta uma orientação ao usuário. -->
+
+
+        <form id="formularioCadastro" novalidate>
+            <!-- Cria o formulário e define um id para o JavaScript localizar o elemento. -->
+
+
+            <fieldset>
+                <!-- Agrupa os campos relacionados aos dados pessoais. -->
+
+                <legend>Dados pessoais</legend>
+                <!-- Define o título do grupo de campos. -->
+
+
+                <div class="campo">
+                    <!-- Cria um container para o campo nome. -->
+
+                    <label for="nome">
+                        Nome completo:
+                    </label>
+                    <!-- O atributo for relaciona o label ao input cujo id é "nome". -->
+
+                    <input
+                        type="text"
+                        id="nome"
+                        name="nome"
+                        placeholder="Digite seu nome completo"
+                        autocomplete="name"
+                        required
+                    >
+                    <!-- Campo para digitação do nome. -->
+
+                    <small id="erroNome" class="mensagemErro"></small>
+                    <!-- Local onde o JavaScript exibirá mensagens de erro. -->
+
+                </div>
+                <!-- Encerra o campo nome. -->
+
+
+                <div class="linha">
+                    <!-- Agrupa dois campos na mesma linha. -->
+
+
+                    <div class="campo">
+                        <!-- Cria o campo de e-mail. -->
+
+                        <label for="email">
+                            E-mail:
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="exemplo@email.com"
+                            autocomplete="email"
+                            required
+                        >
+                        <!-- Campo específico para e-mail. -->
+
+                        <small id="erroEmail" class="mensagemErro"></small>
+                        <!-- Mensagem de erro do e-mail. -->
+
+                    </div>
+
+
+                    <div class="campo">
+                        <!-- Cria o campo telefone. -->
+
+                        <label for="telefone">
+                            Telefone:
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="telefone"
+                            name="telefone"
+                            placeholder="(00) 00000-0000"
+                            autocomplete="tel"
+                            maxlength="15"
+                            required
+                        >
+                        <!-- Campo para telefone. -->
+
+                        <small id="erroTelefone" class="mensagemErro"></small>
+                        <!-- Mensagem de erro do telefone. -->
+
+                    </div>
+
+                </div>
+                <!-- Encerra a linha. -->
+
+
+                <div class="linha">
+                    <!-- Cria uma nova linha de campos. -->
+
+
+                    <div class="campo">
+                        <!-- Cria o campo CPF. -->
+
+                        <label for="cpf">
+                            CPF:
+                        </label>
+
+                        <input
+                            type="text"
+                            id="cpf"
+                            name="cpf"
+                            placeholder="000.000.000-00"
+                            maxlength="14"
+                            required
+                        >
+                        <!-- Campo para CPF. -->
+
+                        <small id="erroCpf" class="mensagemErro"></small>
+                        <!-- Mensagem de erro do CPF. -->
+
+                    </div>
+
+
+                    <div class="campo">
+                        <!-- Cria o campo de nascimento. -->
+
+                        <label for="nascimento">
+                            Data de nascimento:
+                        </label>
+
+                        <input
+                            type="date"
+                            id="nascimento"
+                            name="nascimento"
+                            required
+                        >
+                        <!-- Campo para selecionar a data de nascimento. -->
+
+                        <small id="erroNascimento" class="mensagemErro"></small>
+                        <!-- Mensagem de erro da data. -->
+
+                    </div>
+
+                </div>
+                <!-- Encerra a linha. -->
+
+
+                <div class="campo">
+                    <!-- Cria o grupo de sexo. -->
+
+                    <label>
+                        Sexo:
+                    </label>
+
+                    <div class="opcoes">
+                        <!-- Agrupa as opções de sexo. -->
+
+                        <label class="opcao">
+                            <input
+                                type="radio"
+                                name="sexo"
+                                value="Feminino"
+                            >
+                            Feminino
+                        </label>
+
+                        <label class="opcao">
+                            <input
+                                type="radio"
+                                name="sexo"
+                                value="Masculino"
+                            >
+                            Masculino
+                        </label>
+
+                        <label class="opcao">
+                            <input
+                                type="radio"
+                                name="sexo"
+                                value="Outro"
+                            >
+                            Outro
+                        </label>
+
+                        <label class="opcao">
+                            <input
+                                type="radio"
+                                name="sexo"
+                                value="Prefiro não informar"
+                            >
+                            Prefiro não informar
+                        </label>
+
+                    </div>
+
+                </div>
+                <!-- Encerra o grupo de sexo. -->
+
+            </fieldset>
+            <!-- Encerra o grupo de dados pessoais. -->
+
+
+            <fieldset>
+                <!-- Agrupa os dados acadêmicos. -->
+
+                <legend>Dados acadêmicos</legend>
+                <!-- Título do grupo acadêmico. -->
+
+
+                <div class="linha">
+                    <!-- Cria uma linha com dois campos. -->
+
+
+                    <div class="campo">
+                        <!-- Campo de curso. -->
+
+                        <label for="curso">
+                            Curso:
+                        </label>
+
+                        <select id="curso" name="curso" required>
+                            <!-- Cria uma lista de seleção. -->
+
+                            <option value="">
+                                Selecione seu curso
+                            </option>
+
+                            <option value="ADS">
+                                Análise e Desenvolvimento de Sistemas
+                            </option>
+
+                            <option value="CC">
+                                Ciência da Computação
+                            </option>
+
+                            <option value="SI">
+                                Sistemas de Informação
+                            </option>
+
+                            <option value="ES">
+                                Engenharia de Software
+                            </option>
+
+                        </select>
+
+                        <small id="erroCurso" class="mensagemErro"></small>
+
+                    </div>
+
+
+                    <div class="campo">
+                        <!-- Campo para período. -->
+
+                        <label for="periodo">
+                            Período:
+                        </label>
+
+                        <select id="periodo" name="periodo" required>
+
+                            <option value="">
+                                Selecione
+                            </option>
+
+                            <option value="1º">
+                                1º período
+                            </option>
+
+                            <option value="2º">
+                                2º período
+                            </option>
+
+                            <option value="3º">
+                                3º período
+                            </option>
+
+                            <option value="4º">
+                                4º período
+                            </option>
+
+                            <option value="5º">
+                                5º período
+                            </option>
+
+                            <option value="6º">
+                                6º período
+                            </option>
+
+                            <option value="7º">
+                                7º período
+                            </option>
+
+                            <option value="8º">
+                                8º período
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+                <!-- Encerra a linha. -->
+
+
+                <div class="campo">
+                    <!-- Campo de modalidade. -->
+
+                    <label>
+                        Modalidade:
+                    </label>
+
+                    <div class="opcoes">
+
+                        <label class="opcao">
+                            <input
+                                type="radio"
+                                name="modalidade"
+                                value="Presencial"
+                                required
+                            >
+                            Presencial
+                        </label>
+
+                        <label class="opcao">
+                            <input
+                                type="radio"
+                                name="modalidade"
+                                value="EAD"
+                            >
+                            EAD
+                        </label>
+
+                        <label class="opcao">
+                            <input
+                                type="radio"
+                                name="modalidade"
+                                value="Híbrido"
+                            >
+                            Híbrido
+                        </label>
+
+                    </div>
+
+                </div>
+
+            </fieldset>
+
+
+            <fieldset>
+                <!-- Agrupa os dados de endereço. -->
+
+                <legend>Endereço</legend>
+
+
+                <div class="linha">
+                    <!-- Primeira linha do endereço. -->
+
+                    <div class="campo">
+                        <label for="cep">
+                            CEP:
+                        </label>
+
+                        <input
+                            type="text"
+                            id="cep"
+                            name="cep"
+                            placeholder="00000-000"
+                            maxlength="9"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="campo">
+                        <label for="estado">
+                            Estado:
+                        </label>
+
+                        <select id="estado" name="estado" required>
+
+                            <option value="">
+                                Selecione
+                            </option>
+
+                            <option value="GO">
+                                Goiás
+                            </option>
+
+                            <option value="SP">
+                                São Paulo
+                            </option>
+
+                            <option value="MG">
+                                Minas Gerais
+                            </option>
+
+                            <option value="RJ">
+                                Rio de Janeiro
+                            </option>
+
+                            <option value="DF">
+                                Distrito Federal
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <div class="linha">
+                    <!-- Segunda linha do endereço. -->
+
+                    <div class="campo">
+                        <label for="cidade">
+                            Cidade:
+                        </label>
+
+                        <input
+                            type="text"
+                            id="cidade"
+                            name="cidade"
+                            placeholder="Digite sua cidade"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="campo">
+                        <label for="numero">
+                            Número:
+                        </label>
+
+                        <input
+                            type="text"
+                            id="numero"
+                            name="numero"
+                            placeholder="Número"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="campo">
+                    <label for="endereco">
+                        Endereço:
+                    </label>
+
+                    <input
+                        type="text"
+                        id="endereco"
+                        name="endereco"
+                        placeholder="Rua, avenida, praça..."
+                        required
+                    >
+
+                </div>
+
+            </fieldset>
+
+
+            <fieldset>
+                <!-- Agrupa as tecnologias de interesse. -->
+
+                <legend>Interesses em tecnologia</legend>
+
+                <p>
+                    Selecione as tecnologias que você deseja estudar:
+                </p>
+
+                <div class="checkboxes">
+
+                    <label>
+                        <input
+                            type="checkbox"
+                            name="tecnologias"
+                            value="HTML"
+                        >
+                        HTML5
+                    </label>
+
+                    <label>
+                        <input
+                            type="checkbox"
+                            name="tecnologias"
+                            value="CSS"
+                        >
+                        CSS3
+                    </label>
+
+                    <label>
+                        <input
+                            type="checkbox"
+                            name="tecnologias"
+                            value="JavaScript"
+                        >
+                        JavaScript
+                    </label>
+
+                    <label>
+                        <input
+                            type="checkbox"
+                            name="tecnologias"
+                            value="Java"
+                        >
+                        Java
+                    </label>
+
+                    <label>
+                        <input
+                            type="checkbox"
+                            name="tecnologias"
+                            value="Python"
+                        >
+                        Python
+                    </label>
+
+                    <label>
+                        <input
+                            type="checkbox"
+                            name="tecnologias"
+                            value="Banco de Dados"
+                        >
+                        Banco de Dados
+                    </label>
+
+                </div>
+
+            </fieldset>
+
+
+            <fieldset>
+                <!-- Agrupa os dados de acesso. -->
+
+                <legend>Dados de acesso</legend>
+
+
+                <div class="linha">
+
+                    <div class="campo">
+
+                        <label for="senha">
+                            Senha:
+                        </label>
+
+                        <div class="campoSenha">
+
+                            <input
+                                type="password"
+                                id="senha"
+                                name="senha"
+                                placeholder="Digite sua senha"
+                                minlength="8"
+                                required
+                            >
+
+                            <button
+                                type="button"
+                                id="mostrarSenha"
+                                class="botaoSenha"
+                            >
+                                Mostrar
+                            </button>
+
+                        </div>
+
+                        <small id="forcaSenha">
+                            A senha deve possuir pelo menos 8 caracteres.
+                        </small>
+
+                    </div>
+
+
+                    <div class="campo">
+
+                        <label for="confirmarSenha">
+                            Confirmar senha:
+                        </label>
+
+                        <input
+                            type="password"
+                            id="confirmarSenha"
+                            name="confirmarSenha"
+                            placeholder="Digite novamente"
+                            required
+                        >
+
+                        <small
+                            id="erroConfirmarSenha"
+                            class="mensagemErro"
+                        ></small>
+
+                    </div>
+
+                </div>
+
+            </fieldset>
+
+
+            <fieldset>
+                <!-- Agrupa as informações adicionais. -->
+
+                <legend>Mensagem</legend>
+
+                <div class="campo">
+
+                    <label for="mensagem">
+                        Por que você deseja estudar tecnologia?
+                    </label>
+
+                    <textarea
+                        id="mensagem"
+                        name="mensagem"
+                        rows="5"
+                        maxlength="300"
+                        placeholder="Escreva uma breve mensagem..."
+                    ></textarea>
+
+                    <div class="contador">
+                        <span id="contador">0</span>/300 caracteres
+                    </div>
+
+                </div>
+
+            </fieldset>
+
+
+            <div class="termos">
+                <!-- Cria o campo de aceite dos termos. -->
+
+                <label>
+
+                    <input
+                        type="checkbox"
+                        id="termos"
+                        name="termos"
+                        required
+                    >
+
+                    Li e concordo com os termos de utilização.
+
+                </label>
+
+                <small
+                    id="erroTermos"
+                    class="mensagemErro"
+                ></small>
+
+            </div>
+
+
+            <div
+                id="mensagemFormulario"
+                class="mensagemFormulario"
+            ></div>
+            <!-- Área utilizada pelo JavaScript para mostrar mensagens ao usuário. -->
+
+
+            <div class="botoes">
+                <!-- Agrupa os botões do formulário. -->
+
+                <button
+                    type="submit"
+                    class="botao principal"
+                >
+                    Enviar cadastro
+                </button>
+
+                <button
+                    type="reset"
+                    id="botaoLimpar"
+                    class="botao secundario"
+                >
+                    Limpar
+                </button>
+
+            </div>
+
+
+        </form>
+        <!-- Encerra o formulário. -->
+
+    </section>
+    <!-- Encerra o card do formulário. -->
+
+
+    <section
+        id="resultado"
+        class="card resultado escondido"
+    >
+        <!-- Área que será exibida pelo JavaScript após o cadastro. -->
+
+        <h2>Cadastro realizado!</h2>
+
+        <div id="resumoCadastro"></div>
+        <!-- O JavaScript colocará aqui o resumo dos dados. -->
+
+    </section>
+
+
+</main>
+<!-- Encerra o conteúdo principal. -->
+
+
+<footer id="rodape">
+    <!-- Cria o rodapé da página. -->
+
+    <p>
+        Disciplina: Programação Web I • Curso: Análise e Desenvolvimento de Sistemas
+    </p>
+
+    <p>
+        Exemplo didático de HTML5 + CSS3 + JavaScript
+    </p>
+
+</footer>
+<!-- Encerra o rodapé. -->
+
+
+<script src="script.js"></script>
+<!-- Conecta o HTML ao arquivo externo JavaScript. -->
+
+
+</body>
+<!-- Encerra o conteúdo da página. -->
+
+</html>
+<!-- Encerra o documento HTML. -->
+```
