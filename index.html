@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>site1_vite</title>
+  </head>
+  <body>
+    <div id="app">
+      <header class="p-8 text-white text-center bg-[#1f2937]">
+        <!-- Cria o cabeçalho e define o id "cabecalho", que pode ser referenciado pelo CSS e pelo JavaScript. -->
+        <h1 class="mt-0 text-4xl xs:text-3xl">Programação Web I</h1>
+        <!-- Cria o título principal e associa a classe "titulo", referenciada no CSS por ".titulo". -->
+        <p class="opacity-85">HTML + CSS + JavaScript</p>
+        <!-- Cria um subtítulo usando a classe "subtitulo", também definida no CSS. -->
+      </header>
+      <!-- Encerra o cabeçalho. -->
+
+      <main class="max-w-4xl my-8 mx-auto px-5">
+        <!-- Cria a área principal e define o id "conteudo". -->
+        <section class="bg-white p-6 mb-3 rounded-xl shadow-[0_4px_12px_rgba(0,0,0,0.08)]">
+          <!-- Cria um bloco visual usando a classe "card", estilizada no CSS. -->
+          <h2 class="my-3.5">Como as tecnologias se conectam?</h2>
+          <!-- Exibe o título da seção. -->
+          <p>
+            HTML estrutura, CSS apresenta e JavaScript adiciona comportamento.
+          </p>
+          <!-- Explica a função básica de cada tecnologia. -->
+
+          <div class="flex justify-center items-center gap-3 my-6 mx-0 xs:flex-col">
+            <!-- Cria uma área para representar visualmente a conexão entre as tecnologias. -->
+            <div class="bg-[#f97316] text-white py-3.5 px-6 rounded-lg font-bold">HTML</div>
+            <!-- Cria o bloco HTML usando as classes "tecnologia" e "html". -->
+            <div class="text-3xl font-bold">→</div>
+            <!-- Exibe uma seta indicando a relação entre os elementos. -->
+            <div class="bg-[#2563eb] text-white py-3.5 px-6 rounded-lg">CSS</div>
+            <!-- Cria o bloco CSS usando as classes "tecnologia" e "css". -->
+            <div class="text-3xl font-bold">→</div>
+            <!-- Exibe outra seta de conexão. -->
+            <div class="bg-[#eab308] py-3.5 px-6 rounded-lg">JavaScript</div>
+            <!-- Cria o bloco JavaScript usando as classes "tecnologia" e "javascript". -->
+          </div>
+          <!-- Encerra o diagrama. -->
+        </section>
+        <!-- Encerra o primeiro card. -->
+
+        <section class="bg-white p-6 mb-3 rounded-xl shadow-[0_4px_12px_rgba(0,0,0,0.08)]">
+          <!-- Cria outro card para apresentar a relação entre HTML e CSS. -->
+          <h2 class="my-3.5">HTML → CSS</h2>
+          <!-- Apresenta o conceito de ligação entre HTML e CSS. -->
+          <p>
+            O HTML referencia o CSS através da tag <code>&lt;link&gt;</code>.
+          </p>
+          <!-- Explica que a tag link conecta o HTML ao arquivo CSS. -->
+          <pre><code>&lt;link rel="stylesheet" href="style.css"&gt;</code></pre>
+          <!-- Mostra o código responsável por carregar o arquivo CSS. -->
+        </section>
+        <!-- Encerra o segundo card. -->
+
+        <section class="bg-white p-6 mb-3 rounded-xl shadow-[0_4px_12px_rgba(0,0,0,0.08)]">
+          <!-- Cria um card para explicar id e class. -->
+          <h2 class="my-3.5">Como o CSS encontra os elementos HTML?</h2>
+          <!-- Apresenta o conceito de seletores CSS. -->
+          <p>
+            Se o HTML possui <code>id="cabecalho"</code>, o CSS pode usar
+            <code>#cabecalho</code>.
+          </p>
+          <!-- Demonstra a relação entre o atributo id do HTML e o seletor # do CSS. -->
+          <p>
+            Se o HTML possui <code>class="titulo"</code>, o CSS pode usar
+            <code>.titulo</code>.
+          </p>
+          <!-- Demonstra a relação entre o atributo class do HTML e o seletor . do CSS. -->
+        </section>
+        <!-- Encerra o terceiro card. -->
+
+        <section class="bg-white p-6 mb-3 rounded-xl shadow-[0_4px_12px_rgba(0,0,0,0.08)]">
+          <!-- Cria um card para explicar a ligação entre HTML e JavaScript. -->
+          <h2 class="my-3.5">HTML → JavaScript</h2>
+          <!-- Apresenta a relação entre HTML e JavaScript. -->
+          <p>O JavaScript pode localizar elementos HTML usando seus ids.</p>
+          <!-- Explica que o JavaScript pode acessar elementos do DOM pelo id. -->
+          <button id="botaoMensagem" class="py-3 px-5 hover:opacity-85 border-none text-base cursor-pointer bg-[buttonface] rounded-lg">Clique para executar JavaScript</button>
+          <!-- Cria um botão com id "botaoMensagem", que será localizado pelo JavaScript. -->
+          <p id="mensagem" class="font-bold mt-3.5"></p>
+          <!-- Cria um elemento vazio onde o JavaScript escreverá uma mensagem. -->
+        </section>
+        <!-- Encerra o quarto card. -->
+
+        <section class="bg-white p-6 mb-3 rounded-xl shadow-[0_4px_12px_rgba(0,0,0,0.08)]">
+          <!-- Cria um card para demonstrar uma interação simples. -->
+          <h2 class="my-3.5">Resumo da conexão</h2>
+          <!-- Exibe o título do resumo. -->
+          <ul class="list-disc ps-10 my-4">
+            <!-- Inicia uma lista de conceitos. -->
+            <li><strong>HTML:</strong> cria a estrutura e os elementos.</li>
+            <!-- Explica a função do HTML. -->
+            <li>
+              <strong>CSS:</strong> seleciona elementos e define aparência.
+            </li>
+            <!-- Explica a função do CSS. -->
+            <li>
+              <strong>JavaScript:</strong> acessa o DOM e modifica o
+              comportamento.
+            </li>
+            <!-- Explica a função do JavaScript. -->
+          </ul>
+          <!-- Encerra a lista. -->
+        </section>
+        <!-- Encerra o quinto card. -->
+      </main>
+      <!-- Encerra a área principal. -->
+
+      <footer id="rodape" class="p-5 text-center bg-[#111827] text-white">
+        <!-- Cria o rodapé e define o id "rodape". -->
+        <p>Disciplina: Programação Web I • Curso: ADS</p>
+        <!-- Exibe as informações acadêmicas do exemplo. -->
+      </footer>
+      <!-- Encerra o rodapé. -->
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
