@@ -1,0 +1,169 @@
+/* Define o estilo geral do documento. */
+* {
+    /* Remove margens e espaçamentos padrão para facilitar o controle do layout. */
+    box-sizing: border-box;
+    /* Faz padding e border serem considerados dentro das dimensões dos elementos. */
+}
+
+/* Seleciona o elemento HTML que possui id="cabecalho". */
+#cabecalho {
+    /* Define o espaçamento interno do cabeçalho. */
+    padding: 30px;
+    /* Centraliza o texto do cabeçalho. */
+    text-align: center;
+    /* Define o fundo do cabeçalho. */
+    background: #1f2937;
+    /* Define a cor do texto do cabeçalho. */
+    color: white;
+}
+
+/* Seleciona qualquer elemento HTML que possua class="titulo". */
+.titulo {
+    /* Remove a margem superior padrão do título. */
+    margin-top: 0;
+    /* Define o tamanho da fonte do título. */
+    font-size: 2.2rem;
+}
+
+/* Seleciona qualquer elemento HTML que possua class="subtitulo". */
+.subtitulo {
+    /* Define a transparência visual do subtítulo. */
+    opacity: 0.85;
+}
+
+/* Seleciona o elemento HTML que possui id="conteudo". */
+#conteudo {
+    /* Define a largura máxima do conteúdo. */
+    max-width: 900px;
+    /* Centraliza o conteúdo horizontalmente. */
+    margin: 30px auto;
+    /* Define o espaçamento lateral interno. */
+    padding: 0 20px;
+}
+
+/* Seleciona todos os elementos que possuem class="card". */
+.card {
+    /* Cria um fundo branco para cada card. */
+    background: white;
+    /* Cria espaçamento interno. */
+    padding: 25px;
+    /* Cria espaço entre os cards. */
+    margin-bottom: 20px;
+    /* Arredonda os cantos do card. */
+    border-radius: 12px;
+    /* Cria uma sombra discreta. */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Define a aparência do diagrama de tecnologias. */
+.diagrama {
+    /* Usa Flexbox para organizar os elementos em linha. */
+    display: flex;
+    /* Centraliza os elementos horizontalmente. */
+    justify-content: center;
+    /* Alinha os elementos verticalmente. */
+    align-items: center;
+    /* Permite que os elementos quebrem linha em telas menores. */
+    flex-wrap: wrap;
+    /* Define o espaço entre os elementos. */
+    gap: 12px;
+    /* Cria espaçamento superior e inferior. */
+    margin: 25px 0;
+}
+
+/* Seleciona os elementos que possuem class="tecnologia". */
+.tecnologia {
+    /* Define o espaçamento interno dos blocos. */
+    padding: 15px 22px;
+    /* Arredonda os cantos dos blocos. */
+    border-radius: 8px;
+    /* Deixa o texto em negrito. */
+    font-weight: bold;
+}
+
+/* Seleciona elementos com class="html". */
+.html {
+    /* Define o fundo do bloco HTML. */
+    background: #f97316;
+    /* Define a cor do texto do bloco HTML. */
+    color: white;
+}
+
+/* Seleciona elementos com class="css". */
+.css {
+    /* Define o fundo do bloco CSS. */
+    background: #2563eb;
+    /* Define a cor do texto do bloco CSS. */
+    color: white;
+}
+
+/* Seleciona elementos com class="javascript". */
+.javascript {
+    /* Define o fundo do bloco JavaScript. */
+    background: #eab308;
+    /* Define a cor do texto do bloco JavaScript. */
+    color: #111827;
+}
+
+/* Seleciona qualquer elemento com class="seta". */
+.seta {
+    /* Aumenta o tamanho da seta. */
+    font-size: 2rem;
+    /* Deixa a seta em negrito. */
+    font-weight: bold;
+}
+
+/* Seleciona o botão pelo id="botaoMensagem". */
+#botaoMensagem {
+    /* Define o espaçamento interno do botão. */
+    padding: 12px 18px;
+    /* Remove a borda padrão. */
+    border: none;
+    /* Arredonda os cantos do botão. */
+    border-radius: 8px;
+    /* Define o tamanho da fonte. */
+    font-size: 1rem;
+    /* Define o cursor como ponteiro. */
+    cursor: pointer;
+}
+
+/* Define o comportamento visual do botão quando o mouse passa sobre ele. */
+#botaoMensagem:hover {
+    /* Reduz a opacidade para indicar interação. */
+    opacity: 0.8;
+}
+
+/* Seleciona o elemento que possui id="mensagem". */
+#mensagem {
+    /* Deixa a mensagem em negrito. */
+    font-weight: bold;
+    /* Cria espaço acima da mensagem. */
+    margin-top: 15px;
+}
+
+/* Seleciona o elemento que possui id="rodape". */
+#rodape {
+    /* Define o espaçamento interno do rodapé. */
+    padding: 20px;
+    /* Centraliza o texto. */
+    text-align: center;
+    /* Define o fundo do rodapé. */
+    background: #111827;
+    /* Define a cor do texto. */
+    color: white;
+}
+
+/* Define uma regra para telas com largura menor ou igual a 600 pixels. */
+@media (max-width: 600px) {
+    /* Diminui o tamanho do título em telas pequenas. */
+    .titulo {
+        /* Define uma fonte menor para dispositivos móveis. */
+        font-size: 1.7rem;
+    }
+
+    /* Ajusta os elementos do diagrama em telas pequenas. */
+    .diagrama {
+        /* Organiza os elementos verticalmente. */
+        flex-direction: column;
+    }
+}
