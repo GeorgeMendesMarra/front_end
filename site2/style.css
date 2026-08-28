@@ -1,0 +1,358 @@
+```css
+/* Remove margens e espaçamentos padrão dos elementos. */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Define o estilo geral do corpo da página. */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f1f5f9;
+    color: #1e293b;
+    line-height: 1.6;
+}
+
+/* Define o cabeçalho da página. */
+#cabecalho {
+    background: #0f172a;
+    color: white;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+/* Define o tamanho do título principal. */
+.titulo {
+    font-size: 2.5rem;
+    margin-bottom: 8px;
+}
+
+/* Define o estilo do subtítulo. */
+.subtitulo {
+    font-size: 1.1rem;
+    opacity: 0.85;
+}
+
+/* Define a largura e o espaçamento da área principal. */
+#conteudo {
+    width: min(1100px, 92%);
+    margin: 40px auto;
+}
+
+/* Cria o cartão branco utilizado no formulário. */
+.card {
+    background: white;
+    border-radius: 12px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 5px 20px rgba(15, 23, 42, 0.08);
+}
+
+/* Define o título das seções. */
+.card h2 {
+    margin-bottom: 10px;
+}
+
+/* Define o texto introdutório. */
+.descricao {
+    color: #64748b;
+    margin-bottom: 25px;
+}
+
+/* Define a aparência dos grupos de campos. */
+fieldset {
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    padding: 25px;
+    margin-bottom: 25px;
+}
+
+/* Define o título dos grupos. */
+legend {
+    font-size: 1.1rem;
+    font-weight: bold;
+    padding: 0 10px;
+    color: #0f172a;
+}
+
+/* Cria espaçamento entre os campos. */
+.campo {
+    margin-bottom: 20px;
+    flex: 1;
+}
+
+/* Cria duas colunas para determinados campos. */
+.linha {
+    display: flex;
+    gap: 20px;
+}
+
+/* Define a aparência dos labels. */
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 7px;
+}
+
+/* Define a aparência dos campos de entrada. */
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 7px;
+    font-size: 1rem;
+    background: white;
+    transition: 0.2s;
+}
+
+/* Define o comportamento dos campos quando recebem foco. */
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+/* Impede que o usuário aumente horizontalmente o textarea. */
+textarea {
+    resize: vertical;
+}
+
+/* Organiza os radio buttons. */
+.opcoes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/* Remove a largura total dos radio buttons. */
+.opcao {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-weight: normal;
+}
+
+/* Define o tamanho dos radio buttons. */
+.opcao input {
+    width: auto;
+}
+
+/* Organiza os checkboxes. */
+.checkboxes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 15px;
+}
+
+/* Ajusta a apresentação dos labels dos checkboxes. */
+.checkboxes label {
+    font-weight: normal;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+/* Define o tamanho dos checkboxes. */
+.checkboxes input {
+    width: auto;
+}
+
+/* Organiza o campo de senha e o botão mostrar. */
+.campoSenha {
+    display: flex;
+    gap: 8px;
+}
+
+/* Permite que o input ocupe o espaço disponível. */
+.campoSenha input {
+    flex: 1;
+}
+
+/* Define o botão Mostrar. */
+.botaoSenha {
+    border: none;
+    background: #334155;
+    color: white;
+    padding: 0 15px;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+/* Cria um efeito visual ao passar o mouse. */
+.botaoSenha:hover {
+    background: #1e293b;
+}
+
+/* Define a mensagem de orientação da senha. */
+#forcaSenha {
+    display: block;
+    margin-top: 5px;
+    color: #64748b;
+}
+
+/* Define mensagens de erro. */
+.mensagemErro {
+    display: block;
+    color: #dc2626;
+    font-size: 0.85rem;
+    margin-top: 5px;
+}
+
+/* Define o contador do textarea. */
+.contador {
+    text-align: right;
+    font-size: 0.85rem;
+    color: #64748b;
+    margin-top: 4px;
+}
+
+/* Define o espaço destinado aos termos. */
+.termos {
+    margin-bottom: 20px;
+}
+
+/* Organiza o checkbox dos termos. */
+.termos label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Impede que o checkbox ocupe toda a largura. */
+.termos input {
+    width: auto;
+}
+
+/* Organiza os botões. */
+.botoes {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+/* Define o estilo geral dos botões. */
+.botao {
+    border: none;
+    padding: 13px 25px;
+    border-radius: 7px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+/* Define o botão principal. */
+.principal {
+    background: #2563eb;
+    color: white;
+}
+
+/* Efeito do botão principal. */
+.principal:hover {
+    background: #1d4ed8;
+}
+
+/* Define o botão secundário. */
+.secundario {
+    background: #e2e8f0;
+    color: #1e293b;
+}
+
+/* Efeito do botão secundário. */
+.secundario:hover {
+    background: #cbd5e1;
+}
+
+/* Define a área de mensagens do formulário. */
+.mensagemFormulario {
+    margin-top: 15px;
+    padding: 12px;
+    border-radius: 7px;
+    display: none;
+}
+
+/* Define a mensagem de sucesso. */
+.mensagemFormulario.sucesso {
+    display: block;
+    background: #dcfce7;
+    color: #166534;
+}
+
+/* Define a mensagem de erro geral. */
+.mensagemFormulario.erro {
+    display: block;
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+/* Esconde elementos que ainda não devem aparecer. */
+.escondido {
+    display: none;
+}
+
+/* Define a aparência do resumo do cadastro. */
+.resultado {
+    border-left: 5px solid #2563eb;
+}
+
+/* Define os itens do resumo. */
+.resumo-item {
+    padding: 10px 0;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+/* Destaca o nome do campo no resumo. */
+.resumo-item strong {
+    display: inline-block;
+    min-width: 180px;
+}
+
+/* Define o rodapé. */
+#rodape {
+    text-align: center;
+    padding: 30px 20px;
+    background: #0f172a;
+    color: white;
+}
+
+/* Adapta o formulário para telas menores. */
+@media (max-width: 700px) {
+
+    /* Coloca os campos em uma única coluna. */
+    .linha {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    /* Coloca os checkboxes em uma coluna. */
+    .checkboxes {
+        grid-template-columns: 1fr;
+    }
+
+    /* Reduz o tamanho do título. */
+    .titulo {
+        font-size: 2rem;
+    }
+
+    /* Reduz o espaçamento do card. */
+    .card {
+        padding: 20px;
+    }
+
+    /* Organiza os botões verticalmente. */
+    .botoes {
+        flex-direction: column;
+    }
+
+    /* Faz os botões ocuparem toda a largura. */
+    .botao {
+        width: 100%;
+    }
+}
+```
