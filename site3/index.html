@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<!-- Declara que o documento utiliza o padrão HTML5. -->
+<html lang="pt-BR">
+<!-- Define português do Brasil como idioma principal da página. -->
+<head>
+    <!-- Inicia a área de configurações e metadados. -->
+    <meta charset="UTF-8">
+    <!-- Define UTF-8 para permitir acentos e caracteres especiais. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Faz o layout se adaptar a computadores, tablets e celulares. -->
+    <title>Programação Web I - Site 3</title>
+    <!-- Define o título exibido na aba do navegador. -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Conecta o HTML ao arquivo externo de estilos CSS. -->
+</head>
+<!-- Encerra a área de configurações. -->
+
+<body>
+    <!-- Inicia o conteúdo visível da página. -->
+
+    <header id="cabecalho">
+        <!-- Cria o cabeçalho principal da aplicação. -->
+
+        <div class="container cabecalho-conteudo">
+            <!-- Organiza o conteúdo do cabeçalho em uma área centralizada. -->
+
+            <a href="#inicio" class="logo">WEB I</a>
+            <!-- Cria a identificação visual do site e um link para o início. -->
+
+            <button id="botaoMenu" class="botao-menu" type="button" aria-label="Abrir menu" aria-expanded="false">
+                <!-- Cria o botão que abre e fecha o menu em telas pequenas. -->
+                ☰
+                <!-- Exibe o símbolo visual do menu. -->
+            </button>
+            <!-- Encerra o botão do menu. -->
+
+            <nav id="menu" class="menu">
+                <!-- Cria o menu principal de navegação. -->
+
+                <a href="#inicio" class="link-menu ativo">Início</a>
+                <!-- Link para a seção inicial. -->
+
+                <a href="#evolucao" class="link-menu">Evolução</a>
+                <!-- Link para a seção que explica a evolução dos três sites. -->
+
+                <a href="#tecnologias" class="link-menu">Tecnologias</a>
+                <!-- Link para a seção de tecnologias. -->
+
+                <a href="#projetos" class="link-menu">Projetos</a>
+                <!-- Link para os projetos anteriores e o atual. -->
+
+                <a href="#contato" class="link-menu">Sobre</a>
+                <!-- Link para a seção final de informações. -->
+            </nav>
+            <!-- Encerra o menu principal. -->
+        </div>
+        <!-- Encerra o conteúdo do cabeçalho. -->
+    </header>
+    <!-- Encerra o cabeçalho. -->
+
+    <main id="conteudo">
+        <!-- Inicia o conteúdo principal da página. -->
+
+        <section id="inicio" class="hero">
+            <!-- Cria a seção de apresentação do Site 3. -->
+
+            <div class="container hero-conteudo">
+                <!-- Centraliza o conteúdo da apresentação. -->
+
+                <div class="hero-texto">
+                    <!-- Agrupa o texto principal da apresentação. -->
+
+                    <p class="etiqueta">PROGRAMAÇÃO WEB I • SITE 3</p>
+                    <!-- Apresenta a identificação didática do projeto. -->
+
+                    <h1>Da estrutura à <span>interação Web</span></h1>
+                    <!-- Apresenta o título principal destacando a evolução do projeto. -->
+
+                    <p class="descricao">
+                        <!-- Cria o texto introdutório do Site 3. -->
+                        Este projeto representa a continuação dos exemplos desenvolvidos no Site 1 e no Site 2, acrescentando um menu de navegação, múltiplas seções e interações com JavaScript.
+                        <!-- Explica a finalidade do terceiro projeto. -->
+                    </p>
+                    <!-- Encerra o texto introdutório. -->
+
+                    <div class="botoes-hero">
+                        <!-- Agrupa os botões de acesso aos projetos. -->
+
+                        <a href="#projetos" class="botao principal">Conhecer os projetos</a>
+                        <!-- Leva o usuário até os projetos. -->
+
+                        <a href="#tecnologias" class="botao secundario">Ver tecnologias</a>
+                        <!-- Leva o usuário até a seção de tecnologias. -->
+                    </div>
+                    <!-- Encerra os botões da apresentação. -->
+                </div>
+                <!-- Encerra o texto principal. -->
+
+                <div class="painel-codigo">
+                    <!-- Cria um painel visual simulando a integração das tecnologias. -->
+
+                    <div class="janela-topo">
+                        <!-- Cria a parte superior da janela de código. -->
+                        <span></span>
+                        <!-- Representa um indicador visual da janela. -->
+                        <span></span>
+                        <!-- Representa um segundo indicador visual. -->
+                        <span></span>
+                        <!-- Representa um terceiro indicador visual. -->
+                    </div>
+                    <!-- Encerra o topo da janela. -->
+
+                    <pre><code>&lt;header&gt;
+  &lt;nav&gt;Menu&lt;/nav&gt;
+&lt;/header&gt;
+
+&lt;main&gt;
+  HTML + CSS + JavaScript
+&lt;/main&gt;</code></pre>
+                    <!-- Apresenta um pequeno exemplo da estrutura do Site 3. -->
+                </div>
+                <!-- Encerra o painel de código. -->
+            </div>
+            <!-- Encerra o conteúdo da apresentação. -->
+        </section>
+        <!-- Encerra a seção inicial. -->
+
+        <section id="evolucao" class="secao">
+            <!-- Cria a seção que mostra a evolução dos projetos. -->
+
+            <div class="container">
+                <!-- Centraliza o conteúdo da seção. -->
+
+                <div class="cabecalho-secao">
+                    <!-- Agrupa o título e a descrição da seção. -->
+
+                    <p class="etiqueta">EVOLUÇÃO</p>
+                    <!-- Identifica a seção. -->
+
+                    <h2>Uma sequência de aprendizagem</h2>
+                    <!-- Define o título da seção. -->
+
+                    <p>O Site 3 reúne conceitos apresentados progressivamente nos dois projetos anteriores e acrescenta navegação e organização de conteúdo.</p>
+                    <!-- Explica a proposta evolutiva. -->
+                </div>
+                <!-- Encerra o cabeçalho da seção. -->
+
+                <div class="linha-evolucao">
+                    <!-- Cria uma grade com os três projetos. -->
+
+                    <article class="card projeto">
+                        <!-- Cria o cartão referente ao Site 1. -->
+
+                        <div class="numero">01</div>
+                        <!-- Exibe o número do primeiro projeto. -->
+
+                        <h3>Site 1</h3>
+                        <!-- Exibe o nome do primeiro projeto. -->
+
+                        <p>Apresenta a integração básica entre HTML, CSS e JavaScript, incluindo DOM, <code>id</code>, <code>class</code> e eventos.</p>
+                        <!-- Resume os conceitos principais do Site 1. -->
+
+                        <a href="../site1/index.html" class="link-projeto">Abrir Site 1 →</a>
+                        <!-- Cria um link relativo para o Site 1. -->
+                    </article>
+                    <!-- Encerra o cartão do Site 1. -->
+
+                    <article class="card projeto destaque">
+                        <!-- Cria o cartão destacado referente ao Site 2. -->
+
+                        <div class="numero">02</div>
+                        <!-- Exibe o número do segundo projeto. -->
+
+                        <h3>Site 2</h3>
+                        <!-- Exibe o nome do segundo projeto. -->
+
+                        <p>Amplia os conceitos com formulário acadêmico, validação, máscaras, eventos, manipulação do DOM, Flexbox e Grid.</p>
+                        <!-- Resume os conceitos principais do Site 2. -->
+
+                        <a href="../site2/index.html" class="link-projeto">Abrir Site 2 →</a>
+                        <!-- Cria um link relativo para o Site 2. -->
+                    </article>
+                    <!-- Encerra o cartão do Site 2. -->
+
+                    <article class="card projeto atual">
+                        <!-- Cria o cartão referente ao Site 3. -->
+
+                        <div class="numero">03</div>
+                        <!-- Exibe o número do terceiro projeto. -->
+
+                        <h3>Site 3</h3>
+                        <!-- Exibe o nome do projeto atual. -->
+
+                        <p>Acrescenta menu de navegação, seções, navegação suave, menu responsivo e interação dinâmica com JavaScript.</p>
+                        <!-- Resume as novidades introduzidas no Site 3. -->
+
+                        <a href="#inicio" class="link-projeto">Você está aqui →</a>
+                        <!-- Cria um link para voltar ao início do Site 3. -->
+                    </article>
+                    <!-- Encerra o cartão do Site 3. -->
+                </div>
+                <!-- Encerra a grade de evolução. -->
+            </div>
+            <!-- Encerra o container da seção. -->
+        </section>
+        <!-- Encerra a seção de evolução. -->
+
+        <section id="tecnologias" class="secao fundo">
+            <!-- Cria a seção de tecnologias utilizadas. -->
+
+            <div class="container">
+                <!-- Centraliza o conteúdo das tecnologias. -->
+
+                <div class="cabecalho-secao">
+                    <!-- Agrupa título e descrição. -->
+
+                    <p class="etiqueta">TECNOLOGIAS</p>
+                    <!-- Identifica a seção de tecnologias. -->
+
+                    <h2>HTML + CSS + JavaScript</h2>
+                    <!-- Define o título da seção. -->
+
+                    <p>As três tecnologias continuam separadas por responsabilidade, mas trabalham em conjunto para construir a interface.</p>
+                    <!-- Explica a divisão de responsabilidades. -->
+                </div>
+                <!-- Encerra o cabeçalho da seção. -->
+
+                <div class="grade-tecnologias">
+                    <!-- Cria uma grade para as três tecnologias. -->
+
+                    <article class="card tecnologia">
+                        <!-- Cria o cartão HTML. -->
+
+                        <div class="icone">HTML</div>
+                        <!-- Apresenta a tecnologia HTML. -->
+
+                        <h3>Estrutura</h3>
+                        <!-- Define a responsabilidade do HTML. -->
+
+                        <p>Cria títulos, parágrafos, links, seções, botões, formulários e demais elementos da página.</p>
+                        <!-- Explica o papel do HTML. -->
+                    </article>
+                    <!-- Encerra o cartão HTML. -->
+
+                    <article class="card tecnologia">
+                        <!-- Cria o cartão CSS. -->
+
+                        <div class="icone">CSS</div>
+                        <!-- Apresenta a tecnologia CSS. -->
+
+                        <h3>Apresentação</h3>
+                        <!-- Define a responsabilidade do CSS. -->
+
+                        <p>Controla cores, espaçamentos, tipografia, layout, estados visuais, responsividade e aparência do menu.</p>
+                        <!-- Explica o papel do CSS. -->
+                    </article>
+                    <!-- Encerra o cartão CSS. -->
+
+                    <article class="card tecnologia">
+                        <!-- Cria o cartão JavaScript. -->
+
+                        <div class="icone">JS</div>
+                        <!-- Apresenta a tecnologia JavaScript. -->
+
+                        <h3>Comportamento</h3>
+                        <!-- Define a responsabilidade do JavaScript. -->
+
+                        <p>Controla o menu, eventos de clique, navegação, estado visual e mensagens exibidas dinamicamente.</p>
+                        <!-- Explica o papel do JavaScript. -->
+                    </article>
+                    <!-- Encerra o cartão JavaScript. -->
+                </div>
+                <!-- Encerra a grade de tecnologias. -->
+
+                <div class="fluxo">
+                    <!-- Cria uma representação visual do fluxo entre as tecnologias. -->
+
+                    <span>HTML</span>
+                    <!-- Representa a estrutura. -->
+
+                    <b>→</b>
+                    <!-- Representa a conexão entre tecnologias. -->
+
+                    <span>CSS</span>
+                    <!-- Representa a apresentação. -->
+
+                    <b>→</b>
+                    <!-- Representa a conexão entre tecnologias. -->
+
+                    <span>JavaScript</span>
+                    <!-- Representa o comportamento. -->
+
+                    <b>→</b>
+                    <!-- Representa o resultado da integração. -->
+
+                    <span>Interface Web</span>
+                    <!-- Representa o resultado final. -->
+                </div>
+                <!-- Encerra o fluxo. -->
+            </div>
+            <!-- Encerra o container. -->
+        </section>
+        <!-- Encerra a seção de tecnologias. -->
+
+        <section id="projetos" class="secao">
+            <!-- Cria a seção de acesso aos projetos. -->
+
+            <div class="container">
+                <!-- Centraliza o conteúdo dos projetos. -->
+
+                <div class="cabecalho-secao">
+                    <!-- Agrupa título e descrição. -->
+
+                    <p class="etiqueta">PROJETOS</p>
+                    <!-- Identifica a seção. -->
+
+                    <h2>Navegue pelos exemplos</h2>
+                    <!-- Define o título da seção. -->
+
+                    <p>Os links abaixo funcionam quando o Site 3 estiver dentro da mesma pasta principal dos Sites 1 e 2.</p>
+                    <!-- Explica a organização esperada das pastas. -->
+                </div>
+                <!-- Encerra o cabeçalho. -->
+
+                <div class="projetos-links">
+                    <!-- Cria a área dos links de projetos. -->
+
+                    <a href="../site1/index.html" class="card link-card">
+                        <!-- Cria o acesso ao Site 1. -->
+
+                        <strong>Site 1</strong>
+                        <!-- Identifica o primeiro projeto. -->
+
+                        <span>Conceitos fundamentais de HTML, CSS e JavaScript.</span>
+                        <!-- Descreve o primeiro projeto. -->
+                    </a>
+                    <!-- Encerra o link do Site 1. -->
+
+                    <a href="../site2/index.html" class="card link-card">
+                        <!-- Cria o acesso ao Site 2. -->
+
+                        <strong>Site 2</strong>
+                        <!-- Identifica o segundo projeto. -->
+
+                        <span>Formulário acadêmico com validação e manipulação do DOM.</span>
+                        <!-- Descreve o segundo projeto. -->
+                    </a>
+                    <!-- Encerra o link do Site 2. -->
+
+                    <a href="#inicio" class="card link-card selecionado">
+                        <!-- Cria o cartão referente ao Site 3 atual. -->
+
+                        <strong>Site 3</strong>
+                        <!-- Identifica o terceiro projeto. -->
+
+                        <span>Menu, navegação, responsividade e interação dinâmica.</span>
+                        <!-- Descreve as novidades do Site 3. -->
+                    </a>
+                    <!-- Encerra o cartão do Site 3. -->
+                </div>
+                <!-- Encerra os links dos projetos. -->
+            </div>
+            <!-- Encerra o container. -->
+        </section>
+        <!-- Encerra a seção de projetos. -->
+
+        <section id="contato" class="secao chamada">
+            <!-- Cria a seção final de apresentação. -->
+
+            <div class="container chamada-conteudo">
+                <!-- Centraliza o conteúdo final. -->
+
+                <div>
+                    <!-- Agrupa o texto final. -->
+
+                    <p class="etiqueta">PRÓXIMO PASSO</p>
+                    <!-- Identifica a etapa seguinte da aprendizagem. -->
+
+                    <h2>O próximo passo é transformar a página em uma aplicação.</h2>
+                    <!-- Apresenta uma proposta de continuidade. -->
+
+                    <p>Depois do Site 3, o aluno pode avançar para páginas múltiplas, consumo de APIs, armazenamento local, frameworks e integração com back-end.</p>
+                    <!-- Sugere possíveis evoluções do projeto. -->
+                </div>
+                <!-- Encerra o texto final. -->
+
+                <button id="botaoMensagem" class="botao principal" type="button">
+                    Executar JavaScript
+                </button>
+                <!-- Cria um botão para demonstrar uma interação JavaScript. -->
+
+                <p id="mensagem" class="mensagem" aria-live="polite"></p>
+                <!-- Cria a área onde o JavaScript exibirá uma mensagem. -->
+            </div>
+            <!-- Encerra o conteúdo final. -->
+        </section>
+        <!-- Encerra a seção final. -->
+
+    </main>
+    <!-- Encerra o conteúdo principal. -->
+
+    <footer id="rodape">
+        <!-- Cria o rodapé da página. -->
+
+        <div class="container rodape-conteudo">
+            <!-- Centraliza o conteúdo do rodapé. -->
+
+            <p>Disciplina: Programação Web I • Curso: Análise e Desenvolvimento de Sistemas</p>
+            <!-- Apresenta as informações acadêmicas. -->
+
+            <p>Site 3 • Continuação de HTML5 + CSS3 + JavaScript</p>
+            <!-- Identifica a finalidade didática do projeto. -->
+        </div>
+        <!-- Encerra o conteúdo do rodapé. -->
+    </footer>
+    <!-- Encerra o rodapé. -->
+
+    <script src="script.js"></script>
+    <!-- Conecta o HTML ao arquivo externo JavaScript. -->
+
+</body>
+<!-- Encerra o conteúdo visível. -->
+
+</html>
+<!-- Encerra o documento HTML. -->

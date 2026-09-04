@@ -1,0 +1,482 @@
+/* Remove margens e paddings padrão e facilita o cálculo das dimensões. */
+* {
+    margin: 0; /* Remove a margem padrão dos elementos. */
+    padding: 0; /* Remove o espaçamento interno padrão dos elementos. */
+    box-sizing: border-box; /* Faz largura e altura incluírem borda e padding. */
+}
+
+/* Define o comportamento de rolagem suave para os links internos do menu. */
+html {
+    scroll-behavior: smooth; /* Faz a navegação entre seções ser suave. */
+}
+
+/* Define as configurações gerais do documento. */
+body {
+    font-family: Arial, Helvetica, sans-serif; /* Define uma família de fontes sem serifa. */
+    background: #f8fafc; /* Define a cor de fundo geral. */
+    color: #0f172a; /* Define a cor principal do texto. */
+    line-height: 1.6; /* Melhora a legibilidade dos textos. */
+}
+
+/* Remove o sublinhado padrão dos links. */
+a {
+    text-decoration: none; /* Retira o sublinhado dos links. */
+    color: inherit; /* Faz o link herdar a cor do elemento pai. */
+}
+
+/* Cria um container reutilizável para centralizar o conteúdo. */
+.container {
+    width: min(1120px, 92%); /* Limita a largura e mantém margem em telas menores. */
+    margin: 0 auto; /* Centraliza horizontalmente. */
+}
+
+/* Estiliza o cabeçalho fixo. */
+#cabecalho {
+    position: sticky; /* Mantém o cabeçalho visível durante a rolagem. */
+    top: 0; /* Fixa o cabeçalho no topo. */
+    z-index: 1000; /* Mantém o cabeçalho acima dos demais elementos. */
+    background: rgba(15, 23, 42, 0.96); /* Cria fundo escuro levemente translúcido. */
+    color: white; /* Define texto branco no cabeçalho. */
+    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.12); /* Cria uma sombra discreta. */
+}
+
+/* Organiza logo e menu em uma linha. */
+.cabecalho-conteudo {
+    min-height: 72px; /* Define uma altura mínima para o cabeçalho. */
+    display: flex; /* Ativa Flexbox. */
+    align-items: center; /* Alinha os itens verticalmente. */
+    justify-content: space-between; /* Distribui logo e menu. */
+    gap: 24px; /* Cria espaço entre os elementos. */
+}
+
+/* Estiliza a marca do site. */
+.logo {
+    font-size: 1.35rem; /* Aumenta o tamanho da marca. */
+    font-weight: 800; /* Deixa a marca em negrito. */
+    letter-spacing: 1px; /* Aumenta o espaçamento entre letras. */
+}
+
+/* Organiza os links do menu. */
+.menu {
+    display: flex; /* Coloca os links lado a lado. */
+    align-items: center; /* Centraliza os links verticalmente. */
+    gap: 8px; /* Cria pequeno espaço entre os links. */
+}
+
+/* Estiliza cada link do menu. */
+.link-menu {
+    padding: 10px 14px; /* Cria área de clique confortável. */
+    border-radius: 8px; /* Arredonda os cantos. */
+    font-weight: 600; /* Destaca os links. */
+    transition: 0.2s; /* Suaviza alterações visuais. */
+}
+
+/* Cria efeito ao passar o mouse ou quando o link está ativo. */
+.link-menu:hover,
+.link-menu.ativo {
+    background: #2563eb; /* Destaca o link selecionado. */
+}
+
+/* Esconde o botão do menu em telas grandes. */
+.botao-menu {
+    display: none; /* O menu móvel só aparece em telas pequenas. */
+    border: none; /* Remove a borda padrão. */
+    background: transparent; /* Deixa o fundo transparente. */
+    color: white; /* Define o ícone como branco. */
+    font-size: 1.8rem; /* Aumenta o ícone. */
+    cursor: pointer; /* Mostra que o elemento é clicável. */
+}
+
+/* Define o estilo da seção de apresentação. */
+.hero {
+    background: linear-gradient(135deg, #0f172a, #1e3a8a); /* Cria um fundo em degradê. */
+    color: white; /* Define textos claros sobre o fundo escuro. */
+    padding: 96px 0; /* Cria espaçamento vertical. */
+}
+
+/* Organiza texto e painel de código em duas colunas. */
+.hero-conteudo {
+    display: grid; /* Ativa CSS Grid. */
+    grid-template-columns: 1.1fr 0.9fr; /* Define proporções das duas colunas. */
+    align-items: center; /* Alinha as colunas verticalmente. */
+    gap: 60px; /* Cria espaço entre texto e painel. */
+}
+
+/* Define o estilo das pequenas etiquetas. */
+.etiqueta {
+    color: #93c5fd; /* Usa uma cor clara para destacar a etiqueta. */
+    font-size: 0.82rem; /* Mantém a etiqueta compacta. */
+    font-weight: 800; /* Destaca a etiqueta. */
+    letter-spacing: 1.5px; /* Cria aparência de identificação. */
+    margin-bottom: 12px; /* Cria espaço abaixo da etiqueta. */
+}
+
+/* Define o tamanho do título principal. */
+.hero h1 {
+    font-size: clamp(2.5rem, 6vw, 4.8rem); /* Torna o título responsivo. */
+    line-height: 1.05; /* Aproxima as linhas do título. */
+    margin-bottom: 22px; /* Cria espaço antes do texto. */
+}
+
+/* Destaca uma parte do título. */
+.hero h1 span {
+    color: #60a5fa; /* Destaca a expressão com azul claro. */
+}
+
+/* Define o tamanho e a transparência da descrição. */
+.descricao {
+    max-width: 680px; /* Limita a largura do parágrafo. */
+    color: #dbeafe; /* Define uma cor clara para leitura. */
+    font-size: 1.08rem; /* Aumenta levemente o texto. */
+}
+
+/* Organiza os botões da apresentação. */
+.botoes-hero {
+    display: flex; /* Coloca os botões em linha. */
+    flex-wrap: wrap; /* Permite quebra em telas menores. */
+    gap: 12px; /* Cria espaço entre os botões. */
+    margin-top: 30px; /* Afasta os botões do texto. */
+}
+
+/* Estilo base para os botões. */
+.botao {
+    display: inline-flex; /* Permite centralizar o conteúdo do botão. */
+    align-items: center; /* Centraliza verticalmente. */
+    justify-content: center; /* Centraliza horizontalmente. */
+    border: none; /* Remove borda padrão. */
+    padding: 13px 20px; /* Define tamanho confortável. */
+    border-radius: 9px; /* Arredonda os cantos. */
+    font-weight: 700; /* Destaca o texto. */
+    cursor: pointer; /* Indica elemento interativo. */
+    transition: 0.2s; /* Suaviza o efeito. */
+}
+
+/* Define o botão principal. */
+.principal {
+    background: #2563eb; /* Define fundo azul. */
+    color: white; /* Define texto branco. */
+}
+
+/* Define o efeito do botão principal. */
+.principal:hover {
+    background: #1d4ed8; /* Escurece o azul ao passar o mouse. */
+    transform: translateY(-2px); /* Move levemente o botão para cima. */
+}
+
+/* Define o botão secundário. */
+.secundario {
+    background: white; /* Define fundo claro. */
+    color: #0f172a; /* Define texto escuro. */
+}
+
+/* Cria efeito para o botão secundário. */
+.secundario:hover {
+    transform: translateY(-2px); /* Move levemente o botão para cima. */
+}
+
+/* Cria o painel visual de código. */
+.painel-codigo {
+    background: #020617; /* Define fundo muito escuro. */
+    border: 1px solid #334155; /* Cria uma borda discreta. */
+    border-radius: 14px; /* Arredonda o painel. */
+    overflow: hidden; /* Impede conteúdo de ultrapassar os cantos. */
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3); /* Cria profundidade visual. */
+}
+
+/* Cria o topo do painel de código. */
+.janela-topo {
+    display: flex; /* Organiza os indicadores em linha. */
+    gap: 7px; /* Cria espaço entre indicadores. */
+    padding: 13px 16px; /* Cria espaçamento interno. */
+    border-bottom: 1px solid #1e293b; /* Separa o topo do código. */
+}
+
+/* Cria os pequenos indicadores circulares. */
+.janela-topo span {
+    width: 11px; /* Define largura. */
+    height: 11px; /* Define altura. */
+    border-radius: 50%; /* Transforma os elementos em círculos. */
+    background: #64748b; /* Define uma cor neutra. */
+}
+
+/* Define aparência do código demonstrativo. */
+.painel-codigo pre {
+    padding: 28px; /* Cria espaço ao redor do código. */
+    overflow-x: auto; /* Permite rolagem horizontal quando necessário. */
+    color: #bfdbfe; /* Define a cor do código. */
+    font-size: 0.95rem; /* Define tamanho confortável. */
+}
+
+/* Define espaçamento padrão das seções. */
+.secao {
+    padding: 90px 0; /* Cria espaçamento vertical amplo. */
+}
+
+/* Cria fundo alternativo para algumas seções. */
+.fundo {
+    background: #eef2ff; /* Diferencia visualmente a seção. */
+}
+
+/* Centraliza o cabeçalho das seções. */
+.cabecalho-secao {
+    max-width: 760px; /* Limita a largura dos textos. */
+    margin-bottom: 38px; /* Cria espaço antes dos cartões. */
+}
+
+/* Define títulos das seções. */
+.cabecalho-secao h2 {
+    font-size: clamp(2rem, 4vw, 3rem); /* Torna o título responsivo. */
+    line-height: 1.15; /* Ajusta o espaçamento das linhas. */
+    margin-bottom: 14px; /* Cria espaço abaixo do título. */
+}
+
+/* Define a cor dos parágrafos das seções. */
+.cabecalho-secao p:last-child {
+    color: #475569; /* Usa cinza para textos explicativos. */
+}
+
+/* Cria a grade da evolução dos projetos. */
+.linha-evolucao {
+    display: grid; /* Ativa CSS Grid. */
+    grid-template-columns: repeat(3, 1fr); /* Cria três colunas iguais. */
+    gap: 22px; /* Cria espaço entre cartões. */
+}
+
+/* Estiliza cartões gerais. */
+.card {
+    background: white; /* Define fundo branco. */
+    border: 1px solid #e2e8f0; /* Define uma borda discreta. */
+    border-radius: 14px; /* Arredonda os cantos. */
+    padding: 28px; /* Cria espaço interno. */
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06); /* Cria sombra suave. */
+    transition: 0.2s; /* Suaviza efeitos. */
+}
+
+/* Cria elevação quando o cartão recebe o mouse. */
+.card:hover {
+    transform: translateY(-5px); /* Eleva o cartão. */
+    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.1); /* Aumenta a sombra. */
+}
+
+/* Define destaque visual para o Site 2. */
+.destaque {
+    border-color: #93c5fd; /* Destaca a borda do segundo projeto. */
+}
+
+/* Define destaque visual para o Site 3. */
+.atual {
+    border-color: #2563eb; /* Marca o projeto atual. */
+}
+
+/* Estiliza o número de cada projeto. */
+.numero {
+    color: #2563eb; /* Define cor azul. */
+    font-size: 0.85rem; /* Mantém o número compacto. */
+    font-weight: 800; /* Destaca o número. */
+    margin-bottom: 10px; /* Cria espaço abaixo. */
+}
+
+/* Define os títulos dos cartões. */
+.projeto h3,
+.tecnologia h3 {
+    font-size: 1.35rem; /* Aumenta o título. */
+    margin-bottom: 10px; /* Cria espaço abaixo do título. */
+}
+
+/* Define os parágrafos dos cartões. */
+.projeto p,
+.tecnologia p {
+    color: #475569; /* Usa cinza para textos secundários. */
+    margin-bottom: 20px; /* Cria espaço antes dos links. */
+}
+
+/* Estiliza os links dos projetos. */
+.link-projeto {
+    color: #2563eb; /* Define azul para o link. */
+    font-weight: 700; /* Destaca o link. */
+}
+
+/* Cria a grade de tecnologias. */
+.grade-tecnologias {
+    display: grid; /* Ativa CSS Grid. */
+    grid-template-columns: repeat(3, 1fr); /* Cria três colunas. */
+    gap: 22px; /* Cria espaço entre cartões. */
+}
+
+/* Estiliza o bloco visual da tecnologia. */
+.icone {
+    display: inline-flex; /* Permite controlar o tamanho do bloco. */
+    padding: 9px 12px; /* Cria espaço interno. */
+    border-radius: 8px; /* Arredonda o bloco. */
+    background: #dbeafe; /* Define fundo azul claro. */
+    color: #1d4ed8; /* Define texto azul. */
+    font-weight: 800; /* Destaca a sigla. */
+    margin-bottom: 18px; /* Cria espaço abaixo do ícone. */
+}
+
+/* Cria o fluxo visual das tecnologias. */
+.fluxo {
+    margin-top: 30px; /* Cria espaço acima do fluxo. */
+    padding: 22px; /* Cria espaço interno. */
+    border-radius: 12px; /* Arredonda o bloco. */
+    background: #0f172a; /* Define fundo escuro. */
+    color: white; /* Define texto branco. */
+    display: flex; /* Coloca os itens lado a lado. */
+    flex-wrap: wrap; /* Permite quebra em telas pequenas. */
+    align-items: center; /* Centraliza verticalmente. */
+    justify-content: center; /* Centraliza horizontalmente. */
+    gap: 14px; /* Cria espaço entre itens. */
+    font-weight: 700; /* Destaca os itens. */
+}
+
+/* Define a cor das setas do fluxo. */
+.fluxo b {
+    color: #60a5fa; /* Destaca as conexões. */
+}
+
+/* Organiza os cartões de links dos projetos. */
+.projetos-links {
+    display: grid; /* Ativa CSS Grid. */
+    grid-template-columns: repeat(3, 1fr); /* Cria três colunas. */
+    gap: 22px; /* Cria espaço entre cartões. */
+}
+
+/* Define a estrutura de cada cartão-link. */
+.link-card {
+    display: flex; /* Ativa Flexbox. */
+    flex-direction: column; /* Coloca título e descrição em coluna. */
+    gap: 8px; /* Cria espaço entre os textos. */
+}
+
+/* Define a cor dos títulos dos cartões-link. */
+.link-card strong {
+    color: #2563eb; /* Destaca o nome do projeto. */
+    font-size: 1.2rem; /* Aumenta o título. */
+}
+
+/* Define a cor das descrições dos cartões-link. */
+.link-card span {
+    color: #475569; /* Define cinza para descrição. */
+}
+
+/* Marca o cartão do projeto atual. */
+.link-card.selecionado {
+    background: #eff6ff; /* Define fundo azul muito claro. */
+}
+
+/* Cria a seção final de chamada. */
+.chamada {
+    background: #dbeafe; /* Define fundo azul claro. */
+}
+
+/* Organiza a seção final. */
+.chamada-conteudo {
+    position: relative; /* Permite posicionamento controlado da mensagem. */
+}
+
+/* Define a largura do título final. */
+.chamada h2 {
+    max-width: 780px; /* Limita o comprimento do título. */
+    font-size: clamp(2rem, 4vw, 3rem); /* Torna o título responsivo. */
+    line-height: 1.15; /* Ajusta as linhas. */
+    margin-bottom: 15px; /* Cria espaço abaixo. */
+}
+
+/* Define a largura do parágrafo final. */
+.chamada p:not(.etiqueta):not(.mensagem) {
+    max-width: 760px; /* Limita o texto. */
+    color: #334155; /* Define cinza escuro. */
+    margin-bottom: 24px; /* Cria espaço antes do botão. */
+}
+
+/* Estiliza a mensagem criada pelo JavaScript. */
+.mensagem {
+    min-height: 28px; /* Reserva espaço para evitar mudanças bruscas de layout. */
+    margin-top: 15px; /* Cria espaço acima da mensagem. */
+    font-weight: 700; /* Destaca a mensagem. */
+    color: #1d4ed8; /* Define cor azul. */
+}
+
+/* Define o rodapé. */
+#rodape {
+    background: #020617; /* Define fundo escuro. */
+    color: #cbd5e1; /* Define texto claro. */
+    padding: 28px 0; /* Cria espaçamento vertical. */
+}
+
+/* Organiza os textos do rodapé. */
+.rodape-conteudo {
+    display: flex; /* Coloca os textos em linha. */
+    justify-content: space-between; /* Distribui os textos. */
+    gap: 20px; /* Cria espaço entre os textos. */
+    flex-wrap: wrap; /* Permite quebra em telas pequenas. */
+    font-size: 0.9rem; /* Reduz levemente o tamanho. */
+}
+
+/* Adapta o layout para telas menores. */
+@media (max-width: 820px) {
+    .botao-menu {
+        display: block; /* Mostra o botão do menu. */
+    }
+
+    .menu {
+        position: absolute; /* Permite colocar o menu abaixo do cabeçalho. */
+        top: 72px; /* Posiciona o menu logo abaixo do cabeçalho. */
+        left: 0; /* Encosta o menu no lado esquerdo. */
+        right: 0; /* Encosta o menu no lado direito. */
+        display: none; /* Esconde o menu inicialmente. */
+        flex-direction: column; /* Coloca os links em coluna. */
+        align-items: stretch; /* Faz os links ocuparem a largura. */
+        padding: 14px 4%; /* Cria espaço interno. */
+        background: #0f172a; /* Define fundo escuro. */
+    }
+
+    .menu.aberto {
+        display: flex; /* Mostra o menu quando o JavaScript adiciona a classe. */
+    }
+
+    .link-menu {
+        width: 100%; /* Faz cada link ocupar a largura disponível. */
+    }
+
+    .hero-conteudo {
+        grid-template-columns: 1fr; /* Transforma duas colunas em uma. */
+    }
+
+    .linha-evolucao,
+    .grade-tecnologias,
+    .projetos-links {
+        grid-template-columns: 1fr; /* Coloca os cartões em uma única coluna. */
+    }
+
+    .hero {
+        padding: 70px 0; /* Reduz o espaçamento em telas menores. */
+    }
+
+    .secao {
+        padding: 65px 0; /* Reduz o espaçamento das seções. */
+    }
+}
+
+/* Ajusta o layout para celulares menores. */
+@media (max-width: 520px) {
+    .cabecalho-conteudo {
+        min-height: 64px; /* Reduz a altura do cabeçalho. */
+    }
+
+    .menu {
+        top: 64px; /* Ajusta a posição do menu móvel. */
+    }
+
+    .botoes-hero {
+        flex-direction: column; /* Coloca os botões em coluna. */
+    }
+
+    .botao {
+        width: 100%; /* Faz os botões ocuparem toda a largura. */
+    }
+
+    .fluxo {
+        flex-direction: column; /* Coloca o fluxo verticalmente. */
+    }
+}
