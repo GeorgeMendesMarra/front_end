@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Painel de Controle de Estoque</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+
+  <header class="topo">
+    <div>
+      <h1>Painel de Controle de Estoque</h1>
+      <p>Dashboard em HTML, CSS, JavaScript e jQuery — dados consumidos de uma base local em JSON.</p>
+    </div>
+    <span class="selo">Depósito Central</span>
+  </header>
+
+  <main>
+
+    <!-- ======================= FILTROS ======================= -->
+    <section aria-label="Filtros">
+      <div class="filtros">
+        <div class="campo-filtro">
+          <label for="filtro-busca">Buscar produto</label>
+          <input type="text" id="filtro-busca" placeholder="Digite um nome...">
+        </div>
+
+        <div class="campo-filtro">
+          <label for="filtro-categoria">Categoria</label>
+          <select id="filtro-categoria">
+            <option value="">Todas</option>
+          </select>
+        </div>
+
+        <div class="campo-filtro">
+          <label for="filtro-fornecedor">Fornecedor</label>
+          <select id="filtro-fornecedor">
+            <option value="">Todos</option>
+          </select>
+        </div>
+
+        <div class="campo-filtro">
+          <label for="filtro-status">Status</label>
+          <select id="filtro-status">
+            <option value="">Todos</option>
+            <option value="Normal">Normal</option>
+            <option value="Atenção">Atenção</option>
+            <option value="Baixo">Baixo</option>
+          </select>
+        </div>
+
+        <button id="btn-limpar-filtros" type="button">Limpar filtros</button>
+
+        <span class="contagem-resultados" id="contagem-resultados"></span>
+      </div>
+    </section>
+
+    <!-- ======================= KPIs ======================= -->
+    <section aria-label="Indicadores gerais">
+      <div class="kpis">
+        <div class="kpi">
+          <div class="rotulo">Itens no filtro</div>
+          <div class="valor" id="kpi-total">—</div>
+        </div>
+        <div class="kpi">
+          <div class="rotulo">Valor total em estoque</div>
+          <div class="valor" id="kpi-valor">—</div>
+        </div>
+        <div class="kpi alerta">
+          <div class="rotulo">Itens abaixo do mínimo</div>
+          <div class="valor" id="kpi-baixo">—</div>
+        </div>
+        <div class="kpi">
+          <div class="rotulo">Categoria de maior valor</div>
+          <div class="valor" id="kpi-destaque" style="font-size:1.3rem;">—</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= GRÁFICO + ALERTAS ======================= -->
+    <section aria-label="Gráfico e alertas">
+      <div class="painel-duplo">
+
+        <div class="cartao">
+          <h2 class="rotulo-secao">Valor em estoque por categoria</h2>
+          <div class="grafico-barras" id="grafico-barras">
+            <!-- barras geradas via jQuery -->
+          </div>
+        </div>
+
+        <div class="cartao">
+          <h2 class="rotulo-secao">Itens abaixo do estoque mínimo</h2>
+          <ul class="lista-alertas" id="lista-alertas">
+            <!-- gerado via jQuery -->
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================= TABELA ======================= -->
+    <section aria-label="Tabela de itens">
+      <h2 class="rotulo-secao">Itens em estoque</h2>
+      <div class="tabela-wrap">
+        <table class="tabela-estoque">
+          <thead>
+            <tr>
+              <th data-campo="produto">Produto <span class="seta-ordenacao"></span></th>
+              <th data-campo="categoria">Categoria <span class="seta-ordenacao"></span></th>
+              <th data-campo="quantidade">Quantidade <span class="seta-ordenacao"></span></th>
+              <th data-campo="estoque_minimo">Mínimo <span class="seta-ordenacao"></span></th>
+              <th data-campo="preco_unitario">Preço unit. <span class="seta-ordenacao"></span></th>
+              <th data-campo="fornecedor">Fornecedor <span class="seta-ordenacao"></span></th>
+              <th data-campo="status">Status <span class="seta-ordenacao"></span></th>
+            </tr>
+          </thead>
+          <tbody id="corpo-tabela">
+            <!-- linhas geradas via jQuery -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="rodape">
+    Exemplo de dashboard com HTML + CSS + JavaScript + jQuery, consumindo uma base de dados em JSON.
+  </footer>
+
+  <!--
+    Base de dados embutida no HTML.
+    Motivo: o navegador bloqueia $.getJSON quando a página é aberta
+    direto do disco (file://), por política de CORS. Para o exemplo
+    funcionar com um simples duplo clique, os dados ficam aqui dentro,
+    em uma tag <script type="application/json">, e são lidos pelo
+    jQuery em js/script.js. Se este projeto for publicado em um
+    servidor (GitHub Pages, Vercel etc.), o mesmo conteúdo pode voltar
+    a viver em data/estoque.json e ser buscado com $.getJSON.
+  -->
+  <script type="application/json" id="base-dados">
+[
+  { "id": 1,  "produto": "Notebook 15'' i5 8GB",       "categoria": "Informática", "quantidade": 4,   "estoque_minimo": 5,  "preco_unitario": 3200.00, "fornecedor": "TechDist" },
+  { "id": 2,  "produto": "Mouse óptico USB",            "categoria": "Informática", "quantidade": 86,  "estoque_minimo": 20, "preco_unitario": 28.50,   "fornecedor": "TechDist" },
+  { "id": 3,  "produto": "Teclado ABNT2 USB",            "categoria": "Informática", "quantidade": 42,  "estoque_minimo": 15, "preco_unitario": 65.00,   "fornecedor": "TechDist" },
+  { "id": 4,  "produto": "Monitor 24'' Full HD",         "categoria": "Informática", "quantidade": 7,   "estoque_minimo": 8,  "preco_unitario": 780.00,  "fornecedor": "VisionTech" },
+  { "id": 5,  "produto": "Cabo HDMI 1,5m",                "categoria": "Informática", "quantidade": 120, "estoque_minimo": 30, "preco_unitario": 18.90,   "fornecedor": "VisionTech" },
+  { "id": 6,  "produto": "Papel A4 (resma 500fl)",        "categoria": "Papelaria",   "quantidade": 15,  "estoque_minimo": 20, "preco_unitario": 24.90,   "fornecedor": "PapelForte" },
+  { "id": 7,  "produto": "Caneta esferográfica azul",     "categoria": "Papelaria",   "quantidade": 340, "estoque_minimo": 50, "preco_unitario": 1.20,    "fornecedor": "PapelForte" },
+  { "id": 8,  "produto": "Grampeador médio",              "categoria": "Papelaria",   "quantidade": 12,  "estoque_minimo": 10, "preco_unitario": 22.00,   "fornecedor": "PapelForte" },
+  { "id": 9,  "produto": "Pasta A-Z ofício",               "categoria": "Papelaria",   "quantidade": 8,   "estoque_minimo": 15, "preco_unitario": 14.50,   "fornecedor": "PapelForte" },
+  { "id": 10, "produto": "Álcool 70% (1L)",                "categoria": "Limpeza",     "quantidade": 60,  "estoque_minimo": 25, "preco_unitario": 9.80,    "fornecedor": "LimpaBem" },
+  { "id": 11, "produto": "Detergente neutro (5L)",         "categoria": "Limpeza",     "quantidade": 6,   "estoque_minimo": 10, "preco_unitario": 32.00,   "fornecedor": "LimpaBem" },
+  { "id": 12, "produto": "Pano multiuso (pacote c/10)",    "categoria": "Limpeza",     "quantidade": 48,  "estoque_minimo": 20, "preco_unitario": 15.30,   "fornecedor": "LimpaBem" },
+  { "id": 13, "produto": "Sabão em pó (5kg)",              "categoria": "Limpeza",     "quantidade": 3,   "estoque_minimo": 8,  "preco_unitario": 41.00,   "fornecedor": "LimpaBem" },
+  { "id": 14, "produto": "Fita isolante 20m",              "categoria": "Elétrica",    "quantidade": 55,  "estoque_minimo": 15, "preco_unitario": 6.90,    "fornecedor": "EletroPeças" },
+  { "id": 15, "produto": "Lâmpada LED 9W",                 "categoria": "Elétrica",    "quantidade": 9,   "estoque_minimo": 20, "preco_unitario": 12.40,   "fornecedor": "EletroPeças" },
+  { "id": 16, "produto": "Cabo flexível 2,5mm (rolo 100m)","categoria": "Elétrica",    "quantidade": 5,   "estoque_minimo": 6,  "preco_unitario": 189.00,  "fornecedor": "EletroPeças" },
+  { "id": 17, "produto": "Disjuntor bipolar 25A",          "categoria": "Elétrica",    "quantidade": 18,  "estoque_minimo": 10, "preco_unitario": 34.70,   "fornecedor": "EletroPeças" },
+  { "id": 18, "produto": "Furadeira de impacto 550W",      "categoria": "Ferramentas", "quantidade": 4,   "estoque_minimo": 5,  "preco_unitario": 245.00,  "fornecedor": "FerraMais" },
+  { "id": 19, "produto": "Jogo de chaves de fenda (6pç)",  "categoria": "Ferramentas", "quantidade": 22,  "estoque_minimo": 10, "preco_unitario": 39.90,   "fornecedor": "FerraMais" },
+  { "id": 20, "produto": "Trena 5m",                       "categoria": "Ferramentas", "quantidade": 2,   "estoque_minimo": 8,  "preco_unitario": 17.60,   "fornecedor": "FerraMais" },
+  { "id": 21, "produto": "Alicate universal 8''",          "categoria": "Ferramentas", "quantidade": 14,  "estoque_minimo": 8,  "preco_unitario": 28.30,   "fornecedor": "FerraMais" },
+  { "id": 22, "produto": "Fita métrica de trena 3m",       "categoria": "Ferramentas", "quantidade": 30,  "estoque_minimo": 12, "preco_unitario": 12.90,   "fornecedor": "FerraMais" }
+]
+  </script>
+
+  <!-- jQuery via CDN -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>
