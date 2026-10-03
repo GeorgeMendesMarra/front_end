@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+/* Define o estilo geral do documento. */
+* {
+    /* Remove margens e espaçamentos padrão para facilitar o controle do layout. */
+    box-sizing: border-box;
+    /* Faz padding e border serem considerados dentro das dimensões dos elementos. */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    @apply text-2xl font-bold;
+}
+
+p {
+    @apply my-4;
+}
