@@ -1,12 +1,12 @@
 # 🌐 Front-End — Desenvolvimento Web
 
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge\&logo=html5\&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge\&logo=css3\&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge\&logo=javascript\&logoColor=black)
-![jQuery](https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge\&logo=jquery\&logoColor=white)
-![React](https://img.shields.io/badge/React-2026-61DAFB?style=for-the-badge\&logo=react\&logoColor=black)
-![Angular](https://img.shields.io/badge/Angular-DD0031?style=for-the-badge\&logo=angular\&logoColor=white)
-![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge\&logo=openjdk\&logoColor=white)
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![jQuery](https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white)
+![React](https://img.shields.io/badge/React-2026-61DAFB?style=for-the-badge&logo=react&logoColor=black)
+![Angular](https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white)
+![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
 
 # 📚 Repositório de Desenvolvimento Front-End e Web
 
@@ -22,16 +22,16 @@ A proposta do repositório é apresentar os conceitos de forma **progressiva e p
 
 Este repositório tem como principais objetivos:
 
-* 📖 disponibilizar material didático para aulas de desenvolvimento Web;
-* 💻 apresentar exemplos práticos de implementação;
-* 🧩 demonstrar a integração entre diferentes tecnologias;
-* 🏗️ apresentar diferentes arquiteturas e abordagens de desenvolvimento;
-* 🌐 explorar tecnologias Front-End e Web;
-* ☕ demonstrar tecnologias Java utilizadas no desenvolvimento Web;
-* ⚛️ apresentar bibliotecas e frameworks modernos;
-* 🧪 disponibilizar projetos para experimentação e estudo;
-* 🎓 servir como material de apoio para disciplinas acadêmicas;
-* 🚀 auxiliar estudantes na construção de uma base sólida em desenvolvimento Web.
+- 📖 disponibilizar material didático para aulas de desenvolvimento Web;
+- 💻 apresentar exemplos práticos de implementação;
+- 🧩 demonstrar a integração entre diferentes tecnologias;
+- 🏗️ apresentar diferentes arquiteturas e abordagens de desenvolvimento;
+- 🌐 explorar tecnologias Front-End e Web;
+- ☕ demonstrar tecnologias Java utilizadas no desenvolvimento Web;
+- ⚛️ apresentar bibliotecas e frameworks modernos;
+- 🧪 disponibilizar projetos para experimentação e estudo;
+- 🎓 servir como material de apoio para disciplinas acadêmicas;
+- 🚀 auxiliar estudantes na construção de uma base sólida em desenvolvimento Web.
 
 ---
 
@@ -39,10 +39,11 @@ Este repositório tem como principais objetivos:
 
 Os exemplos estão organizados em diretórios independentes, permitindo estudar cada tecnologia ou projeto separadamente.
 
-```text
+```
 front_end/
 │
 ├── angular/
+│   └── angular.md
 │
 ├── controle_estoque_1/
 │
@@ -53,14 +54,25 @@ front_end/
 ├── controle_pecas_2/
 │
 ├── java_server_faces/
+│   ├── java_server_faces.md
+│   ├── hello_world/
+│   ├── tomcat_8/
+│   └── tomcat_11/
 │
 ├── java_server_pages/
+│   ├── java_server_pages.md
+│   └── hello_world/
 │
 ├── java_struts/
+│   ├── java_struts.md
+│   └── hello_world/
 │
 ├── javascript/
+│   ├── javascript.md
+│   └── exemplos_javascript.html
 │
 ├── react/
+│   └── react.md
 │
 ├── site1/
 │
@@ -72,20 +84,22 @@ front_end/
 │
 ├── site5/
 │
-├── como_fazer_projeto_frontend_html.md
+├── projeto_front_end_html.md
 │
-├── como_fazer_projeto_frontend_html+css.md
+├── projeto_front_end_html+css.md
 │
-├── como_fazer_projeto_frontend_html+css+javascript.md
+├── projeto_front_end_html+css+javascript.md
 │
-├── como_fazer_projeto_frontend_html+css+javascript+jQuery.md
+├── projeto_front_end_html+css+javascript+jQuery.md
 │
-├── como_fazer_projeto_frontend_html+css+javascript+jquery+bootstrap.md
+├── projeto_front_end_html+css+javascript+jQuery+bootstrap.md
+│
+├── LICENSE
 │
 └── README.md
 ```
 
-A estrutura atual do repositório reúne exemplos de **Angular, React, JavaScript, JavaServer Faces, JavaServer Pages, Java Struts e aplicações/projetos de controle**, além da sequência didática `site1` a `site5` (Programação Web I) e de cinco roteiros passo a passo para iniciar um projeto de Front-End.
+A estrutura atual do repositório reúne **tutoriais e exemplos de Angular, React, JavaScript, JavaServer Faces, JavaServer Pages e Java Struts**, quatro **aplicações de controle** (estoque e peças), a sequência didática `site1` a `site5` (Programação Web I) e cinco roteiros passo a passo para iniciar um projeto de Front-End.
 
 ---
 
@@ -95,7 +109,7 @@ A estrutura atual do repositório reúne exemplos de **Angular, React, JavaScrip
 
 Exemplo introdutório desenvolvido para demonstrar a integração entre:
 
-```text
+```
 HTML5
    ↓
 CSS3
@@ -105,16 +119,16 @@ JavaScript
 
 Principais conceitos:
 
-* estrutura HTML;
-* elementos semânticos;
-* `id`;
-* `class`;
-* seletores CSS;
-* conexão HTML → CSS;
-* conexão HTML → JavaScript;
-* manipulação do DOM;
-* eventos;
-* responsividade.
+- estrutura HTML;
+- elementos semânticos;
+- `id`;
+- `class`;
+- seletores CSS;
+- conexão HTML → CSS;
+- conexão HTML → JavaScript;
+- manipulação do DOM;
+- eventos;
+- responsividade.
 
 🔗 [Acessar o projeto site1](https://github.com/GeorgeMendesMarra/front_end/tree/main/site1)
 
@@ -126,24 +140,24 @@ Exemplo desenvolvido como evolução do `site1`, utilizando HTML5, CSS3 e JavaSc
 
 O projeto apresenta:
 
-* formulários HTML5;
-* `input`;
-* `select`;
-* `textarea`;
-* radio buttons;
-* checkboxes;
-* `fieldset`;
-* `legend`;
-* validação;
-* máscaras;
-* eventos;
-* DOM;
-* contador de caracteres;
-* validação de senha;
-* mostrar/ocultar senha;
-* Flexbox;
-* CSS Grid;
-* responsividade.
+- formulários HTML5;
+- `input`;
+- `select`;
+- `textarea`;
+- radio buttons;
+- checkboxes;
+- `fieldset`;
+- `legend`;
+- validação;
+- máscaras;
+- eventos;
+- DOM;
+- contador de caracteres;
+- validação de senha;
+- mostrar/ocultar senha;
+- Flexbox;
+- CSS Grid;
+- responsividade.
 
 🔗 [Acessar o projeto site2](https://github.com/GeorgeMendesMarra/front_end/tree/main/site2)
 
@@ -155,13 +169,13 @@ Terceiro exemplo da sequência didática de **Programação Web I**, evoluindo o
 
 O projeto apresenta:
 
-* estrutura semântica (`header`, `nav`, `main`, `section`, `article`, `footer`);
-* navegação suave por âncoras (`href="#id"`);
-* menu responsivo (móvel em telas pequenas);
-* destaque automático da seção atual durante a rolagem;
-* Flexbox e CSS Grid;
-* `position: sticky`, transições e Media Queries;
-* `IntersectionObserver`, `classList`, `querySelector()`/`querySelectorAll()`.
+- estrutura semântica (`header`, `nav`, `main`, `section`, `article`, `footer`);
+- navegação suave por âncoras (`href="#id"`);
+- menu responsivo (móvel em telas pequenas);
+- destaque automático da seção atual durante a rolagem;
+- Flexbox e CSS Grid;
+- `position: sticky`, transições e Media Queries;
+- `IntersectionObserver`, `classList`, `querySelector()`/`querySelectorAll()`.
 
 Os links do `site3` fazem referência a `site1` e `site2`, então os três diretórios devem permanecer no mesmo nível.
 
@@ -175,12 +189,12 @@ Quarto exemplo da sequência, que introduz a biblioteca **jQuery** sobre a base 
 
 O projeto apresenta:
 
-* carregamento do jQuery via CDN;
-* seletores `$()`, eventos com `.on()`;
-* efeitos (`fadeIn()`, `fadeOut()`, `slideToggle()`);
-* `toggleClass()`, `addClass()`, `removeClass()`, `hasClass()`, `.each()`;
-* exemplos interativos: troca de mensagem, botão de curtir, alternância de tema claro/escuro e acordeão de perguntas frequentes;
-* cálculo de posição de rolagem (`.offset()`, `.outerHeight()`, `.scrollTop()`) para destacar o link do menu ativo.
+- carregamento do jQuery via CDN;
+- seletores `$()`, eventos com `.on()`;
+- efeitos (`fadeIn()`, `fadeOut()`, `slideToggle()`);
+- `toggleClass()`, `addClass()`, `removeClass()`, `hasClass()`, `.each()`;
+- exemplos interativos: troca de mensagem, botão de curtir, alternância de tema claro/escuro e acordeão de perguntas frequentes;
+- cálculo de posição de rolagem (`.offset()`, `.outerHeight()`, `.scrollTop()`) para destacar o link do menu ativo.
 
 Os links do `site4` fazem referência a `site1`, `site2` e `site3`, então os quatro diretórios devem permanecer no mesmo nível.
 
@@ -188,16 +202,19 @@ Os links do `site4` fazem referência a `site1`, `site2` e `site3`, então os qu
 
 ---
 
-# 📊 `site5` — Dashboard com HTML, CSS, JavaScript e jQuery
+# 📊 `site5` — Painel de Controle de Estoque (Dashboard)
 
-Quinto exemplo da sequência: um **painel de controle de estoque**, que consome dados de uma base local em JSON e demonstra uma aplicação Front-End mais próxima de um cenário real.
+Quinto exemplo da sequência: um **painel de controle de estoque** em HTML, CSS, JavaScript e jQuery, que consome dados de uma base local em JSON e demonstra uma aplicação Front-End mais próxima de um cenário real.
 
 O projeto apresenta:
 
-* filtros de busca, categoria, fornecedor e status;
-* consumo de dados a partir de `data/estoque.json`;
-* organização em `css/`, `js/` e `data/`;
-* integração de HTML, CSS, JavaScript e jQuery em um painel funcional.
+- indicadores (KPIs) com destaque para itens em alerta;
+- gráfico de barras com o valor em estoque por categoria;
+- lista de itens abaixo do estoque mínimo;
+- tabela de itens em estoque;
+- filtros de busca, categoria, fornecedor e status;
+- consumo de dados a partir de `data/estoque.json`;
+- organização em `css/`, `js/` e `data/`.
 
 🔗 [Acessar o projeto site5](https://github.com/GeorgeMendesMarra/front_end/tree/main/site5)
 
@@ -205,22 +222,22 @@ O projeto apresenta:
 
 # ⚡ `javascript`
 
-Diretório destinado ao estudo da linguagem **JavaScript**, abordando conceitos fundamentais de programação e desenvolvimento no lado cliente.
+Diretório destinado ao estudo da linguagem **JavaScript**, com o tutorial `javascript.md` e a página de práticas `exemplos_javascript.html`, abordando conceitos fundamentais de programação e desenvolvimento no lado cliente.
 
-Entre os conceitos que podem ser explorados:
+Entre os conceitos explorados:
 
-```text
+```
 Variáveis
 Tipos de dados
 Operadores
-Condicionais
-Estruturas de repetição
-Funções
+Comparações
+Condicionais (if/else)
+Laços de repetição (for/while)
 Arrays
 Objetos
+Funções
 DOM
 Eventos
-Manipulação de elementos
 ```
 
 🔗 [Acessar JavaScript](https://github.com/GeorgeMendesMarra/front_end/tree/main/javascript)
@@ -229,18 +246,19 @@ Manipulação de elementos
 
 # ⚛️ `react`
 
-Diretório destinado ao estudo da biblioteca **React**, utilizada para construção de interfaces de usuário baseadas em componentes.
+Diretório com o tutorial `react.md`, destinado ao estudo da biblioteca **React**, utilizada para construção de interfaces de usuário baseadas em componentes.
 
-Conceitos relacionados:
+Conceitos abordados:
 
-* componentes;
-* JSX;
-* propriedades;
-* estado;
-* eventos;
-* renderização;
-* composição de componentes;
-* desenvolvimento de interfaces modernas.
+- configuração do ambiente;
+- componentes e JSX;
+- renderização de variáveis e lógica;
+- props (propriedades);
+- estado (`useState`);
+- renderização de listas com `map`;
+- eventos;
+- efeitos colaterais (`useEffect`);
+- projetos práticos para fazer em sequência.
 
 🔗 [Acessar React](https://github.com/GeorgeMendesMarra/front_end/tree/main/react)
 
@@ -248,19 +266,18 @@ Conceitos relacionados:
 
 # 🅰️ `angular`
 
-Diretório destinado ao estudo do **Angular**, framework para desenvolvimento de aplicações Web estruturadas.
+Diretório com o tutorial `angular.md`, destinado ao estudo do **Angular**, framework para desenvolvimento de aplicações Web estruturadas.
 
-Entre os conceitos que podem ser explorados:
+O tutorial cobre desde os pré-requisitos (Node.js e Angular CLI) até a criação do primeiro projeto e de um Hello World personalizado, explorando:
 
-* componentes;
-* templates;
-* módulos;
-* serviços;
-* roteamento;
-* formulários;
-* injeção de dependência;
-* TypeScript;
-* aplicações SPA.
+- componentes (TypeScript, HTML e CSS);
+- templates;
+- módulos;
+- serviços;
+- roteamento;
+- formulários;
+- injeção de dependência;
+- aplicações SPA.
 
 🔗 [Acessar Angular](https://github.com/GeorgeMendesMarra/front_end/tree/main/angular)
 
@@ -276,19 +293,18 @@ O objetivo é apresentar não apenas o Front-End moderno, mas também tecnologia
 
 ## `java_server_pages`
 
-Exemplos relacionados a **JavaServer Pages (JSP)**.
+Material sobre **JavaServer Pages (JSP)**, com tutorial completo (`java_server_pages.md`) e um roteiro de Hello World (`hello_world/`) com a criação manual da estrutura de pastas, hospedagem no Tomcat e scripts automáticos para criar o projeto.
 
 O JSP permite combinar páginas Web com recursos do ecossistema Java para construção de aplicações Web.
 
 Conceitos relacionados:
 
-```text
+```
 JSP
 HTML
 Java
 Servlets
-EL
-JSTL
+Formulários
 Tomcat
 ```
 
@@ -298,20 +314,19 @@ Tomcat
 
 ## `java_server_faces`
 
-Exemplos relacionados ao **JavaServer Faces (JSF)**.
+Material sobre **JavaServer Faces (JSF)**, com tutorial (`java_server_faces.md`), um Hello World passo a passo (`hello_world/`) e projetos de portfólio prontos para execução em diferentes versões do Tomcat (`tomcat_8/` e `tomcat_11/`, em arquivos `.zip`).
 
 O JSF utiliza uma abordagem baseada em componentes para construção de interfaces Web no ecossistema Java.
 
 Conceitos relacionados:
 
-* componentes;
-* páginas XHTML;
-* Managed Beans;
-* navegação;
-* formulários;
-* validação;
-* ciclo de vida;
-* integração com aplicações Java.
+- arquitetura MVC do JSF;
+- páginas XHTML;
+- Managed Beans;
+- navegação entre páginas;
+- ciclo de vida;
+- configuração (`web.xml`, `faces-config.xml`, Maven);
+- integração com aplicações Java.
 
 🔗 [Acessar JavaServer Faces](https://github.com/GeorgeMendesMarra/front_end/tree/main/java_server_faces)
 
@@ -319,19 +334,19 @@ Conceitos relacionados:
 
 ## `java_struts`
 
-Exemplos relacionados ao **Apache Struts**, framework tradicional do ecossistema Java para desenvolvimento de aplicações Web baseado no padrão MVC.
+Material sobre o **Apache Struts**, framework tradicional do ecossistema Java para desenvolvimento de aplicações Web baseado no padrão MVC, com tutorial para iniciantes (`java_struts.md`) e um Hello World (`hello_world/`).
 
 Conceitos relacionados:
 
-```text
+```
 MVC
 Action
-Form
-Controller
-View
+Interceptors
+struts.xml
+Value Stack e OGNL
 JSP
 Servlet
-Java
+Maven
 ```
 
 🔗 [Acessar Java Struts](https://github.com/GeorgeMendesMarra/front_end/tree/main/java_struts)
@@ -340,17 +355,14 @@ Java
 
 # 📦 Projetos de controle
 
-O repositório também contém exemplos de aplicações voltadas ao desenvolvimento de sistemas de controle.
+O repositório também contém aplicações Front-End voltadas ao desenvolvimento de sistemas de controle, em HTML, CSS e JavaScript, com dados e autenticação simulados no navegador (`localStorage`):
 
-Entre eles estão:
-
-```text
-controle_estoque_1
-controle_estoque_2
-
-controle_pecas_1
-controle_pecas_2
-```
+| Projeto | Descrição |
+| ------- | --------- |
+| `controle_estoque_1` | Controle de estoque com páginas de produtos, fornecedores, entradas e saídas |
+| `controle_estoque_2` | Evolução do anterior, com tela de login, dashboard, produtos, entradas e saídas |
+| `controle_pecas_1` | Controle de estoque de peças com login e tabela de cadastro (nome, código, quantidade, preço e ações) |
+| `controle_pecas_2` | ERP de controle de estoque de peças com login, dashboard (Chart.js), cadastro de peças, entrada/saída e usuários |
 
 Esses projetos podem ser utilizados para demonstrar a evolução de uma aplicação Web a partir de requisitos mais próximos de sistemas reais.
 
@@ -360,24 +372,24 @@ Esses projetos podem ser utilizados para demonstrar a evolução de uma aplicaç
 
 O repositório inclui cinco roteiros passo a passo, pensados para orientar o aluno na organização de um projeto de Front-End desde o planejamento até a entrega, em diferentes níveis de complexidade:
 
-```text
-como_fazer_projeto_frontend_html.md
+```
+projeto_front_end_html.md
    → apenas estrutura (HTML)
 
-como_fazer_projeto_frontend_html+css.md
+projeto_front_end_html+css.md
    → estrutura e estilo (HTML + CSS)
 
-como_fazer_projeto_frontend_html+css+javascript.md
+projeto_front_end_html+css+javascript.md
    → estrutura, estilo e interatividade (HTML + CSS + JavaScript)
 
-como_fazer_projeto_frontend_html+css+javascript+jQuery.md
+projeto_front_end_html+css+javascript+jQuery.md
    → adiciona a biblioteca jQuery
 
-como_fazer_projeto_frontend_html+css+javascript+jquery+bootstrap.md
-   → roteiro progressivo completo, reunindo todas as fases em um único documento
+projeto_front_end_html+css+javascript+jQuery+bootstrap.md
+   → roteiro progressivo completo, em fases, reunindo HTML, CSS, JavaScript, jQuery e Bootstrap
 ```
 
-Cada roteiro trata do planejamento inicial (objetivo do site, páginas/seções, conteúdo mínimo, wireframe) e da organização de pastas, servindo de apoio tanto para os exemplos `site1`–`site5` quanto para novos projetos dos alunos.
+Cada roteiro trata do planejamento inicial (objetivo do site, páginas/seções, conteúdo mínimo, wireframe), da organização de pastas, dos testes, do versionamento e da entrega, além de trazer um checklist final, servindo de apoio tanto para os exemplos `site1`–`site5` quanto para novos projetos dos alunos.
 
 ---
 
@@ -387,47 +399,47 @@ O repositório permite estudar diferentes formas de estruturar aplicações Web.
 
 Uma visão simplificada:
 
-```text
-                    APLICAÇÕES WEB
-                          │
-          ┌───────────────┼────────────────┐
-          │               │                │
-          ▼               ▼                ▼
-      Front-End       Java Web        Frameworks
-          │               │                │
-          ▼               ▼                ▼
-    HTML/CSS/JS      JSP / JSF /      React / Angular
-      + jQuery          Struts
+```
+                APLICAÇÕES WEB
+                      │
+      ┌───────────────┼────────────────┐
+      │               │                │
+      ▼               ▼                ▼
+  Front-End       Java Web        Frameworks
+      │               │                │
+      ▼               ▼                ▼
+HTML/CSS/JS      JSP / JSF /      React / Angular
+  + jQuery          Struts
 ```
 
 Também é possível utilizar os projetos para introduzir conceitos relacionados ao padrão:
 
-```text
+```
 MVC — Model View Controller
 ```
 
 Representação simplificada:
 
-```text
-                 ┌─────────────┐
-                 │   Usuário   │
-                 └──────┬──────┘
-                        │
-                        ▼
-                 ┌─────────────┐
-                 │ Controller  │
-                 └──────┬──────┘
-                        │
-              ┌─────────┴─────────┐
-              ▼                   ▼
-        ┌───────────┐       ┌───────────┐
-        │   Model   │       │    View   │
-        └─────┬─────┘       └───────────┘
-              │
-              ▼
-        ┌───────────┐
-        │  Dados    │
-        └───────────┘
+```
+         ┌─────────────┐
+         │   Usuário   │
+         └──────┬──────┘
+                │
+                ▼
+         ┌─────────────┐
+         │ Controller  │
+         └──────┬──────┘
+                │
+      ┌─────────┴─────────┐
+      ▼                   ▼
+┌───────────┐       ┌───────────┐
+│   Model   │       │    View   │
+└─────┬─────┘       └───────────┘
+      │
+      ▼
+┌───────────┐
+│  Dados    │
+└───────────┘
 ```
 
 ---
@@ -436,7 +448,7 @@ Representação simplificada:
 
 Uma das propostas deste repositório é permitir visualizar a evolução das tecnologias Web.
 
-```text
+```
 HTML
  │
  ├── CSS
@@ -447,6 +459,9 @@ HTML
  │
  ├── jQuery
  │      └── site4 / site5
+ │
+ ├── Aplicações de controle
+ │      └── controle_estoque / controle_pecas
  │
  ├── Frameworks
  │      ├── React
@@ -468,42 +483,47 @@ Os projetos deste repositório podem ser utilizados para estudar:
 
 ### Front-End
 
-* HTML5;
-* CSS3;
-* JavaScript;
-* jQuery;
-* DOM;
-* eventos;
-* formulários;
-* validação;
-* responsividade;
-* Flexbox;
-* CSS Grid;
-* componentes;
-* interfaces de usuário.
+- HTML5;
+- CSS3;
+- JavaScript;
+- jQuery;
+- DOM;
+- eventos;
+- formulários;
+- validação;
+- responsividade;
+- Flexbox;
+- CSS Grid;
+- consumo de dados em JSON;
+- armazenamento no navegador (`localStorage`);
+- componentes;
+- interfaces de usuário.
 
 ### Java Web
 
-* JSP;
-* JSF;
-* Struts;
-* MVC;
-* Servlets;
-* aplicações Web Java.
+- JSP;
+- JSF;
+- Struts;
+- MVC;
+- Servlets;
+- Tomcat;
+- aplicações Web Java.
 
 ### Frameworks
 
-* React;
-* Angular.
+- React;
+- Angular.
 
 ### Desenvolvimento de sistemas
 
-* CRUD;
-* formulários;
-* controle de dados;
-* organização de aplicações;
-* separação de responsabilidades;
-* arquitetura de software.
+- CRUD;
+- formulários;
+- autenticação (simulada);
+- controle de dados;
+- dashboards e indicadores;
+- organização de aplicações;
+- separação de responsabilidades;
+- arquitetura de software.
 
 ---
 
@@ -513,15 +533,15 @@ Este repositório foi pensado também como **material de apoio para atividades a
 
 Pode ser utilizado em disciplinas como:
 
-* Programação Web I;
-* Programação Web II;
-* Desenvolvimento Web;
-* Desenvolvimento Front-End;
-* Engenharia de Software;
-* Programação Orientada a Objetos;
-* Desenvolvimento de Sistemas;
-* Tecnologias Web;
-* Desenvolvimento de Aplicações Web.
+- Programação Web I;
+- Programação Web II;
+- Desenvolvimento Web;
+- Desenvolvimento Front-End;
+- Engenharia de Software;
+- Programação Orientada a Objetos;
+- Desenvolvimento de Sistemas;
+- Tecnologias Web;
+- Desenvolvimento de Aplicações Web.
 
 Os exemplos `site1` a `site5` formam, em especial, a sequência didática utilizada na disciplina **Programação Web I** do curso de **Análise e Desenvolvimento de Sistemas (ADS)**.
 
@@ -531,7 +551,7 @@ Os exemplos `site1` a `site5` formam, em especial, a sequência didática utiliz
 
 Os exemplos podem ser utilizados seguindo uma progressão de dificuldade:
 
-```text
+```
 NÍVEL 1
 Fundamentos
 HTML + CSS
@@ -550,17 +570,21 @@ Menu + rolagem + Media Queries
         ↓
 NÍVEL 5
 Bibliotecas
-jQuery
+jQuery + dashboard com dados JSON
         ↓
 NÍVEL 6
+Sistemas de controle
+Login + CRUD + entradas e saídas
+        ↓
+NÍVEL 7
 Componentização
 React / Angular
         ↓
-NÍVEL 7
+NÍVEL 8
 Aplicações Web
 Java / JSP / JSF / Struts
         ↓
-NÍVEL 8
+NÍVEL 9
 Arquitetura
 MVC + Banco de Dados + APIs
 ```
@@ -571,18 +595,20 @@ Essa organização permite que o estudante avance gradualmente dos conceitos bá
 
 # 🛠️ Tecnologias
 
-| Tecnologia | Finalidade                         |
-| ---------- | ---------------------------------- |
-| HTML5      | Estrutura das páginas              |
-| CSS3       | Estilos e layout                   |
-| JavaScript | Interatividade                     |
+| Tecnologia | Finalidade                                |
+| ---------- | ----------------------------------------- |
+| HTML5      | Estrutura das páginas                     |
+| CSS3       | Estilos e layout                          |
+| JavaScript | Interatividade                            |
 | jQuery     | Manipulação simplificada do DOM e efeitos |
-| React      | Interfaces baseadas em componentes |
-| Angular    | Aplicações Web estruturadas        |
-| Java       | Desenvolvimento de aplicações      |
-| JSP        | Páginas Web Java                   |
-| JSF        | Interfaces baseadas em componentes |
-| Struts     | Framework Web baseado em MVC       |
+| Chart.js   | Gráficos nos painéis de controle          |
+| React      | Interfaces baseadas em componentes        |
+| Angular    | Aplicações Web estruturadas               |
+| Java       | Desenvolvimento de aplicações             |
+| JSP        | Páginas Web Java                          |
+| JSF        | Interfaces baseadas em componentes        |
+| Struts     | Framework Web baseado em MVC              |
+| Tomcat     | Servidor de aplicações Java Web           |
 
 ---
 
@@ -592,7 +618,7 @@ Os exemplos procuram reforçar alguns princípios importantes:
 
 ### Separação de responsabilidades
 
-```text
+```
 HTML
 → Estrutura
 
@@ -625,13 +651,13 @@ O código pode ser utilizado como base para modificações, testes e novos proje
 
 Clone o repositório:
 
-```bash
+```
 git clone https://github.com/GeorgeMendesMarra/front_end.git
 ```
 
 Entre no diretório:
 
-```bash
+```
 cd front_end
 ```
 
@@ -639,17 +665,19 @@ Escolha o projeto que deseja estudar.
 
 Por exemplo:
 
-```bash
+```
 cd site1
 ```
 
 ou:
 
-```bash
+```
 cd site5
 ```
 
-Para projetos que utilizam frameworks ou tecnologias específicas, consulte o README ou os arquivos de configuração existentes dentro do respectivo diretório.
+Os projetos Front-End (`site1` a `site5`, `controle_estoque_*` e `controle_pecas_*`) podem ser abertos diretamente no navegador, a partir do arquivo `index.html` (ou `login.html`, nos projetos com autenticação). O `site5` consome um arquivo JSON local e, dependendo do navegador, pode exigir um servidor local simples (por exemplo, a extensão Live Server do VS Code).
+
+Para os tutoriais de React, Angular, JSP, JSF e Struts, siga o passo a passo do respectivo arquivo `.md` dentro do diretório.
 
 ---
 
@@ -665,12 +693,12 @@ O repositório possui também uma página de apresentação disponível em:
 
 Este material é destinado principalmente a:
 
-* 👨‍🎓 estudantes de cursos de Computação;
-* 👩‍💻 desenvolvedores iniciantes;
-* 👨‍🏫 professores;
-* 🧑‍💻 desenvolvedores que desejam revisar fundamentos;
-* 🚀 entusiastas de tecnologia;
-* 📖 pessoas interessadas em desenvolvimento Web.
+- 👨‍🎓 estudantes de cursos de Computação;
+- 👩‍💻 desenvolvedores iniciantes;
+- 👨‍🏫 professores;
+- 🧑‍💻 desenvolvedores que desejam revisar fundamentos;
+- 🚀 entusiastas de tecnologia;
+- 📖 pessoas interessadas em desenvolvimento Web.
 
 ---
 
@@ -678,7 +706,7 @@ Este material é destinado principalmente a:
 
 Este repositório poderá incorporar novos exemplos envolvendo:
 
-```text
+```
 TypeScript
 Node.js
 APIs REST
@@ -710,9 +738,9 @@ Este repositório foi criado com finalidade **educacional, acadêmica e experime
 
 # 📄 Licença
 
-Os exemplos deste repositório possuem finalidade predominantemente educacional.
+Este repositório é distribuído sob a **Licença BSD de 3 Cláusulas (BSD 3-Clause)**. Consulte o arquivo [LICENSE](LICENSE) para os termos completos.
 
-Consulte os arquivos e projetos individuais para verificar eventuais licenças ou condições específicas de utilização de cada tecnologia ou código de terceiros.
+Os exemplos possuem finalidade predominantemente educacional. Consulte os arquivos e projetos individuais para verificar eventuais licenças ou condições específicas de utilização de cada tecnologia ou código de terceiros.
 
 ---
 
@@ -740,26 +768,26 @@ A proposta é transformar o repositório em uma **base de conhecimento prática 
 
 ## 🌐 Desenvolvimento Web na prática
 
-```text
-                 DESENVOLVIMENTO WEB
-                         │
-        ┌────────────────┼────────────────┐
-        │                │                │
-        ▼                ▼                ▼
-    FRONT-END          JAVA WEB       FRAMEWORKS
-        │                │                │
-        ▼                ▼                ▼
- HTML • CSS • JS      JSP • JSF       React • Angular
-    • jQuery
-                         │
-                         ▼
-                      STRUTS
-                         │
-                         ▼
-                       MVC
-                         │
-                         ▼
-                  APLICAÇÕES WEB
+```
+                DESENVOLVIMENTO WEB
+                        │
+       ┌────────────────┼────────────────┐
+       │                │                │
+       ▼                ▼                ▼
+   FRONT-END          JAVA WEB       FRAMEWORKS
+       │                │                │
+       ▼                ▼                ▼
+HTML • CSS • JS      JSP • JSF       React • Angular
+   • jQuery
+                        │
+                        ▼
+                     STRUTS
+                        │
+                        ▼
+                      MVC
+                        │
+                        ▼
+                 APLICAÇÕES WEB
 ```
 
 > **Aprender desenvolvimento Web é mais do que aprender uma tecnologia: é compreender como diferentes tecnologias, linguagens, frameworks e arquiteturas trabalham juntas para construir aplicações.**
