@@ -1,0 +1,6 @@
+/* Poucos estilos próprios: quase tudo vem do Bootstrap.
+   Aqui só ficam ajustes que o Bootstrap não oferece pronto. */
+th[data-campo] { cursor: pointer; user-select: none; white-space: nowrap; }
+th.ordenado-asc::after  { content: " ▲"; font-size: .7em; }
+th.ordenado-desc::after { content: " ▼"; font-size: .7em; }
+.progress { height: .9rem; }

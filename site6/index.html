@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-bs-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <!-- Essencial para o Bootstrap funcionar bem em celulares -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Painel de Estoque — Bootstrap</title>
+
+  <!-- 1) Bootstrap CSS via CDN. Só com esta linha você já ganha estilos prontos. -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- 2) Nosso CSS vem DEPOIS, para poder ajustar o que o Bootstrap definiu. -->
+  <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body class="bg-body-tertiary">
+
+  <!-- NAVBAR: .navbar-expand-md = menu horizontal a partir de telas médias; abaixo disso vira o botão "hambúrguer" -->
+  <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <div class="container">
+      <span class="navbar-brand">📦 Painel de Estoque</span>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="menu">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item"><a class="nav-link" href="#filtros">Filtros</a></li>
+          <li class="nav-item"><a class="nav-link" href="#resumo">Resumo</a></li>
+          <li class="nav-item"><a class="nav-link" href="#tabela">Tabela</a></li>
+        </ul>
+        <!-- data-bs-toggle="modal": abre o modal SEM escrever JavaScript -->
+        <button class="btn btn-outline-light btn-sm me-2" data-bs-toggle="modal" data-bs-target="#modalStatus">Como o status é calculado?</button>
+        <button class="btn btn-secondary btn-sm" id="btn-tema">🌓 Tema</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- .container = conteúdo centralizado com largura máxima responsiva; .py-4 = espaçamento vertical -->
+  <main class="container py-4">
+
+    <!-- FILTROS: .row divide a linha em 12 colunas; col-12 (celular) / col-md-6 (tablet) / col-lg-3 (desktop) -->
+    <section id="filtros" class="card shadow-sm mb-4">
+      <div class="card-body">
+        <div class="row g-3">
+          <div class="col-12 col-md-6 col-lg-3">
+            <label class="form-label" for="filtro-busca">Buscar produto</label>
+            <input type="text" class="form-control" id="filtro-busca" placeholder="Digite um nome...">
+          </div>
+          <div class="col-12 col-md-6 col-lg-3">
+            <label class="form-label" for="filtro-categoria">Categoria</label>
+            <select class="form-select" id="filtro-categoria"><option value="">Todas</option></select>
+          </div>
+          <div class="col-12 col-md-6 col-lg-3">
+            <label class="form-label" for="filtro-fornecedor">Fornecedor</label>
+            <select class="form-select" id="filtro-fornecedor"><option value="">Todos</option></select>
+          </div>
+          <div class="col-12 col-md-6 col-lg-3">
+            <label class="form-label" for="filtro-status">Status</label>
+            <select class="form-select" id="filtro-status">
+              <option value="">Todos</option><option>Normal</option><option>Atenção</option><option>Baixo</option>
+            </select>
+          </div>
+        </div>
+        <div class="d-flex align-items-center gap-3 mt-3">
+          <button type="button" class="btn btn-outline-secondary btn-sm" id="btn-limpar">Limpar filtros</button>
+          <span class="text-body-secondary small" id="contagem"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- KPIs: 2 por linha no celular (col-6) e 4 por linha no desktop (col-lg-3) -->
+    <section id="resumo" class="row g-3 mb-4">
+      <div class="col-6 col-lg-3"><div class="card h-100 shadow-sm"><div class="card-body">
+        <div class="text-body-secondary small">Itens no filtro</div><div class="fs-3 fw-bold" id="kpi-total">—</div></div></div></div>
+      <div class="col-6 col-lg-3"><div class="card h-100 shadow-sm"><div class="card-body">
+        <div class="text-body-secondary small">Valor total em estoque</div><div class="fs-3 fw-bold" id="kpi-valor">—</div></div></div></div>
+      <div class="col-6 col-lg-3"><div class="card h-100 shadow-sm border-danger"><div class="card-body">
+        <div class="text-danger small">Itens abaixo do mínimo</div><div class="fs-3 fw-bold text-danger" id="kpi-baixo">—</div></div></div></div>
+      <div class="col-6 col-lg-3"><div class="card h-100 shadow-sm"><div class="card-body">
+        <div class="text-body-secondary small">Categoria de maior valor</div><div class="fs-4 fw-bold" id="kpi-destaque">—</div></div></div></div>
+    </section>
+
+    <!-- GRÁFICO + ALERTAS: lado a lado no desktop (col-lg-7 + col-lg-5 = 12), empilhados no celular -->
+    <section class="row g-3 mb-4">
+      <div class="col-lg-7"><div class="card h-100 shadow-sm">
+        <div class="card-header fw-semibold">Valor em estoque por categoria</div>
+        <div class="card-body" id="grafico"></div></div></div>
+      <div class="col-lg-5"><div class="card h-100 shadow-sm">
+        <div class="card-header fw-semibold">Itens abaixo do estoque mínimo</div>
+        <ul class="list-group list-group-flush" id="alertas"></ul></div></div>
+    </section>
+
+    <!-- TABELA: .table-responsive cria rolagem horizontal em telas pequenas -->
+    <section id="tabela" class="card shadow-sm">
+      <div class="card-header fw-semibold">Itens em estoque <span class="text-body-secondary fw-normal small">(clique no cabeçalho para ordenar)</span></div>
+      <div class="table-responsive">
+        <table class="table table-striped table-hover align-middle mb-0">
+          <thead class="table-light">
+            <tr>
+              <th data-campo="produto">Produto</th><th data-campo="categoria">Categoria</th>
+              <th data-campo="quantidade">Quantidade</th><th data-campo="estoque_minimo">Mínimo</th>
+              <th data-campo="preco_unitario">Preço unit.</th><th data-campo="fornecedor">Fornecedor</th>
+              <th data-campo="status">Status</th>
+            </tr>
+          </thead>
+          <tbody id="corpo-tabela"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer class="text-center text-body-secondary small py-4">
+    Site 6 — o mesmo painel do site5, agora com Bootstrap 5.
+  </footer>
+
+  <!-- MODAL: janela pop-up pronta do Bootstrap -->
+  <div class="modal fade" id="modalStatus" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered"><div class="modal-content">
+      <div class="modal-header"><h5 class="modal-title">Como o status é calculado</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+      <div class="modal-body">
+        <p><span class="badge text-bg-danger">Baixo</span> quantidade menor que o estoque mínimo.</p>
+        <p><span class="badge text-bg-warning">Atenção</span> quantidade até 1,5 × o mínimo.</p>
+        <p class="mb-0"><span class="badge text-bg-success">Normal</span> quantidade acima de 1,5 × o mínimo.</p>
+      </div>
+      <div class="modal-footer"><button type="button" class="btn btn-primary" data-bs-dismiss="modal">Entendi</button></div>
+    </div></div>
+  </div>
+
+  <!-- Base de dados embutida (permite abrir o arquivo com duplo clique; veja o readme) -->
+  <script type="application/json" id="base-dados">
+[
+  { "id": 1,  "produto": "Notebook 15'' i5 8GB",       "categoria": "Informática", "quantidade": 4,   "estoque_minimo": 5,  "preco_unitario": 3200.00, "fornecedor": "TechDist" },
+  { "id": 2,  "produto": "Mouse óptico USB",            "categoria": "Informática", "quantidade": 86,  "estoque_minimo": 20, "preco_unitario": 28.50,   "fornecedor": "TechDist" },
+  { "id": 3,  "produto": "Teclado ABNT2 USB",            "categoria": "Informática", "quantidade": 42,  "estoque_minimo": 15, "preco_unitario": 65.00,   "fornecedor": "TechDist" },
+  { "id": 4,  "produto": "Monitor 24'' Full HD",         "categoria": "Informática", "quantidade": 7,   "estoque_minimo": 8,  "preco_unitario": 780.00,  "fornecedor": "VisionTech" },
+  { "id": 5,  "produto": "Cabo HDMI 1,5m",                "categoria": "Informática", "quantidade": 120, "estoque_minimo": 30, "preco_unitario": 18.90,   "fornecedor": "VisionTech" },
+  { "id": 6,  "produto": "Papel A4 (resma 500fl)",        "categoria": "Papelaria",   "quantidade": 15,  "estoque_minimo": 20, "preco_unitario": 24.90,   "fornecedor": "PapelForte" },
+  { "id": 7,  "produto": "Caneta esferográfica azul",     "categoria": "Papelaria",   "quantidade": 340, "estoque_minimo": 50, "preco_unitario": 1.20,    "fornecedor": "PapelForte" },
+  { "id": 8,  "produto": "Grampeador médio",              "categoria": "Papelaria",   "quantidade": 12,  "estoque_minimo": 10, "preco_unitario": 22.00,   "fornecedor": "PapelForte" },
+  { "id": 9,  "produto": "Pasta A-Z ofício",               "categoria": "Papelaria",   "quantidade": 8,   "estoque_minimo": 15, "preco_unitario": 14.50,   "fornecedor": "PapelForte" },
+  { "id": 10, "produto": "Álcool 70% (1L)",                "categoria": "Limpeza",     "quantidade": 60,  "estoque_minimo": 25, "preco_unitario": 9.80,    "fornecedor": "LimpaBem" },
+  { "id": 11, "produto": "Detergente neutro (5L)",         "categoria": "Limpeza",     "quantidade": 6,   "estoque_minimo": 10, "preco_unitario": 32.00,   "fornecedor": "LimpaBem" },
+  { "id": 12, "produto": "Pano multiuso (pacote c/10)",    "categoria": "Limpeza",     "quantidade": 48,  "estoque_minimo": 20, "preco_unitario": 15.30,   "fornecedor": "LimpaBem" },
+  { "id": 13, "produto": "Sabão em pó (5kg)",              "categoria": "Limpeza",     "quantidade": 3,   "estoque_minimo": 8,  "preco_unitario": 41.00,   "fornecedor": "LimpaBem" },
+  { "id": 14, "produto": "Fita isolante 20m",              "categoria": "Elétrica",    "quantidade": 55,  "estoque_minimo": 15, "preco_unitario": 6.90,    "fornecedor": "EletroPeças" },
+  { "id": 15, "produto": "Lâmpada LED 9W",                 "categoria": "Elétrica",    "quantidade": 9,   "estoque_minimo": 20, "preco_unitario": 12.40,   "fornecedor": "EletroPeças" },
+  { "id": 16, "produto": "Cabo flexível 2,5mm (rolo 100m)","categoria": "Elétrica",    "quantidade": 5,   "estoque_minimo": 6,  "preco_unitario": 189.00,  "fornecedor": "EletroPeças" },
+  { "id": 17, "produto": "Disjuntor bipolar 25A",          "categoria": "Elétrica",    "quantidade": 18,  "estoque_minimo": 10, "preco_unitario": 34.70,   "fornecedor": "EletroPeças" },
+  { "id": 18, "produto": "Furadeira de impacto 550W",      "categoria": "Ferramentas", "quantidade": 4,   "estoque_minimo": 5,  "preco_unitario": 245.00,  "fornecedor": "FerraMais" },
+  { "id": 19, "produto": "Jogo de chaves de fenda (6pç)",  "categoria": "Ferramentas", "quantidade": 22,  "estoque_minimo": 10, "preco_unitario": 39.90,   "fornecedor": "FerraMais" },
+  { "id": 20, "produto": "Trena 5m",                       "categoria": "Ferramentas", "quantidade": 2,   "estoque_minimo": 8,  "preco_unitario": 17.60,   "fornecedor": "FerraMais" },
+  { "id": 21, "produto": "Alicate universal 8''",          "categoria": "Ferramentas", "quantidade": 14,  "estoque_minimo": 8,  "preco_unitario": 28.30,   "fornecedor": "FerraMais" },
+  { "id": 22, "produto": "Fita métrica de trena 3m",       "categoria": "Ferramentas", "quantidade": 30,  "estoque_minimo": 12, "preco_unitario": 12.90,   "fornecedor": "FerraMais" }
+]
+  </script>
+
+  <!-- Ordem dos scripts: jQuery, Bootstrap JS (o bundle já inclui o Popper) e, por último, o nosso -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>
