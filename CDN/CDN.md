@@ -106,5 +106,3 @@ Um e-commerce brasileiro com servidor em São Paulo:
 ## Resumo
 
 Uma CDN **aproxima o conteúdo do usuário**, **protege e alivia a origem** e **acelera a entrega**. Hoje, praticamente todo site de médio ou grande porte usa uma, e para sites pequenos o plano gratuito de alguns provedores já traz ganhos visíveis.
-
-Se quiser, posso aprofundar em algum ponto, como configuração de cache headers, comparação entre provedores ou como implementar uma CDN em um site específico.
