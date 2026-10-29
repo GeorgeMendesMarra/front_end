@@ -208,5 +208,3 @@ Confirme os preços atuais nas páginas oficiais dos provedores, pois mudam com 
 | 5. Homologação | 2 a 3 dias |
 | 6. Virada | 1 dia |
 | 7. Estabilização | 1 a 2 semanas |
-
-Quer que eu transforme este projeto em um documento editável, com cronograma e checklists prontos para preencher?
