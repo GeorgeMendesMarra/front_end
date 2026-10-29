@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Exemplo 4 - Landing page completa</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- NAVBAR fixa no topo -->
+  <nav class="navbar navbar-expand-md bg-body-tertiary sticky-top shadow-sm">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#">CafeCode</a>
+      <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="menu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#cardapio">Cardápio</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO: bloco de destaque -->
+  <header class="bg-dark text-white text-center py-5">
+    <div class="container py-4">
+      <h1 class="display-4 fw-bold">Café e código, lado a lado</h1>
+      <p class="lead mb-4">Um espaço para estudar, programar e tomar um bom café.</p>
+      <a href="#cardapio" class="btn btn-warning btn-lg">Ver cardápio</a>
+    </div>
+  </header>
+
+  <!-- CARDÁPIO: 3 itens em grid responsivo -->
+  <section id="cardapio" class="container py-5">
+    <h2 class="text-center mb-4">Cardápio</h2>
+    <div class="row row-cols-1 row-cols-md-3 g-4 text-center">
+      <div class="col">
+        <div class="card h-100 border-0 shadow-sm">
+          <div class="card-body">
+            <h3 class="h5">Espresso</h3>
+            <p class="text-body-secondary">Curto, forte e rápido, ideal para antes da prova.</p>
+            <span class="badge text-bg-warning fs-6">R$ 6,00</span>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100 border-0 shadow-sm">
+          <div class="card-body">
+            <h3 class="h5">Cappuccino</h3>
+            <p class="text-body-secondary">Espresso com leite vaporizado e espuma cremosa.</p>
+            <span class="badge text-bg-warning fs-6">R$ 9,00</span>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100 border-0 shadow-sm">
+          <div class="card-body">
+            <h3 class="h5">Pão de queijo</h3>
+            <p class="text-body-secondary">Quentinho, saindo do forno a cada meia hora.</p>
+            <span class="badge text-bg-warning fs-6">R$ 5,00</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTATO: duas colunas (texto + formulário) -->
+  <section id="contato" class="bg-body-secondary py-5">
+    <div class="container">
+      <div class="row align-items-center g-4">
+        <div class="col-md-6">
+          <h2>Fale com a gente</h2>
+          <p>Aberto de segunda a sábado, das 8h às 20h.</p>
+        </div>
+        <div class="col-md-6">
+          <input type="email" class="form-control mb-2" placeholder="Seu e-mail">
+          <textarea class="form-control mb-2" rows="3" placeholder="Sua mensagem"></textarea>
+          <button class="btn btn-dark">Enviar mensagem</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-dark text-white-50 text-center py-3 small">
+    &copy; 2026 CafeCode. Exemplo didático de Bootstrap.
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
