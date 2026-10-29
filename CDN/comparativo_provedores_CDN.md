@@ -77,5 +77,3 @@ O custo por GB é muito mais baixo que o dos grandes provedores, mas há um pont
 3. **Cobrança por requisições.** Além da banda, CloudFront e Fastly cobram por volume de requisições.
 4. **Limites de uso aceitável**, principalmente em planos gratuitos com vídeo.
 5. **Valores em dólar.** O câmbio e o IOF podem alterar bastante o custo final.
-
-Se quiser, posso montar uma estimativa de custo mensal para o seu caso. Basta me dizer o volume de tráfego, o tipo de conteúdo e onde ficam seus usuários.
