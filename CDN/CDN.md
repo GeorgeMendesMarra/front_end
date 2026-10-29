@@ -1,6 +1,6 @@
 # CDN (Content Delivery Network): explicação detalhada
 
-## O que é
+## O que é?
 
 Uma **CDN (Rede de Distribuição de Conteúdo)** é um conjunto de servidores espalhados geograficamente, chamados de **pontos de presença (PoPs)** ou **edge servers**, que armazenam cópias do conteúdo de um site e o entregam ao usuário a partir do servidor mais próximo dele.
 
