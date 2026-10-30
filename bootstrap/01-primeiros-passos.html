@@ -1,24 +1,97 @@
+<!-- ============================================================
+     HTML PURO: declaração do tipo de documento.
+     Informa ao navegador que a página usa HTML5.
+     ============================================================ -->
 <!DOCTYPE html>
+
+<!-- HTML PURO: elemento raiz. lang="pt-BR" define o idioma da página
+     (ajuda leitores de tela, tradutores e mecanismos de busca). -->
 <html lang="pt-BR">
+
+<!-- ============================================================
+     HEAD (HTML PURO): metadados e recursos externos.
+     Nada aqui aparece na tela, exceto o título na aba do navegador.
+     ============================================================ -->
 <head>
+  <!-- HTML PURO: codificação UTF-8, necessária para acentos (ç, ã, é, í). -->
   <meta charset="UTF-8">
+
   <!-- Sem esta linha o site não fica responsivo no celular -->
+  <!-- HTML PURO (essencial para o Bootstrap): 
+       width=device-width -> a largura da página acompanha a largura do aparelho
+       initial-scale=1    -> zoom inicial de 100%
+       Sem ela, o celular exibiria a página "encolhida", como se fosse desktop,
+       e os breakpoints do Bootstrap (md, lg...) não funcionariam como esperado. -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- HTML PURO: título exibido na aba do navegador. -->
   <title>Exemplo 1 - Primeiros passos com Bootstrap</title>
+
   <!-- 1) Bootstrap via CDN: basta colocar o link do CSS no <head> -->
+  <!-- BOOTSTRAP (CSS): carrega a folha de estilos do Bootstrap 5.3.3 via CDN (jsDelivr).
+       CDN = rede de servidores que entrega o arquivo, sem precisar baixá-lo no seu projeto.
+       É este arquivo que fornece TODAS as classes usadas no body
+       (navbar, container, btn, alert, bg-*, text-* etc.).
+       rel="stylesheet" é HTML: indica que o arquivo é uma folha de estilos. -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
+
+<!-- ============================================================
+     BODY (HTML PURO): tudo o que está aqui é visível na página.
+     ============================================================ -->
 <body>
 
+  <!-- ========================================================
+       BLOCO 1: NAVBAR
+       ======================================================== -->
+
   <!-- NAVBAR: barra de navegação que vira "menu hambúrguer" no celular -->
+  <!-- <nav> é HTML5 semântico (indica uma área de navegação).
+       BOOTSTRAP:
+         navbar           -> ativa o componente de barra de navegação
+         navbar-expand-md -> menu horizontal a partir de 768px (md);
+                             abaixo disso vira o menu hambúrguer
+         bg-dark          -> fundo escuro (utilitário de cor de fundo)
+         navbar-dark      -> ajusta o texto para ficar claro sobre fundo escuro -->
   <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+
+    <!-- BOOTSTRAP: container centraliza o conteúdo e limita a largura máxima
+         conforme o tamanho da tela. -->
     <div class="container">
+
+      <!-- HTML (link <a>) + BOOTSTRAP (navbar-brand): estiliza o nome do site.
+           href="#" é um link placeholder (leva ao topo da página). -->
       <a class="navbar-brand" href="#">Meu Site</a>
+
+      <!-- HTML (<button>) + BOOTSTRAP CSS + BOOTSTRAP JS:
+           Botão do menu hambúrguer, visível só em telas pequenas.
+           navbar-toggler            -> (CSS) estilo do botão
+           data-bs-toggle="collapse" -> (JS) atributo data-* lido pelo JavaScript do Bootstrap,
+                                        que diz "este botão abre/fecha algo"
+           data-bs-target="#menu"    -> (JS) indica QUAL elemento abrir/fechar: o que tem id="menu"
+           Você não escreveu nenhum JavaScript: o comportamento vem do
+           bootstrap.bundle.min.js carregado no final da página. -->
       <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
+        <!-- BOOTSTRAP: navbar-toggler-icon desenha o ícone de três linhas (☰). -->
         <span class="navbar-toggler-icon"></span>
       </button>
+
+      <!-- BOOTSTRAP: área colapsável que guarda os links do menu.
+           collapse        -> oculta o conteúdo em telas pequenas até o botão ser clicado
+           navbar-collapse -> em telas grandes (md+), exibe normalmente
+           id="menu"       -> HTML: identificador que o data-bs-target="#menu" acima procura -->
       <div class="collapse navbar-collapse" id="menu">
+
+        <!-- HTML (<ul> lista não ordenada) + BOOTSTRAP:
+             navbar-nav -> remove os marcadores e alinha os itens como menu
+             ms-auto    -> margin-start: auto, empurra o menu para a direita
+                           (ms = "margin start"; no Bootstrap 4 era ml-auto) -->
         <ul class="navbar-nav ms-auto">
+
+          <!-- HTML (<li> item de lista) + BOOTSTRAP:
+               nav-item   -> item do menu
+               nav-link   -> estilo do link (espaçamento, cor, efeito hover)
+               active     -> destaca o link como página atual (texto mais branco) -->
           <li class="nav-item"><a class="nav-link active" href="#">Início</a></li>
           <li class="nav-item"><a class="nav-link" href="#">Sobre</a></li>
           <li class="nav-item"><a class="nav-link" href="#">Contato</a></li>
@@ -27,29 +100,101 @@
     </div>
   </nav>
 
+
+  <!-- ========================================================
+       BLOCO 2: CONTEÚDO PRINCIPAL
+       ======================================================== -->
+
   <!-- CONTAINER: centraliza e limita a largura do conteúdo -->
+  <!-- <main> é HTML5 semântico (indica o conteúdo principal da página;
+       só deve existir um por página).
+       BOOTSTRAP:
+         container -> centraliza e limita a largura
+         my-5      -> margin no eixo Y (my = margin vertical), nível 5 (3rem):
+                      afasta o conteúdo da navbar e do fim da página -->
   <main class="container my-5">   <!-- my-5 = margem vertical -->
 
+    <!-- HTML (<h1> título principal) + BOOTSTRAP:
+         display-5 -> título grande e mais leve que o h1 padrão
+         (existem display-1 a display-6, do maior ao menor). -->
     <h1 class="display-5">Primeiros passos</h1>
+
+    <!-- HTML (<p> parágrafo) + BOOTSTRAP: lead = texto de destaque,
+         com fonte maior e mais leve. -->
     <p class="lead">As classes do Bootstrap funcionam como "peças de montar".</p>
 
+
+    <!-- ------------------- SEÇÃO: BOTÕES ------------------- -->
+
+    <!-- HTML (<h2>) + BOOTSTRAP:
+         h4 -> faz o <h2> ter a APARÊNCIA de um h4 (tamanho menor), mantendo
+               a hierarquia correta do HTML. Boa prática: o nível da tag (h2)
+               é semântica; o tamanho visual é estilo.
+         mt-4 -> margin-top nível 4: espaço acima do título -->
     <h2 class="h4 mt-4">Botões</h2>
+
+    <!-- HTML (<button>) + BOOTSTRAP:
+         btn           -> estilo base de botão (obrigatório)
+         btn-primary   -> variação azul (cor principal)
+         btn-success   -> variação verde (ação bem-sucedida)
+         btn-danger    -> variação vermelha (ação perigosa)
+         btn-outline-secondary -> apenas contorno cinza, sem preenchimento
+         Regra: "btn" + uma classe de variação de cor. -->
     <button class="btn btn-primary">Primário</button>
     <button class="btn btn-success">Sucesso</button>
     <button class="btn btn-danger">Perigo</button>
     <button class="btn btn-outline-secondary">Contorno</button>
 
+
+    <!-- ------------------- SEÇÃO: ALERTAS ------------------- -->
+
+    <!-- HTML (<h2>) + BOOTSTRAP (h4 e mt-4, como explicado acima). -->
     <h2 class="h4 mt-4">Alertas</h2>
+
+    <!-- HTML (<div>) + BOOTSTRAP: componente alert (caixa de mensagem colorida).
+         alert       -> estilo base (padding, borda, cantos arredondados)
+         alert-info  -> variação azul clara, para informações
+         alert-warning -> variação amarela, para avisos
+         Outras variações: alert-success, alert-danger, alert-primary etc. -->
     <div class="alert alert-info">Isto é uma informação.</div>
     <div class="alert alert-warning">Isto é um aviso.</div>
 
+
+    <!-- ------------- SEÇÃO: UTILITÁRIOS DE TEXTO E COR ------------- -->
+
+    <!-- HTML (<h2>) + BOOTSTRAP (h4 e mt-4). -->
     <h2 class="h4 mt-4">Utilitários de texto e cor</h2>
+
+    <!-- HTML (<p>) + BOOTSTRAP (classes utilitárias, cada uma faz UMA coisa):
+         text-center -> centraliza o texto
+         text-danger -> cor do texto vermelha
+         fw-bold     -> font-weight: bold (negrito)
+         Esta é a ideia central do Bootstrap: combinar classes pequenas
+         ("peças de montar") em vez de escrever CSS próprio. -->
     <p class="text-center text-danger fw-bold">Centralizado, vermelho e em negrito</p>
+
+    <!-- HTML (<p>) + BOOTSTRAP:
+         bg-light -> fundo cinza claro
+         p-3      -> padding (espaço INTERNO) nível 3 em todos os lados
+         border   -> adiciona uma borda fina
+         rounded  -> cantos arredondados -->
     <p class="bg-light p-3 border rounded">Fundo claro, padding, borda e cantos arredondados</p>
 
   </main>
 
+
+  <!-- ========================================================
+       BLOCO 3: JAVASCRIPT DO BOOTSTRAP
+       ======================================================== -->
+
   <!-- 2) JS do Bootstrap: necessário para o menu hambúrguer funcionar -->
+  <!-- JAVASCRIPT (BOOTSTRAP): bundle com o JS do Bootstrap + Popper.js.
+       É ele que faz o botão hambúrguer abrir e fechar o menu
+       (lê os atributos data-bs-toggle e data-bs-target).
+       Fica no FINAL do <body> de propósito: o HTML aparece primeiro e o script
+       carrega depois, deixando a página mais rápida.
+       Sem esta linha, o visual funciona, mas o menu hambúrguer NÃO abre.
+       O Bootstrap 5 não depende de jQuery. -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
