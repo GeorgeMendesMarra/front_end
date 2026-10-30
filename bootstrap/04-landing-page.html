@@ -1,22 +1,89 @@
+<!-- ============================================================
+     HTML PURO: declaração do tipo de documento (HTML5).
+     ============================================================ -->
 <!DOCTYPE html>
+
+<!-- HTML PURO: elemento raiz. lang="pt-BR" define o idioma da página. -->
 <html lang="pt-BR">
+
+<!-- ============================================================
+     HEAD (HTML PURO): metadados e recursos externos.
+     ============================================================ -->
 <head>
+  <!-- HTML PURO: codificação UTF-8, necessária para acentos e para o símbolo R$. -->
   <meta charset="UTF-8">
+
+  <!-- HTML PURO (essencial para o Bootstrap): torna a página responsiva.
+       Sem esta tag, os breakpoints (md, lg) não funcionam no celular. -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- HTML PURO: título exibido na aba do navegador. -->
   <title>Exemplo 4 - Landing page completa</title>
+
+  <!-- BOOTSTRAP (CSS): folha de estilos do Bootstrap 5.3.3 via CDN.
+       Fornece todas as classes usadas na página. -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
+
+<!-- ============================================================
+     BODY (HTML PURO): tudo o que está aqui é visível na página.
+     Não tem classe: o fundo branco padrão é usado.
+     ============================================================ -->
 <body>
 
+
+  <!-- ========================================================
+       BLOCO 1: NAVBAR
+       ======================================================== -->
+
   <!-- NAVBAR fixa no topo -->
+  <!-- <nav> é HTML5 semântico (área de navegação).
+       BOOTSTRAP:
+         navbar           -> ativa o componente de barra de navegação
+         navbar-expand-md -> menu horizontal a partir de 768px; abaixo vira hambúrguer
+         bg-body-tertiary -> fundo cinza muito claro que ADAPTA-SE ao tema claro/escuro
+                             (novidade do Bootstrap 5.3: classes "bg-body-*" usam
+                             variáveis de cor do tema)
+         sticky-top       -> position: sticky; top: 0: a barra "gruda" no topo da tela
+                             ao rolar a página, permanecendo sempre visível
+                             (diferente de fixed-top, ela continua ocupando espaço no
+                             fluxo normal e não cobre o conteúdo de baixo)
+         shadow-sm        -> sombra suave, separando a barra do conteúdo que passa por baixo
+         Observação: não há "navbar-dark" porque o fundo é claro (texto escuro). -->
   <nav class="navbar navbar-expand-md bg-body-tertiary sticky-top shadow-sm">
+
+    <!-- BOOTSTRAP: container centraliza o conteúdo e limita a largura máxima. -->
     <div class="container">
+
+      <!-- HTML (link <a>) + BOOTSTRAP:
+           navbar-brand -> estilo do nome do site
+           fw-bold      -> font-weight: bold (negrito)
+           href="#"     -> link placeholder (leva ao topo) -->
       <a class="navbar-brand fw-bold" href="#">CafeCode</a>
+
+      <!-- HTML (<button>) + BOOTSTRAP CSS + BOOTSTRAP JS: botão do menu hambúrguer.
+           data-bs-toggle="collapse" -> (JS) este botão abre/fecha algo
+           data-bs-target="#menu"    -> (JS) QUAL elemento: o que tem id="menu"
+           Aqui o bootstrap.bundle.min.js (final da página) É NECESSÁRIO:
+           sem ele o menu hambúrguer não abre no celular. -->
       <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
+        <!-- BOOTSTRAP: navbar-toggler-icon desenha o ícone de três linhas (☰). -->
         <span class="navbar-toggler-icon"></span>
       </button>
+
+      <!-- BOOTSTRAP: área colapsável que guarda os links.
+           collapse        -> oculta em telas pequenas até clicar no botão
+           navbar-collapse -> em telas md+, exibe normalmente
+           id="menu"       -> (HTML) identificador procurado pelo data-bs-target -->
       <div class="collapse navbar-collapse" id="menu">
+
+        <!-- HTML (<ul>) + BOOTSTRAP: navbar-nav = menu; ms-auto = empurra para a direita. -->
         <ul class="navbar-nav ms-auto">
+
+          <!-- HTML (<li>, <a>) + BOOTSTRAP (nav-item, nav-link).
+               NAVEGAÇÃO POR ÂNCORA (HTML puro): href="#cardapio" faz o navegador
+               rolar até o elemento que tem id="cardapio" (a <section> mais abaixo).
+               Funciona sem JavaScript. O mesmo vale para #contato. -->
           <li class="nav-item"><a class="nav-link" href="#cardapio">Cardápio</a></li>
           <li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li>
         </ul>
@@ -24,28 +91,105 @@
     </div>
   </nav>
 
+
+  <!-- ========================================================
+       BLOCO 2: HERO (destaque principal)
+       ======================================================== -->
+
   <!-- HERO: bloco de destaque -->
+  <!-- <header> é HTML5 semântico (cabeçalho/introdução de uma seção ou da página).
+       Aqui foi usado como "capa" da landing page.
+       BOOTSTRAP (utilitários):
+         bg-dark     -> fundo escuro
+         text-white  -> texto branco
+         text-center -> texto centralizado
+         py-5        -> padding vertical nível 5 (3rem em cima e embaixo) -->
   <header class="bg-dark text-white text-center py-5">
+
+    <!-- BOOTSTRAP: container centraliza o conteúdo.
+         py-4 -> padding vertical EXTRA, somado ao py-5 do header, para dar mais "respiro". -->
     <div class="container py-4">
+
+      <!-- HTML (<h1>) + BOOTSTRAP:
+           display-4 -> título gigante e leve (existem display-1 a display-6)
+           fw-bold   -> negrito (reforça o destaque) -->
       <h1 class="display-4 fw-bold">Café e código, lado a lado</h1>
+
+      <!-- HTML (<p>) + BOOTSTRAP: lead = texto de destaque; mb-4 = espaço abaixo. -->
       <p class="lead mb-4">Um espaço para estudar, programar e tomar um bom café.</p>
+
+      <!-- HTML (<a>, link âncora para #cardapio) + BOOTSTRAP:
+           btn btn-warning -> link com aparência de botão amarelo
+           btn-lg          -> tamanho grande
+           Chamada para ação (CTA - "call to action"): leva o visitante ao cardápio. -->
       <a href="#cardapio" class="btn btn-warning btn-lg">Ver cardápio</a>
     </div>
   </header>
 
+
+  <!-- ========================================================
+       BLOCO 3: CARDÁPIO
+       ======================================================== -->
+
   <!-- CARDÁPIO: 3 itens em grid responsivo -->
+  <!-- HTML5 semântico (<section>) + HTML + BOOTSTRAP:
+         id="cardapio" -> (HTML) o "destino" da âncora dos links href="#cardapio"
+         container     -> (BOOTSTRAP) centraliza o conteúdo
+         py-5          -> (BOOTSTRAP) padding vertical nível 5 -->
   <section id="cardapio" class="container py-5">
+
+    <!-- HTML (<h2>) + BOOTSTRAP: text-center = centraliza; mb-4 = espaço abaixo. -->
     <h2 class="text-center mb-4">Cardápio</h2>
+
+    <!-- BOOTSTRAP (GRID):
+         row           -> linha da grade de 12 colunas
+         row-cols-1    -> celular: 1 item por linha
+         row-cols-md-3 -> a partir de 768px: 3 itens por linha
+         g-4           -> espaçamento (gutter) nível 4 entre as colunas
+         text-center   -> centraliza o texto de todos os filhos
+         As filhas usam apenas "col" e herdam a largura do row-cols-*. -->
     <div class="row row-cols-1 row-cols-md-3 g-4 text-center">
+
+
+      <!-- ------------- ITEM 1: ESPRESSO ------------- -->
+
+      <!-- BOOTSTRAP (GRID): "col" assume a largura definida pelo row-cols-* do pai. -->
       <div class="col">
+
+        <!-- BOOTSTRAP (COMPONENTE CARD):
+             card       -> caixa com cantos arredondados
+             h-100      -> altura 100%: todos os cards ficam com a mesma altura
+             border-0   -> remove a borda padrão do card
+             shadow-sm  -> sombra suave no lugar da borda (visual mais moderno) -->
         <div class="card h-100 border-0 shadow-sm">
+
+          <!-- BOOTSTRAP: card-body = área interna do card, com padding. -->
           <div class="card-body">
+
+            <!-- HTML (<h3>) + BOOTSTRAP: h5 = aparência de h5 mantendo h3 na hierarquia
+                 (h1 > h2 > h3, sem "pular" nível: boa prática de acessibilidade e SEO). -->
             <h3 class="h5">Espresso</h3>
+
+            <!-- HTML (<p>) + BOOTSTRAP: text-body-secondary = cor de texto secundária
+                 (cinza suave) do tema, adaptável a claro/escuro. Nas versões antigas
+                 do Bootstrap era "text-muted" (hoje descontinuado). -->
             <p class="text-body-secondary">Curto, forte e rápido, ideal para antes da prova.</p>
+
+            <!-- HTML (<span>) + BOOTSTRAP:
+                 badge         -> pequena "etiqueta" (usada para preços, contadores, status)
+                 text-bg-warning -> (novidade do 5.3) define fundo amarelo E escolhe
+                                   automaticamente a cor de texto com bom contraste
+                                   (substitui o par "bg-warning text-dark")
+                 fs-6          -> font-size nível 6 (o menor da escala), deixando a badge
+                                   maior que o tamanho padrão dela -->
             <span class="badge text-bg-warning fs-6">R$ 6,00</span>
           </div>
         </div>
       </div>
+
+
+      <!-- ------------- ITEM 2: CAPPUCCINO ------------- -->
+      <!-- Mesma estrutura do item 1 (col > card > card-body). Só muda o conteúdo. -->
       <div class="col">
         <div class="card h-100 border-0 shadow-sm">
           <div class="card-body">
@@ -55,6 +199,11 @@
           </div>
         </div>
       </div>
+
+
+      <!-- ------------- ITEM 3: PÃO DE QUEIJO ------------- -->
+      <!-- Mesma estrutura. Com row-cols-md-3, os três ficam na mesma linha a partir
+           de 768px; no celular, um embaixo do outro. -->
       <div class="col">
         <div class="card h-100 border-0 shadow-sm">
           <div class="card-body">
@@ -67,27 +216,86 @@
     </div>
   </section>
 
+
+  <!-- ========================================================
+       BLOCO 4: CONTATO
+       ======================================================== -->
+
   <!-- CONTATO: duas colunas (texto + formulário) -->
+  <!-- HTML5 semântico (<section>) + HTML + BOOTSTRAP:
+         id="contato"      -> (HTML) destino da âncora href="#contato" da navbar
+         bg-body-secondary -> fundo cinza claro adaptável ao tema (um tom mais forte
+                              que o bg-body-tertiary da navbar)
+         py-5              -> padding vertical
+       Note a diferença: no cardápio o "container" está na própria <section>; aqui está
+       em um <div> interno. Resultado: o FUNDO cinza ocupa a largura TOTAL da tela e o
+       CONTEÚDO fica centralizado. Em "#cardapio", o fundo (branco) não é visível. -->
   <section id="contato" class="bg-body-secondary py-5">
     <div class="container">
+
+      <!-- BOOTSTRAP (GRID):
+           row            -> linha de 12 colunas
+           align-items-center -> alinha as colunas VERTICALMENTE ao centro
+                                 (útil quando uma coluna é mais alta que a outra: o texto
+                                 fica centralizado em relação ao formulário)
+           g-4            -> espaçamento entre as colunas -->
       <div class="row align-items-center g-4">
+
+        <!-- BOOTSTRAP (GRID): col-md-6 = metade da linha a partir de 768px;
+             no celular, linha inteira (empilha). -->
         <div class="col-md-6">
+          <!-- HTML puro: título e parágrafo sem classes. -->
           <h2>Fale com a gente</h2>
           <p>Aberto de segunda a sábado, das 8h às 20h.</p>
         </div>
+
+        <!-- BOOTSTRAP (GRID): segunda metade da linha. -->
         <div class="col-md-6">
+
+          <!-- HTML (<input type="email">) + BOOTSTRAP:
+               form-control -> estilo do campo (largura 100%, borda, foco azul)
+               mb-2         -> margem inferior pequena (nível 2)
+               placeholder  -> (HTML) texto de exemplo que some ao digitar -->
           <input type="email" class="form-control mb-2" placeholder="Seu e-mail">
+
+          <!-- HTML (<textarea>) + BOOTSTRAP:
+               rows="3"     -> (HTML) altura inicial de 3 linhas
+               form-control -> mesmo estilo dos campos de texto -->
           <textarea class="form-control mb-2" rows="3" placeholder="Sua mensagem"></textarea>
+
+          <!-- HTML (<button>) + BOOTSTRAP: btn btn-dark = botão preto. -->
           <button class="btn btn-dark">Enviar mensagem</button>
         </div>
       </div>
     </div>
   </section>
 
+
+  <!-- ========================================================
+       BLOCO 5: RODAPÉ
+       ======================================================== -->
+
+  <!-- HTML5 semântico (<footer>) + BOOTSTRAP:
+         bg-dark        -> fundo escuro
+         text-white-50  -> texto branco com 50% de opacidade (aparência mais discreta)
+         text-center    -> centralizado
+         py-3           -> padding vertical nível 3
+         small          -> reduz o tamanho da fonte (≈ 0,875em) -->
   <footer class="bg-dark text-white-50 text-center py-3 small">
+
+    <!-- HTML: &copy; é uma ENTIDADE HTML que exibe o símbolo ©. -->
     &copy; 2026 CafeCode. Exemplo didático de Bootstrap.
   </footer>
 
+
+  <!-- ========================================================
+       BLOCO 6: JAVASCRIPT DO BOOTSTRAP
+       ======================================================== -->
+
+  <!-- JAVASCRIPT (BOOTSTRAP): bundle com o JS do Bootstrap + Popper.js.
+       Aqui ele É USADO: faz o menu hambúrguer da navbar abrir e fechar
+       (lê data-bs-toggle e data-bs-target).
+       Fica no FINAL do <body> para o HTML aparecer primeiro. -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
