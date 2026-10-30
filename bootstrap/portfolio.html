@@ -1,0 +1,250 @@
+<!-- ============================================================
+     HTML PURO: declaração do tipo de documento.
+     Informa ao navegador que a página usa HTML5.
+     ============================================================ -->
+<!DOCTYPE html>
+
+<!-- HTML PURO: elemento raiz. O atributo lang="pt-br" indica o idioma da página
+     (ajuda leitores de tela, tradutores e mecanismos de busca). -->
+<html lang="pt-br">
+
+<!-- ============================================================
+     HEAD (HTML PURO): metadados e recursos externos.
+     Nada aqui aparece na tela, exceto o título na aba do navegador.
+     ============================================================ -->
+<head>
+    <!-- HTML PURO: define a codificação de caracteres como UTF-8,
+         necessária para acentos (ç, ã, é) aparecerem corretamente. -->
+    <meta charset="UTF-8">
+
+    <!-- HTML PURO (essencial para o Bootstrap): torna a página responsiva.
+         width=device-width: a largura da página acompanha a largura do dispositivo.
+         initial-scale=1.0: zoom inicial de 100%. Sem esta tag, o celular
+         mostraria a página "encolhida" como se fosse desktop. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- HTML PURO: título exibido na aba do navegador. -->
+    <title>Meu Portfólio</title>
+
+    <!-- BOOTSTRAP (CSS): carrega a folha de estilos do Bootstrap 5.3.2 via CDN (jsDelivr).
+         É ela que fornece as classes usadas no corpo da página
+         (navbar, container, row, col-md-4, card, btn etc.).
+         O atributo rel="stylesheet" diz que o arquivo é uma folha de estilos. -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- FONT AWESOME (CSS): carrega a biblioteca de ícones Font Awesome 6.0.0 via CDN (cdnjs).
+         ATENÇÃO: está carregada, mas nenhum ícone é usado no código.
+         Para usar, basta inserir algo como <i class="fa-brands fa-github"></i>. -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<!-- ============================================================
+     BODY (HTML PURO): tudo o que está aqui é visível na página.
+     ============================================================ -->
+<body>
+
+    <!-- ========================================================
+         BLOCO 1: NAVBAR (barra de navegação)
+         HTML5 semântico (<nav>) + classes do BOOTSTRAP.
+         ======================================================== -->
+
+    <!-- <nav> é HTML5 semântico (indica área de navegação).
+         BOOTSTRAP:
+           navbar            -> ativa o componente de barra de navegação
+           navbar-expand-lg  -> menu horizontal em telas grandes (>= 992px);
+                                abaixo disso vira menu "hambúrguer" colapsável
+           navbar-dark       -> ajusta as cores do texto para fundos escuros
+           bg-dark           -> fundo escuro (utilitário de cor de fundo) -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+        <!-- BOOTSTRAP: "container" centraliza o conteúdo e limita a largura máxima
+             conforme o tamanho da tela, com margens laterais automáticas. -->
+        <div class="container">
+
+            <!-- HTML (link <a>) + BOOTSTRAP (navbar-brand):
+                 navbar-brand estiliza o nome/logo do site. href="#" é um link
+                 "vazio" que leva ao topo da página (placeholder). -->
+            <a class="navbar-brand" href="#">Meu Portfólio</a>
+
+            <!-- HTML (<button>) + BOOTSTRAP + JAVASCRIPT do Bootstrap:
+                 Botão do menu hambúrguer, visível só em telas pequenas.
+                 navbar-toggler        -> estilo do botão
+                 data-bs-toggle="collapse" -> atributo data-* que o JS do Bootstrap lê
+                                              para abrir/fechar um elemento
+                 data-bs-target="#navbarNav" -> id do elemento a ser aberto/fechado
+                 Observação: não há JavaScript escrito por você; o comportamento vem do
+                 bootstrap.bundle.min.js carregado no final do <body>. -->
+            <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <!-- BOOTSTRAP: navbar-toggler-icon desenha o ícone de três linhas (☰). -->
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- BOOTSTRAP: área colapsável que contém os links.
+                 collapse          -> oculta o conteúdo por padrão (em telas pequenas)
+                 navbar-collapse   -> em telas grandes, exibe o conteúdo normalmente
+                 id="navbarNav"    -> HTML: identificador usado pelo data-bs-target acima -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+
+                <!-- HTML (<ul> lista não ordenada) + BOOTSTRAP:
+                     navbar-nav -> remove marcadores da lista e a alinha como menu
+                     ms-auto    -> "margin-start: auto": empurra o menu para a direita
+                                   (ms = margin start; no Bootstrap 4 era ml-auto) -->
+                <ul class="navbar-nav ms-auto">
+
+                    <!-- HTML (<li> item de lista) + BOOTSTRAP:
+                         nav-item -> item do menu
+                         nav-link -> estilo do link (espaçamento, cor, hover)
+                         href="#" -> placeholder; o ideal é apontar para seções, ex.: href="#projetos" -->
+                    <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Projetos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Sobre</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Contato</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- ========================================================
+         BLOCO 2: HERO SECTION (seção de destaque / apresentação)
+         ======================================================== -->
+
+    <!-- HTML5 semântico (<section>) + utilitários do BOOTSTRAP:
+           bg-primary   -> fundo na cor primária (azul por padrão)
+           text-white   -> texto branco
+           text-center  -> centraliza o texto
+           py-5         -> padding vertical (py = padding no eixo Y, topo e base),
+                           nível 5 (3rem) -->
+    <section class="bg-primary text-white text-center py-5">
+
+        <!-- BOOTSTRAP: container para centralizar e limitar a largura do conteúdo. -->
+        <div class="container">
+
+            <!-- HTML (<h1> título principal, só deve haver um por página)
+                 + BOOTSTRAP: display-2 = título gigante e mais leve que o h1 padrão
+                 (existem display-1 a display-6). -->
+            <h1 class="display-2">João Silva</h1>
+
+            <!-- HTML (<p> parágrafo) + BOOTSTRAP: lead = texto de destaque,
+                 com fonte um pouco maior e mais leve. -->
+            <p class="lead">Desenvolvedor Web Full Stack</p>
+
+            <!-- HTML (<button>) + BOOTSTRAP:
+                 btn     -> estilo base de botão
+                 btn-light -> variação clara (fundo branco/cinza claro)
+                 btn-lg  -> tamanho grande -->
+            <button class="btn btn-light btn-lg">Contato</button>
+        </div>
+    </section>
+
+
+    <!-- ========================================================
+         BLOCO 3: PROJETOS (grade de cards)
+         Aqui aparece o sistema de GRID do Bootstrap
+         (container > row > col) e o componente CARD.
+         ======================================================== -->
+
+    <!-- HTML5 semântico (<section>) + BOOTSTRAP:
+         container -> centraliza o conteúdo
+         py-5      -> espaçamento vertical interno -->
+    <section class="container py-5">
+
+        <!-- HTML (<h2> subtítulo) + BOOTSTRAP:
+             text-center -> centraliza o texto
+             mb-4        -> margin-bottom nível 4 (espaço abaixo do título) -->
+        <h2 class="text-center mb-4">Meus Projetos</h2>
+
+        <!-- BOOTSTRAP (GRID): "row" cria uma linha da grade de 12 colunas.
+             Deve ficar dentro de um container e conter elementos "col". -->
+        <div class="row">
+
+            <!-- ------------- CARD DO PROJETO 1 ------------- -->
+
+            <!-- BOOTSTRAP (GRID): col-md-4 ocupa 4 das 12 colunas em telas médias (>= 768px),
+                 ou seja, 3 cards por linha. Abaixo de 768px (celular), cada card ocupa a
+                 linha inteira e um fica embaixo do outro.
+                 mb-4 -> espaço abaixo de cada coluna, para separar os cards quando empilham. -->
+            <div class="col-md-4 mb-4">
+
+                <!-- BOOTSTRAP (COMPONENTE CARD):
+                     card -> caixa com borda e cantos arredondados
+                     h-100 -> height: 100%, deixa todos os cards com a mesma altura,
+                              mesmo que o texto de um seja maior -->
+                <div class="card h-100">
+
+                    <!-- BOOTSTRAP: card-body é a área interna do card, com padding. -->
+                    <div class="card-body">
+
+                        <!-- HTML (<h5>) + BOOTSTRAP: card-title estiliza o título do card
+                             (remove a margem inferior excessiva etc.). -->
+                        <h5 class="card-title">Projeto 1</h5>
+
+                        <!-- HTML (<p>) + BOOTSTRAP: card-text estiliza o texto do card. -->
+                        <p class="card-text">Descrição do projeto 1</p>
+
+                        <!-- HTML (<a> link) + BOOTSTRAP: btn btn-primary faz o link parecer
+                             um botão azul. É um link com aparência de botão. -->
+                        <a href="#" class="btn btn-primary">Ver mais</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ------------- CARD DO PROJETO 2 ------------- -->
+            <!-- Mesma estrutura do card anterior (grid + card). Só muda o conteúdo. -->
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Projeto 2</h5>
+                        <p class="card-text">Descrição do projeto 2</p>
+                        <a href="#" class="btn btn-primary">Ver mais</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ------------- CARD DO PROJETO 3 ------------- -->
+            <!-- Mesma estrutura. Os três col-md-4 somam 12 colunas (4+4+4),
+                 preenchendo exatamente uma linha. -->
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Projeto 3</h5>
+                        <p class="card-text">Descrição do projeto 3</p>
+                        <a href="#" class="btn btn-primary">Ver mais</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ========================================================
+         BLOCO 4: RODAPÉ
+         ======================================================== -->
+
+    <!-- HTML5 semântico (<footer>) + utilitários do BOOTSTRAP:
+           bg-dark     -> fundo escuro
+           text-white  -> texto branco
+           text-center -> texto centralizado
+           py-3        -> padding vertical nível 3 (menor que o py-5 das seções) -->
+    <footer class="bg-dark text-white text-center py-3">
+
+        <!-- HTML (<p>) + BOOTSTRAP: mb-0 zera a margem inferior do parágrafo,
+             evitando espaço extra no fim do rodapé.
+             "©" é uma entidade de caractere (poderia ser escrita como &copy;). -->
+        <p class="mb-0">© 2024 Meu Portfólio. Todos direitos reservados.</p>
+    </footer>
+
+
+    <!-- ========================================================
+         BLOCO 5: JAVASCRIPT DO BOOTSTRAP
+         ======================================================== -->
+
+    <!-- JAVASCRIPT (BOOTSTRAP): bundle com o JS do Bootstrap + Popper.js (usado em
+         dropdowns, tooltips e popovers). É ele que faz funcionar o botão hambúrguer da navbar
+         (data-bs-toggle="collapse").
+         Fica no FINAL do <body> de propósito: o HTML é carregado e exibido primeiro,
+         e só depois o script é baixado, deixando a página mais rápida.
+         Observação: este Bootstrap 5 NÃO depende de jQuery. -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
