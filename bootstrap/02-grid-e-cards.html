@@ -83,4 +83,119 @@
              bg-primary -> fundo azul
              text-white -> texto branco
              rounded    -> cantos arredondados
-             Por que um <div>
+             Por que um <div> dentro da coluna? Porque a coluna tem padding próprio
+             (o gutter) e não deve receber cor de fundo diretamente. -->
+        <div class="p-3 bg-primary text-white rounded">Coluna 1</div>
+      </div>
+
+      <!-- BOOTSTRAP (GRID): coluna 2, mesmas regras da coluna 1.
+           Só muda a cor: bg-success = fundo verde. -->
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="p-3 bg-success text-white rounded">Coluna 2</div>
+      </div>
+
+      <!-- BOOTSTRAP (GRID): coluna 3.
+           col-md-12 -> a partir de 768px, ocupa a linha INTEIRA (12 de 12).
+           Efeito em tablets: colunas 1 e 2 ficam lado a lado (6+6=12) e a coluna 3
+           vai sozinha para a linha de baixo, ocupando toda a largura.
+           col-lg-4  -> em desktops volta a ocupar 4 de 12, ficando as 3 na mesma linha (4+4+4=12).
+           Observação: col-12 e col-md-12 têm o mesmo efeito prático aqui; o col-md-12 foi
+           escrito de propósito para mostrar o comportamento em cada breakpoint.
+           bg-danger -> fundo vermelho. -->
+      <div class="col-12 col-md-12 col-lg-4">
+        <div class="p-3 bg-danger text-white rounded">Coluna 3</div>
+      </div>
+    </div>
+
+
+    <!-- ========================================================
+         BLOCO 2: CARDS DE PRODUTOS
+         ======================================================== -->
+
+    <!-- HTML (<h2> subtítulo) + BOOTSTRAP:
+         mt-5 -> margin-top nível 5 (espaço acima, separando do bloco anterior)
+         mb-4 -> margin-bottom nível 4 (espaço abaixo) -->
+    <h2 class="mt-5 mb-4">Cards de produtos</h2>
+
+    <!-- row-cols-* define quantos cards cabem por linha em cada tamanho de tela -->
+    <!-- BOOTSTRAP (GRID, forma alternativa e mais prática):
+         Em vez de definir a largura em CADA coluna (col-md-6 etc.), defino na LINHA
+         quantas colunas cabem por linha, e cada filha usa apenas "col".
+           row-cols-1  -> celular: 1 card por linha
+           row-cols-md-2 -> a partir de 768px: 2 cards por linha
+           row-cols-lg-3 -> a partir de 992px: 3 cards por linha
+         g-4 -> gutter nível 4 (espaço maior entre os cards que o g-3 anterior).
+         Vantagem: ao adicionar mais cards, não é preciso mexer em nenhuma classe. -->
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+
+
+      <!-- ------------- CARD 1: HTML ------------- -->
+
+      <!-- BOOTSTRAP (GRID): "col" sem número = a coluna assume a largura definida
+           pelo row-cols-* do pai. -->
+      <div class="col">
+
+        <!-- BOOTSTRAP (COMPONENTE CARD):
+             card  -> caixa com borda e cantos arredondados
+             h-100 -> height: 100%: todos os cards da linha ficam com a mesma altura,
+                      mesmo que o texto de um seja maior que o do outro -->
+        <div class="card h-100">
+
+          <!-- BOOTSTRAP: card-body = área principal do card, com padding interno. -->
+          <div class="card-body">
+            <!-- HTML (<h5>) + BOOTSTRAP: card-title estiliza o título do card. -->
+            <h5 class="card-title">HTML</h5>
+            <!-- HTML (<p>) + BOOTSTRAP: card-text estiliza o texto do card. -->
+            <p class="card-text">A estrutura de toda página web: títulos, parágrafos, links e imagens.</p>
+          </div>
+
+          <!-- BOOTSTRAP: card-footer = rodapé do card, com fundo levemente cinza e
+               borda superior, separando-o visualmente do corpo.
+               Dentro dele, um link <a> (HTML) com aparência de botão (BOOTSTRAP):
+                 btn         -> estilo base de botão
+                 btn-primary -> azul
+                 btn-sm      -> tamanho pequeno (small) -->
+          <div class="card-footer"><a href="#" class="btn btn-primary btn-sm">Ver aula</a></div>
+        </div>
+      </div>
+
+
+      <!-- ------------- CARD 2: CSS ------------- -->
+      <!-- Mesma estrutura do card 1 (col > card > card-body + card-footer).
+           Só muda o conteúdo. -->
+      <div class="col">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">CSS</h5>
+            <p class="card-text">Cores, fontes e layout. O Bootstrap é uma biblioteca de CSS pronto.</p>
+          </div>
+          <div class="card-footer"><a href="#" class="btn btn-primary btn-sm">Ver aula</a></div>
+        </div>
+      </div>
+
+
+      <!-- ------------- CARD 3: JAVASCRIPT ------------- -->
+      <!-- Mesma estrutura. Com 3 cards e row-cols-lg-3, em desktops os três
+           ficam na mesma linha; em tablets, 2 na primeira linha e 1 na segunda;
+           em celulares, um embaixo do outro. -->
+      <div class="col">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">JavaScript</h5>
+            <p class="card-text">A interatividade da página: reagir a cliques, validar dados, alterar o conteúdo.</p>
+          </div>
+          <div class="card-footer"><a href="#" class="btn btn-primary btn-sm">Ver aula</a></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT (BOOTSTRAP): bundle com o JS do Bootstrap + Popper.js.
+       Neste exemplo NENHUM componente depende dele (não há navbar com menu hambúrguer,
+       dropdown, modal etc.), então a página funciona igual sem esta linha.
+       Boa prática: deixá-lo no FINAL do <body> e já incluído, pois quase todo projeto
+       acaba usando algum componente interativo. -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
