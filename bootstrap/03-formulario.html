@@ -1,36 +1,135 @@
+<!-- ============================================================
+     HTML PURO: declaração do tipo de documento (HTML5).
+     ============================================================ -->
 <!DOCTYPE html>
+
+<!-- HTML PURO: elemento raiz. lang="pt-BR" define o idioma da página. -->
 <html lang="pt-BR">
+
+<!-- ============================================================
+     HEAD (HTML PURO): metadados e recursos externos.
+     ============================================================ -->
 <head>
+  <!-- HTML PURO: codificação UTF-8, necessária para acentos. -->
   <meta charset="UTF-8">
+
+  <!-- HTML PURO (essencial para o Bootstrap): torna a página responsiva.
+       Sem esta tag, os breakpoints (md, lg) não funcionam no celular. -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- HTML PURO: título exibido na aba do navegador. -->
   <title>Exemplo 3 - Formulário</title>
+
+  <!-- BOOTSTRAP (CSS): folha de estilos do Bootstrap 5.3.3 via CDN.
+       Fornece as classes de formulário (form-control, form-select, form-check,
+       invalid-feedback...), além de card, btn, utilitários etc. -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
+
+<!-- ============================================================
+     BODY (HTML PURO) + BOOTSTRAP:
+     bg-light -> fundo cinza claro em TODA a página.
+     Isso faz o formulário (branco) se destacar do fundo.
+     ============================================================ -->
 <body class="bg-light">
+
+  <!-- BOOTSTRAP (LAYOUT + UTILITÁRIO):
+       container -> centraliza o conteúdo
+       my-5      -> margem vertical nível 5 (3rem)
+
+       CSS PRÓPRIO (INLINE): style="max-width: 640px;"
+       O atributo style (HTML) aceita CSS escrito diretamente na tag.
+       Aqui ele sobrescreve a largura máxima do container, que normalmente chega a
+       1320px, deixando o formulário mais estreito (640px), ideal para formulários.
+       Esta é a ÚNICA linha de CSS próprio do exemplo. -->
   <div class="container my-5" style="max-width: 640px;">
 
+    <!-- HTML (<h1>) + BOOTSTRAP:
+         h3   -> faz o <h1> ter a APARÊNCIA de um h3 (menor), mantendo o h1 na hierarquia
+         mb-4 -> margem inferior nível 4 -->
     <h1 class="h3 mb-4">Cadastro de aluno</h1>
 
+
+    <!-- ========================================================
+         BLOCO 1: FORMULÁRIO
+         ======================================================== -->
+
     <!-- "needs-validation" + novalidate: o Bootstrap mostra os erros em vermelho/verde -->
+    <!-- HTML (<form>) + BOOTSTRAP + JAVASCRIPT PRÓPRIO:
+         novalidate       -> (HTML) desliga as bolhas de erro padrão do navegador, para
+                             que o Bootstrap mostre as mensagens no estilo dele
+         needs-validation -> NÃO tem estilo no Bootstrap: é só um "marcador" (nome
+                             combinado) que o JavaScript do final da página usa
+                             para encontrar os formulários a validar
+         card             -> (BOOTSTRAP) transforma o form em um cartão
+         card-body        -> (BOOTSTRAP) padding interno do cartão
+         shadow-sm        -> (BOOTSTRAP) sombra suave (small) -->
     <form class="needs-validation card card-body shadow-sm" novalidate>
 
+
+      <!-- ------------- CAMPO: NOME ------------- -->
+
+      <!-- BOOTSTRAP: mb-3 = espaço abaixo de cada grupo de campo.
+           Este <div> agrupa label + input + mensagem de erro. -->
       <div class="mb-3">
+
+        <!-- HTML (<label>) + BOOTSTRAP (form-label):
+             for="nome" -> (HTML) liga o rótulo ao campo com id="nome";
+                           clicar no texto foca o campo e ajuda leitores de tela
+             form-label -> (BOOTSTRAP) estilo do rótulo (margem inferior) -->
         <label for="nome" class="form-label">Nome completo</label>
+
+        <!-- HTML (<input>) + BOOTSTRAP:
+             type="text"    -> (HTML) campo de texto
+             form-control   -> (BOOTSTRAP) estilo do campo: largura 100%, borda,
+                               padding, foco azul
+             id="nome"      -> (HTML) identificador, ligado ao for do label
+             required       -> (HTML5) campo obrigatório: é ELE que gera a regra de
+                               validação. O Bootstrap só cuida da APARÊNCIA do erro. -->
         <input type="text" class="form-control" id="nome" required>
+
+        <!-- BOOTSTRAP: invalid-feedback = mensagem de erro, OCULTA por padrão.
+             Só aparece quando o form tem a classe was-validated (adicionada pelo
+             JavaScript) E o campo anterior está inválido. -->
         <div class="invalid-feedback">Digite seu nome.</div>
       </div>
 
+
+      <!-- ------------- CAMPO: E-MAIL ------------- -->
       <div class="mb-3">
         <label for="email" class="form-label">E-mail</label>
+
+        <!-- HTML5: type="email" -> o navegador valida o formato (precisa de @ e domínio)
+                    placeholder   -> texto de exemplo, que some ao digitar
+                    required      -> obrigatório
+             BOOTSTRAP: form-control -->
         <input type="email" class="form-control" id="email" placeholder="nome@exemplo.com" required>
         <div class="invalid-feedback">Digite um e-mail válido.</div>
       </div>
 
+
+      <!-- ------------- LINHA COM DOIS CAMPOS (GRID) ------------- -->
+
+      <!-- BOOTSTRAP (GRID): row = linha de 12 colunas, para colocar Curso e Turno lado a lado. -->
       <div class="row">
+
+        <!-- BOOTSTRAP (GRID):
+             col-md-6 -> a partir de 768px ocupa metade da linha; no celular, linha inteira
+             mb-3     -> espaço abaixo (importante quando as colunas empilham no celular) -->
         <div class="col-md-6 mb-3">
           <label for="curso" class="form-label">Curso</label>
+
+          <!-- HTML (<select> lista suspensa) + BOOTSTRAP:
+               form-select -> estilo da lista suspensa (com a setinha do Bootstrap)
+               required    -> (HTML5) obrigatório -->
           <select class="form-select" id="curso" required>
+
+            <!-- HTML: value="" (vazio) é o que faz o required funcionar:
+                 enquanto esta opção estiver selecionada, o campo é considerado
+                 NÃO preenchido e portanto inválido. -->
             <option value="">Escolha...</option>
+
+            <!-- HTML: sem o atributo value, o valor enviado é o próprio texto da opção. -->
             <option>Análise e Desenvolvimento de Sistemas</option>
             <option>Ciência da Computação</option>
             <option>Sistemas de Informação</option>
@@ -38,12 +137,32 @@
           <div class="invalid-feedback">Escolha um curso.</div>
         </div>
 
+        <!-- BOOTSTRAP (GRID): segunda coluna da linha (a outra metade). -->
         <div class="col-md-6 mb-3">
+
+          <!-- HTML (<label>) + BOOTSTRAP:
+               form-label -> estilo do rótulo
+               d-block    -> display: block, faz o rótulo ocupar a linha inteira,
+                             deixando os radios na linha de baixo.
+               Sem "for": este rótulo é um TÍTULO do grupo, não de um campo específico. -->
           <label class="form-label d-block">Turno</label>
+
+          <!-- BOOTSTRAP (form-check): grupo de um radio + rótulo.
+               form-check-inline -> deixa os itens lado a lado, em vez de empilhados -->
           <div class="form-check form-check-inline">
+
+            <!-- HTML (<input type="radio">) + BOOTSTRAP (form-check-input):
+                 name="turno" -> (HTML) o MESMO name nos radios os agrupa: só um pode
+                                 ficar marcado por vez
+                 checked      -> (HTML) já vem marcado por padrão (por isso não precisa
+                                 de required: sempre haverá uma opção selecionada) -->
             <input class="form-check-input" type="radio" name="turno" id="manha" checked>
+
+            <!-- BOOTSTRAP: form-check-label = estilo do rótulo do radio/checkbox.
+                 for="manha" (HTML) liga ao radio: clicar no texto marca a opção. -->
             <label class="form-check-label" for="manha">Manhã</label>
           </div>
+
           <div class="form-check form-check-inline">
             <input class="form-check-input" type="radio" name="turno" id="noite">
             <label class="form-check-label" for="noite">Noite</label>
@@ -51,22 +170,77 @@
         </div>
       </div>
 
+
+      <!-- ------------- CHECKBOX: TERMOS ------------- -->
+
+      <!-- BOOTSTRAP: form-check = grupo de checkbox + rótulo; mb-3 = espaço abaixo. -->
       <div class="form-check mb-3">
+
+        <!-- HTML (<input type="checkbox">) + BOOTSTRAP (form-check-input):
+             required -> (HTML5) o formulário só é válido se a caixa estiver marcada -->
         <input class="form-check-input" type="checkbox" id="termos" required>
         <label class="form-check-label" for="termos">Li e aceito os termos</label>
         <div class="invalid-feedback">Você precisa aceitar para continuar.</div>
       </div>
 
+
+      <!-- ------------- BOTÃO DE ENVIO ------------- -->
+
+      <!-- HTML (<button type="submit">) + BOOTSTRAP:
+           type="submit" -> (HTML) dispara o envio do formulário (evento "submit",
+                            que o JavaScript abaixo intercepta)
+           btn btn-primary -> botão azul
+           w-100 -> width: 100%, o botão ocupa toda a largura do formulário -->
       <button class="btn btn-primary w-100" type="submit">Enviar cadastro</button>
     </form>
   </div>
 
+
+  <!-- ========================================================
+       BLOCO 2: JAVASCRIPT DO BOOTSTRAP
+       ======================================================== -->
+
+  <!-- JAVASCRIPT (BOOTSTRAP): bundle com o JS do Bootstrap + Popper.js.
+       Neste exemplo NENHUM componente depende dele (não há menu hambúrguer, modal,
+       dropdown etc.). A validação do formulário é feita pelo SEU script, logo abaixo,
+       e funcionaria igual sem esta linha. -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
+  <!-- ========================================================
+       BLOCO 3: JAVASCRIPT PRÓPRIO (puro, sem jQuery)
+       ======================================================== -->
   <script>
     // Ativa a validação do Bootstrap: impede o envio se houver campo inválido
+
+    // JAVASCRIPT PURO (DOM):
+    // document.querySelectorAll('.needs-validation') -> busca TODOS os elementos que têm a
+    //   classe "needs-validation" (o marcador que colocamos no <form>) e devolve uma lista.
+    // .forEach(form => { ... }) -> percorre a lista, executando o bloco para cada formulário
+    //   (a "seta" => é uma arrow function; "form" é o formulário da vez).
     document.querySelectorAll('.needs-validation').forEach(form => {
+
+      // JAVASCRIPT PURO (EVENTOS): addEventListener registra uma função que será
+      // executada quando o evento "submit" ocorrer, isto é, quando o usuário clicar
+      // em "Enviar cadastro". "e" é o objeto do evento.
       form.addEventListener('submit', e => {
-        if (!form.checkValidity()) { e.preventDefault(); e.stopPropagation(); }
+
+        // JAVASCRIPT PURO (API de validação do HTML5):
+        // form.checkValidity() devolve true se TODOS os campos cumprem suas regras
+        // (required, type="email" etc.) e false se algum falhar.
+        // O "!" inverte: o bloco roda quando o formulário é INVÁLIDO.
+        if (!form.checkValidity()) {
+
+          // e.preventDefault()  -> cancela o envio padrão do formulário
+          // e.stopPropagation() -> impede que o evento "suba" para outros elementos
+          e.preventDefault(); e.stopPropagation();
+        }
+
+        // JAVASCRIPT PURO + BOOTSTRAP: classList.add adiciona a classe "was-validated"
+        // ao form. É ESTA classe (do Bootstrap CSS) que faz:
+        //   - campos inválidos ganharem borda vermelha e exibirem a .invalid-feedback
+        //   - campos válidos ganharem borda verde
+        // Ou seja: o JavaScript só adiciona a classe; quem muda o visual é o CSS do Bootstrap.
         form.classList.add('was-validated');
       });
     });
