@@ -1,14 +1,52 @@
+<!-- ============================================================
+     HTML PURO: declaração do tipo de documento (HTML5).
+     ============================================================ -->
 <!DOCTYPE html>
+
+<!-- HTML PURO: elemento raiz. lang="pt-BR" define o idioma da página
+     (ajuda leitores de tela, tradutores e mecanismos de busca). -->
 <html lang="pt-BR">
+
+<!-- ============================================================
+     HEAD (HTML PURO): metadados e recursos externos.
+     Nada aqui aparece na tela, exceto o título na aba do navegador.
+     ============================================================ -->
 <head>
+  <!-- HTML PURO: codificação UTF-8, necessária para acentos (ç, ã, é). -->
   <meta charset="UTF-8">
+
+  <!-- HTML PURO (essencial para o Bootstrap): torna a página responsiva.
+       width=device-width -> a largura da página acompanha a do aparelho
+       initial-scale=1    -> zoom inicial de 100%
+       Sem esta tag, os breakpoints do grid (md, lg) não funcionam no celular. -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- HTML PURO: título exibido na aba do navegador. -->
   <title>Exemplo 2 - Grid e Cards</title>
+
+  <!-- BOOTSTRAP (CSS): carrega a folha de estilos do Bootstrap 5.3.3 via CDN.
+       Fornece todas as classes usadas no body (container, row, col-*, card, btn, bg-*, p-3 etc.). -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
+
+<!-- ============================================================
+     BODY (HTML PURO): tudo o que está aqui é visível na página.
+     ============================================================ -->
 <body>
+
+  <!-- BOOTSTRAP (LAYOUT + UTILITÁRIO):
+       container -> centraliza o conteúdo e limita a largura máxima conforme a tela
+       my-5      -> margin no eixo Y (vertical), nível 5 (3rem): afasta do topo e do fim da página
+       Este <div> envolve TODO o conteúdo da página. -->
   <div class="container my-5">
 
+
+    <!-- ========================================================
+         BLOCO 1: SISTEMA DE GRID
+         ======================================================== -->
+
+    <!-- HTML (<h1> título principal) + BOOTSTRAP: mb-4 = margin-bottom nível 4
+         (espaço abaixo do título). -->
     <h1 class="mb-4">Sistema de grid</h1>
 
     <!-- A linha (row) tem 12 colunas.
@@ -16,55 +54,33 @@
          col-md-6 = metade da tela a partir de tablets
          col-lg-4 = um terço da tela a partir de desktops
          Redimensione a janela do navegador para ver a mudança! -->
+    <!-- EXPLICAÇÃO COMPLEMENTAR (conceito de BREAKPOINTS do Bootstrap):
+         O grid é "mobile first": a classe sem sufixo vale para TODAS as telas
+         e as classes com sufixo passam a valer a partir daquele tamanho:
+           (sem sufixo) -> a partir de 0px     (celulares)
+           sm           -> a partir de 576px
+           md           -> a partir de 768px   (tablets)
+           lg           -> a partir de 992px   (desktops)
+           xl           -> a partir de 1200px
+           xxl          -> a partir de 1400px
+         O número (1 a 12) diz quantas das 12 colunas o elemento ocupa.
+         Se a soma passar de 12 na mesma linha, o excedente "quebra" para a linha de baixo. -->
+
+    <!-- BOOTSTRAP (GRID):
+         row -> cria uma linha da grade de 12 colunas (deve conter elementos "col")
+         g-3 -> "gutter" nível 3: espaçamento horizontal E vertical entre as colunas
+                (gx-3 seria só horizontal e gy-3 só vertical) -->
     <div class="row g-3">   <!-- g-3 = espaçamento entre colunas -->
+
+      <!-- BOOTSTRAP (GRID): coluna 1, com três regras combinadas:
+           col-12    -> celular: ocupa 12 de 12 colunas (largura total, uma embaixo da outra)
+           col-md-6  -> a partir de 768px: ocupa 6 de 12 (metade, 2 por linha)
+           col-lg-4  -> a partir de 992px: ocupa 4 de 12 (um terço, 3 por linha)
+           A regra mais específica (maior breakpoint) que se aplica à tela atual é a que vale. -->
       <div class="col-12 col-md-6 col-lg-4">
-        <div class="p-3 bg-primary text-white rounded">Coluna 1</div>
-      </div>
-      <div class="col-12 col-md-6 col-lg-4">
-        <div class="p-3 bg-success text-white rounded">Coluna 2</div>
-      </div>
-      <div class="col-12 col-md-12 col-lg-4">
-        <div class="p-3 bg-danger text-white rounded">Coluna 3</div>
-      </div>
-    </div>
-
-    <h2 class="mt-5 mb-4">Cards de produtos</h2>
-
-    <!-- row-cols-* define quantos cards cabem por linha em cada tamanho de tela -->
-    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-
-      <div class="col">
-        <div class="card h-100">
-          <div class="card-body">
-            <h5 class="card-title">HTML</h5>
-            <p class="card-text">A estrutura de toda página web: títulos, parágrafos, links e imagens.</p>
-          </div>
-          <div class="card-footer"><a href="#" class="btn btn-primary btn-sm">Ver aula</a></div>
-        </div>
-      </div>
-
-      <div class="col">
-        <div class="card h-100">
-          <div class="card-body">
-            <h5 class="card-title">CSS</h5>
-            <p class="card-text">Cores, fontes e layout. O Bootstrap é uma biblioteca de CSS pronto.</p>
-          </div>
-          <div class="card-footer"><a href="#" class="btn btn-primary btn-sm">Ver aula</a></div>
-        </div>
-      </div>
-
-      <div class="col">
-        <div class="card h-100">
-          <div class="card-body">
-            <h5 class="card-title">JavaScript</h5>
-            <p class="card-text">A interatividade da página: reagir a cliques, validar dados, alterar o conteúdo.</p>
-          </div>
-          <div class="card-footer"><a href="#" class="btn btn-primary btn-sm">Ver aula</a></div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+        <!-- BOOTSTRAP (UTILITÁRIOS), cada classe faz UMA coisa:
+             p-3        -> padding (espaço interno) nível 3 em todos os lados
+             bg-primary -> fundo azul
+             text-white -> texto branco
+             rounded    -> cantos arredondados
+             Por que um <div>
