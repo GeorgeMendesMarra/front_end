@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery 04 - Projeto completo com AJAX</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <nav class="navbar navbar-dark bg-dark mb-4">
+    <div class="container">
+      <span class="navbar-brand">Painel de posts (jQuery + AJAX)</span>
+      <span id="badge" class="badge text-bg-secondary">0 posts</span>
+    </div>
+  </nav>
+
+  <div class="container">
+
+    <!-- Filtros -->
+    <div class="row g-2 mb-3">
+      <div class="col-md-6">
+        <input id="busca" class="form-control" placeholder="Filtrar pelo título (em tempo real)">
+      </div>
+      <div class="col-md-3">
+        <select id="usuario" class="form-select">
+          <option value="">Todos os autores</option>
+        </select>
+      </div>
+      <div class="col-md-3">
+        <button id="btnRecarregar" class="btn btn-primary w-100">Recarregar</button>
+      </div>
+    </div>
+
+    <div id="status"></div>
+    <div id="cards" class="row g-3"></div>
+
+    <!-- Envio de novo post (POST) -->
+    <hr class="my-4">
+    <h2>Criar post (POST)</h2>
+    <div class="row g-2 mb-5">
+      <div class="col-md-5"><input id="novoTitulo" class="form-control" placeholder="Título"></div>
+      <div class="col-md-5"><input id="novoCorpo" class="form-control" placeholder="Texto"></div>
+      <div class="col-md-2"><button id="btnPostar" class="btn btn-success w-100">Enviar</button></div>
+    </div>
+  </div>
+
+  <!-- Modal do Bootstrap preenchido via jQuery -->
+  <div class="modal fade" id="modalPost" tabindex="-1">
+    <div class="modal-dialog"><div class="modal-content">
+      <div class="modal-header"><h5 class="modal-title"></h5>
+        <button class="btn-close" data-bs-dismiss="modal"></button></div>
+      <div class="modal-body"></div>
+    </div></div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    $(function () {
+      var API = "https://jsonplaceholder.typicode.com";
+      var posts = [];
+
+      function mensagem(tipo, texto) {
+        $("#status").html('<div class="alert alert-' + tipo + '"></div>').find(".alert").text(texto);
+      }
+
+      // Desenha os cards a partir de um array
+      function desenhar(lista) {
+        var $area = $("#cards").empty();
+        $.each(lista, function (i, p) {
+          var $col = $('<div class="col-md-4"><div class="card h-100"><div class="card-body d-flex flex-column">' +
+                       '<h6 class="card-title"></h6><p class="card-text small flex-grow-1"></p>' +
+                       '<button class="btn btn-sm btn-outline-primary ver">Ver detalhes</button>' +
+                       '</div></div></div>');
+          $col.find(".card-title").text(p.title);
+          $col.find(".card-text").text(p.body);
+          $col.find(".ver").data("id", p.id);          // .data() guarda dados no elemento
+          $area.append($col);
+        });
+        $("#badge").text(lista.length + " posts");
+        if (lista.length === 0) mensagem("warning", "Nenhum post encontrado.");
+        else $("#status").empty();
+      }
+
+      function filtrar() {
+        var termo = $.trim($("#busca").val()).toLowerCase();
+        var autor = $("#usuario").val();
+        var resultado = $.grep(posts, function (p) {   // $.grep filtra arrays
+          return p.title.toLowerCase().indexOf(termo) !== -1 &&
+                 (autor === "" || String(p.userId) === autor);
+        });
+        desenhar(resultado);
+      }
+
+      // GET com $.getJSON
+      function carregar() {
+        mensagem("info", "Carregando...");
+        $.getJSON(API + "/posts?_limit=24")
+          .done(function (dados) {
+            posts = dados;
+            // Preenche o select de autores uma única vez
+            if ($("#usuario option").length === 1) {
+              var ids = [];
+              $.each(dados, function (i, p) { if ($.inArray(p.userId, ids) === -1) ids.push(p.userId); });
+              $.each(ids, function (i, id) { $("#usuario").append($("<option>").val(id).text("Autor " + id)); });
+            }
+            filtrar();
+          })
+          .fail(function () { mensagem("danger", "Não foi possível carregar os posts. Verifique a conexão."); });
+      }
+
+      // Detalhes: $.ajax completo, com GET de um único post
+      $("#cards").on("click", ".ver", function () {
+        var id = $(this).data("id");
+        $.ajax({
+          url: API + "/posts/" + id,
+          method: "GET",
+          dataType: "json",
+          success: function (p) {
+            $("#modalPost .modal-title").text(p.title);
+            $("#modalPost .modal-body").text(p.body);
+            new bootstrap.Modal("#modalPost").show();
+          },
+          error: function () { mensagem("danger", "Erro ao buscar o post " + id + "."); }
+        });
+      });
+
+      // POST: a API de teste simula a criação e devolve o id
+      $("#btnPostar").click(function () {
+        var titulo = $.trim($("#novoTitulo").val());
+        var corpo = $.trim($("#novoCorpo").val());
+        if (!titulo || !corpo) { mensagem("warning", "Preencha título e texto."); return; }
+
+        $.ajax({
+          url: API + "/posts",
+          method: "POST",
+          data: JSON.stringify({ title: titulo, body: corpo, userId: 1 }),
+          contentType: "application/json; charset=UTF-8",
+          dataType: "json"
+        }).done(function (novo) {
+          posts.unshift(novo);                          // adiciona no início da lista local
+          $("#novoTitulo, #novoCorpo").val("");
+          filtrar();
+          mensagem("success", "Post criado (id simulado: " + novo.id + ").");
+        }).fail(function () {
+          mensagem("danger", "Falha ao enviar o post.");
+        });
+      });
+
+      $("#busca").on("input", filtrar);
+      $("#usuario").on("change", filtrar);
+      $("#btnRecarregar").click(carregar);
+
+      carregar();
+    });
+  </script>
+</body>
+</html>
