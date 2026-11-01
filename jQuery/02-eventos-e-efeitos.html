@@ -1,115 +1,256 @@
+<!--
+  ============================================================
+  LEGENDA DOS COMENTÁRIOS
+  ------------------------------------------------------------
+  [HTML PURO]          -> tags e atributos clássicos do HTML, sem significado
+                          semântico especial (div, span, p, h2, button, input, id, class)
+  [HTML5 SEMÂNTICO]    -> recursos do HTML5 que dão significado à estrutura
+                          (doctype, lang, meta viewport, <nav>, placeholder)
+  [BOOTSTRAP]          -> classes e link do framework Bootstrap 5
+  [CSS PRÓPRIO]        -> estilo escrito à mão, fora do Bootstrap
+  [JAVASCRIPT]         -> JavaScript nativo (sintaxe da linguagem, sem biblioteca)
+  [JQUERY]             -> código que usa a biblioteca jQuery (função $)
+  ============================================================
+-->
+
+<!-- [HTML5 SEMÂNTICO] Doctype simplificado do HTML5 -->
 <!DOCTYPE html>
+
+<!-- [HTML5 SEMÂNTICO] Atributo lang informa o idioma (acessibilidade, leitores de tela, SEO) -->
 <html lang="pt-br">
 <head>
+  <!-- [HTML5 SEMÂNTICO] Charset UTF-8 simplificado no HTML5; garante acentos corretos -->
   <meta charset="UTF-8">
+
+  <!-- [HTML5 SEMÂNTICO] Viewport: faz a página se adaptar a celulares (design responsivo) -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- [HTML PURO] Título que aparece na aba do navegador -->
   <title>jQuery 02 - Eventos e efeitos</title>
+
+  <!-- [BOOTSTRAP] CSS do Bootstrap 5.3.3 via CDN (somente o CSS, sem o JS do Bootstrap) -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- [CSS PRÓPRIO] Estilos escritos à mão, fora do Bootstrap -->
   <style>
+    /* [CSS PRÓPRIO] A "bola" que será animada pelo jQuery.
+       position: relative é OBRIGATÓRIO para que .animate({ left }) funcione,
+       pois a propriedade left só tem efeito em elementos posicionados */
     #bola { width: 60px; height: 60px; background: #0d6efd; border-radius: 50%; position: relative; }
+
+    /* [CSS PRÓPRIO] cursor: pointer mostra a "mãozinha" ao passar o mouse;
+       transition: none desliga transições CSS para o efeito de hover ser imediato */
     .area-hover { transition: none; cursor: pointer; }
   </style>
 </head>
 <body>
+
+  <!-- [HTML5 SEMÂNTICO] <nav> indica que este bloco é uma área de navegação/cabeçalho do site -->
+  <!-- [BOOTSTRAP] navbar = barra de navegação | navbar-dark = texto claro | bg-dark = fundo escuro | mb-4 = margem inferior -->
   <nav class="navbar navbar-dark bg-dark mb-4">
+    <!-- [BOOTSTRAP] container = centraliza e limita a largura do conteúdo -->
+    <!-- [HTML PURO] <div> e <span> são contêineres genéricos (sem significado semântico) -->
+    <!-- [BOOTSTRAP] navbar-brand = estilo do nome/título da barra -->
     <div class="container"><span class="navbar-brand">jQuery: Eventos e efeitos</span></div>
   </nav>
 
+  <!-- [BOOTSTRAP] container principal que envolve todo o conteúdo da página -->
+  <!-- [HTML PURO] <div> genérico (poderia ser <main> em HTML5 semântico) -->
   <div class="container">
 
-    <!-- EVENTOS -->
+    <!-- ========================================================= -->
+    <!-- 1. EVENTOS                                                -->
+    <!-- ========================================================= -->
+
+    <!-- [HTML PURO] Título de nível 2 -->
     <h2>Eventos</h2>
+
+    <!-- [BOOTSTRAP] row = linha do grid | g-3 = espaçamento (gutter) entre colunas | mb-4 = margem inferior -->
     <div class="row g-3 mb-4">
+
+      <!-- [BOOTSTRAP] col-md-4 = ocupa 4 de 12 colunas a partir de telas médias (3 colunas lado a lado) -->
       <div class="col-md-4">
+        <!-- [HTML PURO] <button> com id único, usado pelo jQuery para ligar o evento click -->
+        <!-- [BOOTSTRAP] btn btn-primary = botão azul | w-100 = largura 100% da coluna -->
         <button id="btnClique" class="btn btn-primary w-100">Clique (click)</button>
+        <!-- [HTML PURO] <p> que mostrará o contador | [BOOTSTRAP] mt-2 = margem superior -->
         <p id="contador" class="mt-2">Cliques: 0</p>
       </div>
+
       <div class="col-md-4">
+        <!-- [HTML PURO] Área que reage ao mouse (evento hover)
+             [CSS PRÓPRIO] area-hover = cursor pointer e sem transição
+             [BOOTSTRAP] p-4 = padding | border = borda | rounded = cantos arredondados | text-center = texto centralizado -->
         <div id="areaHover" class="area-hover p-4 border rounded text-center">Passe o mouse aqui (hover)</div>
       </div>
+
       <div class="col-md-4">
+        <!-- [HTML PURO] <input> de texto, alvo do evento keyup
+             [HTML5 SEMÂNTICO] placeholder = dica exibida dentro do campo vazio (atributo novo do HTML5)
+             [BOOTSTRAP] form-control = estilo padrão de campos de formulário -->
         <input id="campoTecla" class="form-control" placeholder="Digite algo (keyup)">
+        <!-- [BOOTSTRAP] text-muted = texto em cinza suave | mt-2 = margem superior -->
         <p id="eco" class="mt-2 text-muted"></p>
       </div>
     </div>
 
-    <!-- EFEITOS -->
+    <!-- ========================================================= -->
+    <!-- 2. EFEITOS                                                -->
+    <!-- ========================================================= -->
     <h2>Efeitos de mostrar e esconder</h2>
+
+    <!-- [BOOTSTRAP] mb-2 = margem inferior pequena -->
     <div class="mb-2">
+      <!-- [HTML PURO] Botões com id | [BOOTSTRAP] btn-danger/success/warning/info = cores -->
       <button id="btnHide" class="btn btn-danger">hide</button>
       <button id="btnShow" class="btn btn-success">show</button>
       <button id="btnFade" class="btn btn-warning">fadeToggle</button>
       <button id="btnSlide" class="btn btn-info">slideToggle</button>
     </div>
+
+    <!-- [HTML PURO] id="painel" é o elemento que os efeitos vão esconder/mostrar
+         [BOOTSTRAP] alert = caixa de aviso | alert-primary = cor azul -->
     <div id="painel" class="alert alert-primary">Sou o painel que aparece e desaparece com os efeitos.</div>
 
-    <!-- ANIMATE -->
+    <!-- ========================================================= -->
+    <!-- 3. ANIMATE                                                -->
+    <!-- ========================================================= -->
     <h2 class="mt-4">Animação personalizada</h2>
+
     <div class="mb-3">
+      <!-- [BOOTSTRAP] btn-outline-* = botões apenas com contorno colorido -->
       <button id="btnDireita" class="btn btn-outline-primary">Mover →</button>
       <button id="btnEsquerda" class="btn btn-outline-primary">← Voltar</button>
       <button id="btnCrescer" class="btn btn-outline-success">Crescer</button>
     </div>
+
+    <!-- [BOOTSTRAP] border rounded p-2 mb-4 = borda, cantos arredondados, padding e margem
+         [HTML PURO] style="..." = CSS inline direto no atributo (overflow:hidden impede a bola de sair da caixa) -->
     <div class="border rounded p-2 mb-4" style="overflow:hidden">
+      <!-- [HTML PURO] <div> vazio; a aparência (círculo azul) vem do [CSS PRÓPRIO] #bola -->
       <div id="bola"></div>
     </div>
 
-    <!-- EVENTO COM on() E DELEGAÇÃO -->
+    <!-- ========================================================= -->
+    <!-- 4. DELEGAÇÃO DE EVENTOS COM .on()                         -->
+    <!-- ========================================================= -->
     <h2>Elementos criados depois (delegação com .on)</h2>
+    <!-- [BOOTSTRAP] btn-dark = botão preto | mb-2 = margem inferior -->
     <button id="btnNovo" class="btn btn-dark mb-2">Criar botão</button>
+    <!-- [HTML PURO] Contêiner vazio: o jQuery vai inserir botões aqui dentro durante a execução -->
     <div id="lista"></div>
   </div>
 
+  <!-- [JQUERY] Carrega a biblioteca jQuery via CDN. Precisa vir ANTES do seu código, senão o $ não existe -->
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-  <script>
-    $(function () {   // atalho de $(document).ready
 
-      // click
+  <!-- [HTML PURO] A tag <script> abre um bloco de código; o que está dentro é JavaScript/jQuery -->
+  <script>
+
+    // [JQUERY] $(function () { ... }) é o atalho de $(document).ready(...):
+    //          executa o código só quando o HTML terminou de carregar
+    // [JAVASCRIPT] function () { ... } é uma função anônima (callback) nativa do JS
+    $(function () {
+
+      // ---------------------------------------------------------
+      // 1. EVENTOS
+      // ---------------------------------------------------------
+
+      // [JAVASCRIPT] Declaração de variável (var) e valor numérico inicial
       var cliques = 0;
+
+      // [JQUERY] $("#btnClique") seleciona por id; .click() registra o evento de clique
       $("#btnClique").click(function () {
+        // [JAVASCRIPT] ++ incrementa a variável em 1
         cliques++;
+        // [JQUERY] .text() define o texto do elemento
+        // [JAVASCRIPT] + concatena o texto com o valor da variável
         $("#contador").text("Cliques: " + cliques);
       });
 
-      // hover: função de entrada e de saída
+      // [JQUERY] .hover(funcaoEntrada, funcaoSaida): duas funções, uma para quando o mouse
+      //          entra no elemento e outra para quando ele sai
       $("#areaHover").hover(
+        // [JQUERY] $(this) = o próprio elemento que disparou o evento
+        // [JQUERY] .addClass() adiciona a classe | [BOOTSTRAP] bg-warning = fundo amarelo
         function () { $(this).addClass("bg-warning"); },
+        // [JQUERY] .removeClass() remove a classe quando o mouse sai
         function () { $(this).removeClass("bg-warning"); }
       );
 
-      // keyup: executa a cada tecla solta
+      // [JQUERY] .on("evento", função) é a forma geral de registrar eventos;
+      //          "keyup" dispara a cada tecla solta
       $("#campoTecla").on("keyup", function () {
+        // [JQUERY] .val() lê o valor digitado no campo (getter de campos de formulário)
+        // [JAVASCRIPT] Concatenação de string com o valor lido
         $("#eco").text("Você digitou: " + $(this).val());
       });
 
-      // Efeitos
+      // ---------------------------------------------------------
+      // 2. EFEITOS DE MOSTRAR E ESCONDER
+      // ---------------------------------------------------------
+
+      // [JQUERY] .hide(ms) esconde o elemento; o número é a duração em milissegundos
       $("#btnHide").click(function () { $("#painel").hide(400); });
+
+      // [JQUERY] .show(ms) mostra o elemento novamente
       $("#btnShow").click(function () { $("#painel").show(400); });
+
+      // [JQUERY] .fadeToggle(ms) alterna entre aparecer/sumir com efeito de transparência (fade)
       $("#btnFade").click(function () { $("#painel").fadeToggle(600); });
+
+      // [JQUERY] .slideToggle(ms) alterna entre abrir/fechar com efeito de deslizar na vertical
       $("#btnSlide").click(function () { $("#painel").slideToggle(600); });
 
-      // animate: só propriedades numéricas
+      // ---------------------------------------------------------
+      // 3. ANIMAÇÃO PERSONALIZADA
+      // ---------------------------------------------------------
+
+      // [JQUERY] .animate({ propriedades }, duração) anima propriedades CSS NUMÉRICAS
+      // [JAVASCRIPT] { left: "300px" } é um objeto literal nativo do JS
       $("#btnDireita").click(function () {
         $("#bola").animate({ left: "300px" }, 800);
       });
+
       $("#btnEsquerda").click(function () {
         $("#bola").animate({ left: "0px" }, 800);
       });
+
+      // [JQUERY] "+=20px" é um valor RELATIVO: soma 20px ao valor atual a cada clique
       $("#btnCrescer").click(function () {
         $("#bola").animate({ width: "+=20px", height: "+=20px" }, 400);
       });
 
-      // Delegação: o evento é ligado ao pai e vale para filhos criados depois
+      // ---------------------------------------------------------
+      // 4. DELEGAÇÃO DE EVENTOS (.on com seletor filho)
+      // ---------------------------------------------------------
+
+      // [JAVASCRIPT] Contador de botões criados
       var n = 0;
+
       $("#btnNovo").click(function () {
         n++;
+        // [JQUERY] .append() insere HTML no FINAL do elemento selecionado
+        // [JAVASCRIPT] String entre aspas simples, concatenada com o número n
+        // [BOOTSTRAP] btn-outline-dark me-2 mb-2 = botão com contorno preto, margem à direita e abaixo
+        // [HTML PURO] class="item" é o "gancho" usado pela delegação abaixo
         $("#lista").append('<button class="btn btn-outline-dark me-2 mb-2 item">Botão ' + n + '</button>');
       });
+
+      // [JQUERY] DELEGAÇÃO: o evento é ligado ao PAI (#lista), mas só dispara quando o clique
+      //          vem de um filho que combine com ".item".
+      //          Assim funciona também para botões criados DEPOIS do carregamento da página
+      //          (um .click() direto não alcançaria esses elementos novos)
       $("#lista").on("click", ".item", function () {
+        // [JQUERY] .fadeOut(ms, callback) some com efeito de fade e, ao terminar,
+        //          executa a função de callback
+        // [JAVASCRIPT] Função passada como argumento (callback)
+        // [JQUERY] .remove() apaga o elemento do HTML definitivamente
         $(this).fadeOut(300, function () { $(this).remove(); });
       });
 
-    });
+    }); // [JQUERY] fim do $(function () { ... })
+
   </script>
 </body>
 </html>
