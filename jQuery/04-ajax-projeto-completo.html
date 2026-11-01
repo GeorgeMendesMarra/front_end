@@ -1,145 +1,358 @@
+<!--
+  ============================================================
+  LEGENDA DOS COMENTÁRIOS
+  ------------------------------------------------------------
+  [HTML PURO]          -> tags e atributos clássicos do HTML, sem significado
+                          semântico especial (div, span, h2, h5, h6, p, hr, button,
+                          input, select, option, id, class, tabindex)
+  [HTML5 SEMÂNTICO]    -> recursos do HTML5 que dão significado à estrutura
+                          (doctype, lang, meta viewport, <nav>, placeholder,
+                          atributos data-*)
+  [BOOTSTRAP]          -> classes e link do framework Bootstrap 5
+                          (CSS = visual | JS = comportamento, como o modal)
+  [JAVASCRIPT]         -> JavaScript nativo (sintaxe da linguagem, sem biblioteca)
+  [JQUERY]             -> código que usa a biblioteca jQuery (função $)
+                          (inclui o AJAX: $.getJSON e $.ajax)
+
+  Obs.: este arquivo não tem CSS próprio (não há bloco <style>).
+  ============================================================
+-->
+
+<!-- [HTML5 SEMÂNTICO] Doctype simplificado do HTML5 -->
 <!DOCTYPE html>
+
+<!-- [HTML5 SEMÂNTICO] Atributo lang informa o idioma (acessibilidade, leitores de tela, SEO) -->
 <html lang="pt-br">
 <head>
+  <!-- [HTML5 SEMÂNTICO] Charset UTF-8 simplificado no HTML5; garante acentos corretos -->
   <meta charset="UTF-8">
+
+  <!-- [HTML5 SEMÂNTICO] Viewport: faz a página se adaptar a celulares (design responsivo) -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- [HTML PURO] Título que aparece na aba do navegador -->
   <title>jQuery 04 - Projeto completo com AJAX</title>
+
+  <!-- [BOOTSTRAP - CSS] Estilos do Bootstrap 5.3.3 via CDN -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
+
+  <!-- [HTML5 SEMÂNTICO] <nav> indica que este bloco é uma área de navegação/cabeçalho do site -->
+  <!-- [BOOTSTRAP] navbar = barra de navegação | navbar-dark = texto claro | bg-dark = fundo escuro | mb-4 = margem inferior -->
   <nav class="navbar navbar-dark bg-dark mb-4">
+    <!-- [BOOTSTRAP] container = centraliza e limita a largura do conteúdo -->
     <div class="container">
+      <!-- [HTML PURO] <span> = contêiner de texto em linha | [BOOTSTRAP] navbar-brand = estilo do título da barra -->
       <span class="navbar-brand">Painel de posts (jQuery + AJAX)</span>
+      <!-- [HTML PURO] id="badge" = alvo do jQuery, que atualiza a contagem de posts
+           [BOOTSTRAP] badge = etiqueta pequena | text-bg-secondary = fundo cinza com texto de contraste -->
       <span id="badge" class="badge text-bg-secondary">0 posts</span>
     </div>
   </nav>
 
+  <!-- [BOOTSTRAP] container principal que envolve todo o conteúdo da página -->
+  <!-- [HTML PURO] <div> genérico (poderia ser <main> em HTML5 semântico) -->
   <div class="container">
 
-    <!-- Filtros -->
+    <!-- ========================================================= -->
+    <!-- FILTROS                                                   -->
+    <!-- ========================================================= -->
+
+    <!-- [BOOTSTRAP] row = linha do grid | g-2 = espaçamento pequeno entre colunas | mb-3 = margem inferior -->
     <div class="row g-2 mb-3">
+
+      <!-- [BOOTSTRAP] col-md-6 = metade da largura (6 de 12 colunas) a partir de telas médias -->
       <div class="col-md-6">
+        <!-- [HTML PURO] <input> de texto com id (lido pelo jQuery)
+             [HTML5 SEMÂNTICO] placeholder = dica dentro do campo vazio
+             [BOOTSTRAP] form-control = estilo padrão de campos -->
         <input id="busca" class="form-control" placeholder="Filtrar pelo título (em tempo real)">
       </div>
+
+      <!-- [BOOTSTRAP] col-md-3 = um quarto da largura (3 de 12 colunas) -->
       <div class="col-md-3">
+        <!-- [HTML PURO] <select> = lista suspensa | [BOOTSTRAP] form-select = estilo da lista suspensa -->
         <select id="usuario" class="form-select">
+          <!-- [HTML PURO] value="" = "nenhum filtro". As outras <option> serão CRIADAS pelo jQuery
+               depois que os dados chegarem da API -->
           <option value="">Todos os autores</option>
         </select>
       </div>
+
       <div class="col-md-3">
+        <!-- [BOOTSTRAP] btn btn-primary = botão azul | w-100 = largura 100% da coluna -->
         <button id="btnRecarregar" class="btn btn-primary w-100">Recarregar</button>
       </div>
     </div>
 
+    <!-- [HTML PURO] Contêiner vazio para mensagens (carregando, erro, sucesso), preenchido via jQuery -->
     <div id="status"></div>
+
+    <!-- [HTML PURO] Contêiner vazio onde o jQuery desenha os cards dos posts
+         [BOOTSTRAP] row g-3 = linha do grid com espaçamento entre os cards -->
     <div id="cards" class="row g-3"></div>
 
-    <!-- Envio de novo post (POST) -->
+    <!-- ========================================================= -->
+    <!-- ENVIO DE NOVO POST (POST)                                 -->
+    <!-- ========================================================= -->
+
+    <!-- [HTML PURO] <hr> = linha horizontal separadora | [BOOTSTRAP] my-4 = margem vertical -->
     <hr class="my-4">
     <h2>Criar post (POST)</h2>
+
+    <!-- [BOOTSTRAP] mb-5 = margem inferior grande -->
     <div class="row g-2 mb-5">
+      <!-- [BOOTSTRAP] col-md-5 + col-md-5 + col-md-2 = 12 colunas (largura total) -->
       <div class="col-md-5"><input id="novoTitulo" class="form-control" placeholder="Título"></div>
       <div class="col-md-5"><input id="novoCorpo" class="form-control" placeholder="Texto"></div>
       <div class="col-md-2"><button id="btnPostar" class="btn btn-success w-100">Enviar</button></div>
     </div>
   </div>
 
-  <!-- Modal do Bootstrap preenchido via jQuery -->
+  <!-- ========================================================= -->
+  <!-- MODAL DO BOOTSTRAP (preenchido via jQuery)                -->
+  <!-- ========================================================= -->
+
+  <!-- [BOOTSTRAP] modal = janela sobreposta, oculta por padrão | fade = animação de entrada/saída
+       [HTML PURO] id="modalPost" = identificador usado para abrir o modal pelo código
+       [HTML PURO] tabindex="-1" = o elemento pode receber foco por código, mas fica fora da navegação por Tab -->
   <div class="modal fade" id="modalPost" tabindex="-1">
+    <!-- [BOOTSTRAP] modal-dialog = posiciona a janela | modal-content = a "caixa" branca com borda -->
     <div class="modal-dialog"><div class="modal-content">
+      <!-- [BOOTSTRAP] modal-header = cabeçalho | modal-title = título (vazio, o jQuery preenche) -->
       <div class="modal-header"><h5 class="modal-title"></h5>
+        <!-- [BOOTSTRAP] btn-close = botão "X" de fechar
+             [HTML5 SEMÂNTICO] data-bs-dismiss = atributo personalizado data-* (recurso do HTML5)
+             [BOOTSTRAP - JS] lido pelo JS do Bootstrap: ao clicar, fecha o modal sem precisar de código -->
         <button class="btn-close" data-bs-dismiss="modal"></button></div>
+      <!-- [BOOTSTRAP] modal-body = corpo do modal (vazio, o jQuery preenche) -->
       <div class="modal-body"></div>
     </div></div>
   </div>
 
+  <!-- [JQUERY] Biblioteca jQuery via CDN. Precisa vir ANTES do seu código, senão o $ não existe -->
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+  <!-- [BOOTSTRAP - JS] Bundle JS do Bootstrap (inclui o Popper). Necessário aqui para o MODAL funcionar.
+       Nos arquivos anteriores só o CSS era carregado; agora o comportamento (JS) também é necessário -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- [HTML PURO] A tag <script> abre um bloco de código; o que está dentro é JavaScript/jQuery -->
   <script>
+
+    // [JQUERY] $(function () { ... }) é o atalho de $(document).ready(...):
+    //          executa o código só quando o HTML terminou de carregar
+    // [JAVASCRIPT] function () { ... } é uma função anônima (callback) nativa do JS
     $(function () {
+
+      // [JAVASCRIPT] Variável com o endereço base da API (string). Evita repetir a URL em vários pontos
+      // [AJAX] JSONPlaceholder é uma API pública de teste: devolve dados reais, mas NÃO grava nada de verdade
       var API = "https://jsonplaceholder.typicode.com";
+
+      // [JAVASCRIPT] Array vazio: guarda TODOS os posts em memória; os filtros trabalham em cima dele,
+      //              sem precisar chamar a API de novo
       var posts = [];
 
+      // =========================================================
+      // FUNÇÕES AUXILIARES
+      // =========================================================
+
+      // [JAVASCRIPT] Função com 2 parâmetros: tipo (cor do alerta) e texto (mensagem)
       function mensagem(tipo, texto) {
+        // [JQUERY] .html() cria a estrutura do alerta com o tipo escolhido
+        // [JAVASCRIPT] + concatena a string para formar a classe, ex.: "alert alert-danger"
+        // [BOOTSTRAP] alert = caixa de aviso | alert-info/warning/danger/success = cores
+        // [JQUERY] .find(".alert").text(texto) insere a mensagem como TEXTO PURO (evita injeção de HTML)
+        //          (encadeamento de métodos)
         $("#status").html('<div class="alert alert-' + tipo + '"></div>').find(".alert").text(texto);
       }
 
-      // Desenha os cards a partir de um array
+      // [JAVASCRIPT] Recebe um array e desenha um card para cada item
       function desenhar(lista) {
+        // [JQUERY] .empty() apaga todo o conteúdo interno do #cards (limpa a tela antes de redesenhar)
+        // [JAVASCRIPT] O resultado fica guardado na variável $area (prefixo $ = convenção para objeto jQuery)
         var $area = $("#cards").empty();
+
+        // [JQUERY] $.each(array, função) percorre cada item; a função recebe (índice, item)
+        // [JAVASCRIPT] i = índice | p = o post atual (objeto com id, title, body, userId)
         $.each(lista, function (i, p) {
+
+          // [JQUERY] $('<html>') cria um novo elemento na memória (ainda não aparece na página)
+          // [JAVASCRIPT] String montada em várias linhas com +
+          // [BOOTSTRAP] col-md-4 = 3 cards por linha | card h-100 = card com altura total da coluna (todos iguais)
+          //             card-body = corpo | d-flex flex-column = conteúdo empilhado na vertical
+          //             card-title / card-text = estilos de título e texto | small = texto menor
+          //             flex-grow-1 = o texto ocupa o espaço livre e empurra o botão para baixo
+          //             btn-sm btn-outline-primary = botão pequeno de contorno azul
+          // [HTML PURO] h6, p e button vazios; class="ver" é o "gancho" do evento delegado mais abaixo
           var $col = $('<div class="col-md-4"><div class="card h-100"><div class="card-body d-flex flex-column">' +
                        '<h6 class="card-title"></h6><p class="card-text small flex-grow-1"></p>' +
                        '<button class="btn btn-sm btn-outline-primary ver">Ver detalhes</button>' +
                        '</div></div></div>');
+
+          // [JQUERY] .find() localiza o descendente; .text() insere como texto puro (seguro)
+          // [JAVASCRIPT] p.title e p.body = acesso às propriedades do objeto vindo da API
           $col.find(".card-title").text(p.title);
           $col.find(".card-text").text(p.body);
-          $col.find(".ver").data("id", p.id);          // .data() guarda dados no elemento
+
+          // [JQUERY] .data("chave", valor) guarda um dado dentro do elemento (sem aparecer no HTML)
+          //          O id do post fica "pendurado" no botão, para ser lido depois no clique
+          $col.find(".ver").data("id", p.id);
+
+          // [JQUERY] .append() insere o card no final da área (agora ele aparece na página)
           $area.append($col);
         });
+
+        // [JQUERY] Atualiza o contador da barra superior
+        // [JAVASCRIPT] lista.length = tamanho do array | + concatena com o texto
         $("#badge").text(lista.length + " posts");
+
+        // [JAVASCRIPT] if/else sem chaves (uma instrução cada): se a lista está vazia, avisa; senão limpa a mensagem
+        // [JAVASCRIPT] === compara valor E tipo
         if (lista.length === 0) mensagem("warning", "Nenhum post encontrado.");
         else $("#status").empty();
       }
 
+      // [JAVASCRIPT] Filtra a lista em memória usando os dois controles (texto e autor)
       function filtrar() {
+        // [JQUERY] .val() lê o campo | $.trim() remove espaços das pontas (obsoleto nas versões novas; o nativo é .trim())
+        // [JAVASCRIPT] .toLowerCase() deixa tudo minúsculo para a busca não diferenciar maiúsculas
         var termo = $.trim($("#busca").val()).toLowerCase();
+
+        // [JQUERY] .val() em um <select> devolve o value da opção escolhida, SEMPRE como TEXTO (string)
         var autor = $("#usuario").val();
-        var resultado = $.grep(posts, function (p) {   // $.grep filtra arrays
+
+        // [JQUERY] $.grep(array, função) devolve um NOVO array só com os itens para os quais a função retorna true
+        var resultado = $.grep(posts, function (p) {
+
+          // [JAVASCRIPT] .indexOf() devolve a posição do trecho no texto, ou -1 se não achar;
+          //              "!== -1" significa "o título contém o termo"
+          // [JAVASCRIPT] && = E lógico | || = OU lógico
+          // [JAVASCRIPT] String(p.userId) converte o número em texto, para comparar com "autor" (que é string)
           return p.title.toLowerCase().indexOf(termo) !== -1 &&
                  (autor === "" || String(p.userId) === autor);
         });
+
         desenhar(resultado);
       }
 
-      // GET com $.getJSON
+      // =========================================================
+      // AJAX: GET com $.getJSON
+      // =========================================================
+
+      // [JAVASCRIPT] Função que busca os posts na API
       function carregar() {
         mensagem("info", "Carregando...");
+
+        // [JQUERY] $.getJSON(url) faz uma requisição GET via AJAX e já interpreta a resposta como JSON.
+        //          AJAX = pedir dados ao servidor em segundo plano, SEM recarregar a página.
+        // [AJAX] "?_limit=24" é um parâmetro da URL: pede à API apenas 24 posts
         $.getJSON(API + "/posts?_limit=24")
+
+          // [JQUERY] .done(função) = executa se a requisição der certo (promessa/Deferred do jQuery)
+          // [JAVASCRIPT] "dados" = array de objetos que chegou da API
           .done(function (dados) {
+            // [JAVASCRIPT] Guarda os dados na variável de memória declarada no topo
             posts = dados;
-            // Preenche o select de autores uma única vez
+
+            // [JQUERY] "#usuario option" = todas as <option> do select; length === 1 significa que só existe
+            //          "Todos os autores", ou seja, o select ainda não foi preenchido.
+            //          Isso evita duplicar opções ao clicar em "Recarregar"
             if ($("#usuario option").length === 1) {
+              // [JAVASCRIPT] Array para guardar os ids de autores sem repetição
               var ids = [];
+
+              // [JQUERY] $.each percorre os posts
+              // [JQUERY] $.inArray(valor, array) devolve a posição ou -1 se não achar
+              // [JAVASCRIPT] .push() adiciona ao final do array; só entra se ainda não estiver lá
               $.each(dados, function (i, p) { if ($.inArray(p.userId, ids) === -1) ids.push(p.userId); });
+
+              // [JQUERY] $("<option>") cria uma <option> | .val(id) define o value | .text(...) define o rótulo visível
+              // [JQUERY] .append() insere a opção no <select> (encadeamento de métodos)
+              // [JAVASCRIPT] "Autor " + id concatena texto e número
               $.each(ids, function (i, id) { $("#usuario").append($("<option>").val(id).text("Autor " + id)); });
             }
+
+            // [JAVASCRIPT] Aplica os filtros atuais e desenha os cards
             filtrar();
           })
+
+          // [JQUERY] .fail(função) = executa se a requisição falhar (sem internet, API fora do ar, etc.)
           .fail(function () { mensagem("danger", "Não foi possível carregar os posts. Verifique a conexão."); });
       }
 
-      // Detalhes: $.ajax completo, com GET de um único post
+      // =========================================================
+      // AJAX: GET de um único post com $.ajax completo
+      // =========================================================
+
+      // [JQUERY] DELEGAÇÃO: o evento é ligado ao PAI (#cards) e vale para os botões ".ver",
+      //          que são criados dinamicamente a cada redesenho
       $("#cards").on("click", ".ver", function () {
+
+        // [JQUERY] $(this) = botão clicado | .data("id") lê o id guardado com .data("id", p.id)
         var id = $(this).data("id");
+
+        // [JQUERY] $.ajax({ opções }) é a forma completa e configurável de fazer AJAX
+        // [JAVASCRIPT] O argumento é um objeto literal { chave: valor, ... }
         $.ajax({
-          url: API + "/posts/" + id,
-          method: "GET",
-          dataType: "json",
+          url: API + "/posts/" + id,     // endereço da requisição (ex.: .../posts/7)
+          method: "GET",                  // verbo HTTP: GET = buscar dados
+          dataType: "json",               // tipo de resposta esperado: o jQuery converte para objeto
+
+          // [JQUERY] success = função executada se a requisição der certo; recebe o post (p)
           success: function (p) {
+            // [JQUERY] Preenche o título e o corpo do modal como texto puro
             $("#modalPost .modal-title").text(p.title);
             $("#modalPost .modal-body").text(p.body);
+
+            // [BOOTSTRAP - JS] API JavaScript do Bootstrap (não é jQuery): cria o objeto Modal
+            //                  para o elemento "#modalPost" e .show() abre a janela
+            // [JAVASCRIPT] "new" cria uma instância a partir do construtor bootstrap.Modal
             new bootstrap.Modal("#modalPost").show();
           },
+
+          // [JQUERY] error = função executada se a requisição falhar
+          // [JAVASCRIPT] Concatena o id na mensagem
           error: function () { mensagem("danger", "Erro ao buscar o post " + id + "."); }
         });
       });
 
-      // POST: a API de teste simula a criação e devolve o id
+      // =========================================================
+      // AJAX: POST (enviar dados)
+      // =========================================================
+
+      // [AJAX] A API de teste simula a criação e devolve um id, mas NÃO grava o post de verdade
       $("#btnPostar").click(function () {
         var titulo = $.trim($("#novoTitulo").val());
         var corpo = $.trim($("#novoCorpo").val());
+
+        // [JAVASCRIPT] !titulo é verdadeiro quando a string está vazia ("" é "falsy" no JS)
+        // [JAVASCRIPT] || = OU lógico: basta um dos campos estar vazio para barrar o envio
+        // [JAVASCRIPT] return interrompe a função aqui
         if (!titulo || !corpo) { mensagem("warning", "Preencha título e texto."); return; }
 
         $.ajax({
           url: API + "/posts",
-          method: "POST",
+          method: "POST",                 // verbo HTTP: POST = enviar/criar dados
+
+          // [JAVASCRIPT] JSON.stringify() transforma o objeto JS em texto JSON, formato enviado ao servidor
           data: JSON.stringify({ title: titulo, body: corpo, userId: 1 }),
+
+          // [AJAX] Avisa ao servidor que o corpo da requisição está em JSON, com acentos em UTF-8
           contentType: "application/json; charset=UTF-8",
-          dataType: "json"
+          dataType: "json"                // formato esperado na resposta
+
+        // [JQUERY] .done e .fail encadeados direto no $.ajax (outra forma de tratar sucesso e erro,
+        //          no lugar de success/error dentro do objeto de opções)
         }).done(function (novo) {
-          posts.unshift(novo);                          // adiciona no início da lista local
+          // [JAVASCRIPT] .unshift() adiciona o item no INÍCIO do array (push adiciona no fim)
+          posts.unshift(novo);
+
+          // [JQUERY] Seletor múltiplo "#a, #b" (separado por vírgula) pega os dois campos de uma vez;
+          //          .val("") limpa os dois
           $("#novoTitulo, #novoCorpo").val("");
+
           filtrar();
           mensagem("success", "Post criado (id simulado: " + novo.id + ").");
         }).fail(function () {
@@ -147,12 +360,26 @@
         });
       });
 
+      // =========================================================
+      // EVENTOS DOS FILTROS E INICIALIZAÇÃO
+      // =========================================================
+
+      // [JQUERY] "input" dispara a cada alteração no campo (digitar, colar, apagar): filtro em tempo real
+      // [JAVASCRIPT] Passa a função "filtrar" pelo nome, sem parênteses (referência, não chamada)
       $("#busca").on("input", filtrar);
+
+      // [JQUERY] "change" dispara quando o usuário escolhe outra opção no <select>
       $("#usuario").on("change", filtrar);
+
+      // [JQUERY] Botão Recarregar: busca os dados na API de novo
+      //          (o post "criado" na simulação some, pois nunca foi gravado no servidor)
       $("#btnRecarregar").click(carregar);
 
+      // [JAVASCRIPT] Chamada inicial: busca os posts assim que a página termina de carregar
       carregar();
-    });
+
+    }); // [JQUERY] fim do $(function () { ... })
+
   </script>
 </body>
 </html>
