@@ -1,105 +1,204 @@
+<!--
+  ============================================================
+  LEGENDA DOS COMENTÁRIOS
+  ------------------------------------------------------------
+  [HTML PURO]          -> tags e atributos clássicos do HTML, sem significado
+                          semântico especial (div, span, p, h2, button, id, class)
+  [HTML5 SEMÂNTICO]    -> recursos do HTML5 que dão significado à estrutura
+                          (doctype, lang, meta viewport, <nav>)
+  [BOOTSTRAP]          -> classes e link do framework Bootstrap 5
+  [CSS PRÓPRIO]        -> estilo escrito à mão, fora do Bootstrap
+  [JAVASCRIPT]         -> JavaScript nativo (sintaxe da linguagem, sem biblioteca)
+  [JQUERY]             -> código que usa a biblioteca jQuery (função $)
+  ============================================================
+-->
+
+<!-- [HTML5 SEMÂNTICO] Doctype simplificado do HTML5 (antes eram linhas longas do HTML 4) -->
 <!DOCTYPE html>
+
+<!-- [HTML5 SEMÂNTICO] Atributo lang informa o idioma (acessibilidade, leitores de tela, SEO) -->
 <html lang="pt-br">
 <head>
+  <!-- [HTML5 SEMÂNTICO] Charset UTF-8 simplificado no HTML5; garante acentos corretos -->
   <meta charset="UTF-8">
+
+  <!-- [HTML5 SEMÂNTICO] Viewport: faz a página se adaptar a celulares (design responsivo) -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- [HTML PURO] Título que aparece na aba do navegador -->
   <title>jQuery 01 - Primeiros passos</title>
+
+  <!-- [BOOTSTRAP] CSS do Bootstrap 5.3.3 carregado via CDN (somente o CSS, sem o JS do Bootstrap) -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- [CSS PRÓPRIO] Classe criada por nós; o jQuery vai adicioná-la/removê-la com addClass/removeClass -->
   <style>
     .destacado { background-color: #fff3cd; border-left: 5px solid #ffc107; padding: 8px; }
   </style>
 </head>
 <body>
+
+  <!-- [HTML5 SEMÂNTICO] <nav> indica que este bloco é uma área de navegação/cabeçalho do site -->
+  <!-- [BOOTSTRAP] navbar = barra de navegação | navbar-dark = texto claro | bg-dark = fundo escuro | mb-4 = margem inferior -->
   <nav class="navbar navbar-dark bg-dark mb-4">
+    <!-- [BOOTSTRAP] container = centraliza e limita a largura do conteúdo -->
+    <!-- [HTML PURO] <div> e <span> são contêineres genéricos (sem significado semântico) -->
+    <!-- [BOOTSTRAP] navbar-brand = estilo do nome/título da barra -->
     <div class="container"><span class="navbar-brand">jQuery: Primeiros passos</span></div>
   </nav>
 
+  <!-- [BOOTSTRAP] container principal que envolve todo o conteúdo da página -->
+  <!-- [HTML PURO] <div> genérico (poderia ser <main> em HTML5 semântico) -->
   <div class="container">
 
-    <!-- 1. SELETORES -->
+    <!-- ========================================================= -->
+    <!-- 1. SELETORES                                              -->
+    <!-- ========================================================= -->
+
+    <!-- [HTML PURO] Título de nível 2; o atributo id="titulo" é único na página e será alvo do seletor #titulo -->
     <h2 id="titulo">Seletores</h2>
+
+    <!-- [HTML PURO] Parágrafos; class="destaque" é usada pelo seletor de classe (.destaque) -->
+    <!-- [HTML PURO] <code> exibe um trecho de código com fonte monoespaçada -->
     <p class="destaque">Parágrafo com a classe <code>destaque</code>.</p>
     <p class="destaque">Outro parágrafo com a mesma classe.</p>
     <p>Parágrafo comum, sem classe.</p>
 
+    <!-- [BOOTSTRAP] mb-4 = margem inferior para separar do próximo bloco -->
     <div class="mb-4">
+      <!-- [HTML PURO] <button> com id único; o jQuery usa o id para ligar o evento de clique -->
+      <!-- [BOOTSTRAP] btn = estilo base de botão | btn-primary/success/secondary/outline-dark = cores -->
       <button id="btnId" class="btn btn-primary">Por id (#)</button>
       <button id="btnClasse" class="btn btn-success">Por classe (.)</button>
       <button id="btnTag" class="btn btn-secondary">Por tag (p)</button>
       <button id="btnReset" class="btn btn-outline-dark">Limpar</button>
     </div>
 
-    <!-- 2. TEXTO E HTML -->
+    <!-- ========================================================= -->
+    <!-- 2. TEXTO E HTML                                           -->
+    <!-- ========================================================= -->
     <h2>Lendo e alterando conteúdo</h2>
+
+    <!-- [BOOTSTRAP] p-3 = padding | border = borda | rounded = cantos arredondados | mb-3 = margem inferior -->
+    <!-- [HTML PURO] id="caixa" será o alvo de .text() e .html() -->
     <div id="caixa" class="p-3 border rounded mb-3">Conteúdo original da caixa.</div>
+
+    <!-- [BOOTSTRAP] btn-info / btn-warning / btn-outline-primary = variações de cor -->
     <button id="btnTexto" class="btn btn-info">.text()</button>
     <button id="btnHtml" class="btn btn-warning">.html()</button>
     <button id="btnLer" class="btn btn-outline-primary">Ler conteúdo</button>
 
-    <!-- 3. CSS E CLASSES -->
+    <!-- ========================================================= -->
+    <!-- 3. CSS E CLASSES                                          -->
+    <!-- ========================================================= -->
+
+    <!-- [BOOTSTRAP] mt-4 = margem superior -->
     <h2 class="mt-4">CSS e classes</h2>
+
+    <!-- [HTML PURO] id="alvo" será modificado por .css(), .addClass() e .toggleClass() -->
     <div id="alvo" class="p-3 border rounded mb-3">Eu sou o alvo das mudanças de estilo.</div>
     <button id="btnCss" class="btn btn-danger">.css()</button>
     <button id="btnClasseAdd" class="btn btn-success">.addClass()</button>
     <button id="btnClasseToggle" class="btn btn-secondary">.toggleClass()</button>
 
+    <!-- [BOOTSTRAP] alert = caixa de aviso | alert-light = cor clara | border = borda | mt-4 = margem superior -->
+    <!-- [HTML PURO] id="saida" recebe as mensagens geradas pelo jQuery -->
     <div id="saida" class="alert alert-light border mt-4">A saída dos exemplos aparece aqui.</div>
   </div>
 
-  <!-- jQuery vem ANTES do seu código -->
+  <!-- [JQUERY] Carrega a biblioteca jQuery via CDN. Precisa vir ANTES do seu código, senão o $ não existe -->
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+  <!-- [HTML PURO] A tag <script> abre um bloco de código; o que está dentro é JavaScript/jQuery -->
   <script>
-    // Só executa quando o HTML terminou de carregar
+
+    // [JQUERY] $(document) transforma o documento em objeto jQuery;
+    //          .ready() só executa a função quando o HTML terminou de carregar
+    // [JAVASCRIPT] function () { ... } é uma função anônima (callback) nativa do JS
     $(document).ready(function () {
 
-      // Seletor por id
+      // ---------------------------------------------------------
+      // 1. SELETORES
+      // ---------------------------------------------------------
+
+      // [JQUERY] $("#btnId") seleciona o elemento pelo id; .click() registra o evento de clique
+      // [JAVASCRIPT] function () { ... } é o que será executado quando o clique acontecer
       $("#btnId").click(function () {
+        // [JQUERY] .css("propriedade", "valor") altera um estilo CSS do elemento
         $("#titulo").css("color", "royalblue");
+        // [JQUERY] .text() define o texto do elemento (sem interpretar tags HTML)
         $("#saida").text("Selecionado por id: #titulo");
       });
 
-      // Seletor por classe (pega TODOS os elementos com a classe)
+      // [JQUERY] $(".destaque") seleciona TODOS os elementos com a classe (retorna uma coleção)
       $("#btnClasse").click(function () {
+        // [JQUERY] .addClass() adiciona uma classe CSS (aqui, a classe própria .destacado)
         $(".destaque").addClass("destacado");
+        // [JAVASCRIPT] O operador + concatena (junta) textos e números em uma string
+        // [JQUERY] .length retorna quantos elementos foram encontrados pelo seletor
         $("#saida").text("Selecionado por classe: " + $(".destaque").length + " elementos");
       });
 
-      // Seletor por tag
+      // [JQUERY] $("p") seleciona por nome de tag: todos os <p> da página
       $("#btnTag").click(function () {
         $("p").css("font-style", "italic");
         $("#saida").text("Selecionado por tag: todos os <p>");
       });
 
+      // [JQUERY] Desfaz as alterações feitas pelos botões anteriores
       $("#btnReset").click(function () {
+        // [JQUERY] .css("propriedade", "") com valor vazio remove o estilo aplicado
         $("#titulo").css("color", "");
+        // [JQUERY] .removeClass() remove a classe CSS do elemento
         $(".destaque").removeClass("destacado");
         $("p").css("font-style", "");
         $("#saida").text("Tudo limpo.");
       });
 
-      // .text() troca só texto; .html() interpreta tags
+      // ---------------------------------------------------------
+      // 2. TEXTO E HTML
+      // ---------------------------------------------------------
+
+      // [JQUERY] .text() troca só texto: as tags aparecem escritas na tela, sem serem interpretadas
       $("#btnTexto").click(function () {
         $("#caixa").text("<b>Isso aparece como texto puro</b>");
       });
+
+      // [JQUERY] .html() interpreta as tags: o <b> realmente deixa o texto em negrito
       $("#btnHtml").click(function () {
         $("#caixa").html("<b>Isso aparece em negrito</b>");
       });
+
+      // [JQUERY] .text() SEM argumento funciona como "getter": lê o conteúdo em vez de alterar
+      // [JAVASCRIPT] Concatenação de string com o valor lido
       $("#btnLer").click(function () {
         $("#saida").text("Conteúdo da caixa: " + $("#caixa").text());
       });
 
-      // CSS e classes
+      // ---------------------------------------------------------
+      // 3. CSS E CLASSES
+      // ---------------------------------------------------------
+
+      // [JQUERY] .css({ ... }) com objeto altera várias propriedades de uma vez
+      // [JAVASCRIPT] { chave: valor } é um objeto literal nativo do JS
       $("#btnCss").click(function () {
         $("#alvo").css({ "background-color": "tomato", "color": "white" });
       });
+
+      // [JQUERY] .addClass() adiciona uma ou mais classes (separadas por espaço)
+      // [BOOTSTRAP] bg-success = fundo verde | text-white = texto branco (classes utilitárias do Bootstrap)
       $("#btnClasseAdd").click(function () {
         $("#alvo").addClass("bg-success text-white");
       });
+
+      // [JQUERY] .toggleClass() alterna: adiciona se não existe, remove se já existe
+      // [BOOTSTRAP] shadow-lg = sombra grande (classe utilitária do Bootstrap)
       $("#btnClasseToggle").click(function () {
         $("#alvo").toggleClass("shadow-lg");
       });
 
-    });
+    }); // [JQUERY] fim do $(document).ready
+
   </script>
 </body>
 </html>
