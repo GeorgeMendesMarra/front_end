@@ -1,140 +1,312 @@
+<!--
+  ============================================================
+  LEGENDA DOS COMENTÁRIOS
+  ------------------------------------------------------------
+  [HTML PURO]          -> tags e atributos clássicos do HTML, sem significado
+                          semântico especial (div, span, p, h2, ul, li, button,
+                          input, select, option, label, id, class, for, value)
+  [HTML5 SEMÂNTICO]    -> recursos do HTML5 que dão significado à estrutura
+                          (doctype, lang, meta viewport, <nav>, placeholder,
+                          type="email", role)
+  [BOOTSTRAP]          -> classes e link do framework Bootstrap 5
+  [CSS PRÓPRIO]        -> estilo escrito à mão, fora do Bootstrap
+  [JAVASCRIPT]         -> JavaScript nativo (sintaxe da linguagem, sem biblioteca)
+  [JQUERY]             -> código que usa a biblioteca jQuery (função $)
+  ============================================================
+-->
+
+<!-- [HTML5 SEMÂNTICO] Doctype simplificado do HTML5 -->
 <!DOCTYPE html>
+
+<!-- [HTML5 SEMÂNTICO] Atributo lang informa o idioma (acessibilidade, leitores de tela, SEO) -->
 <html lang="pt-br">
 <head>
+  <!-- [HTML5 SEMÂNTICO] Charset UTF-8 simplificado no HTML5; garante acentos corretos -->
   <meta charset="UTF-8">
+
+  <!-- [HTML5 SEMÂNTICO] Viewport: faz a página se adaptar a celulares (design responsivo) -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- [HTML PURO] Título que aparece na aba do navegador -->
   <title>jQuery 03 - DOM e formulário</title>
+
+  <!-- [BOOTSTRAP] CSS do Bootstrap 5.3.3 via CDN (somente o CSS, sem o JS do Bootstrap) -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- [CSS PRÓPRIO] Estilos escritos à mão, fora do Bootstrap -->
   <style>
+    /* [CSS PRÓPRIO] Seletor descendente: aplica o estilo ao elemento .texto que esteja
+       DENTRO de um elemento com a classe .concluida. O jQuery liga/desliga a classe
+       .concluida no <li>, e o texto fica riscado e cinza */
     .concluida .texto { text-decoration: line-through; color: #6c757d; }
   </style>
 </head>
 <body>
+
+  <!-- [HTML5 SEMÂNTICO] <nav> indica que este bloco é uma área de navegação/cabeçalho do site -->
+  <!-- [BOOTSTRAP] navbar = barra de navegação | navbar-dark = texto claro | bg-dark = fundo escuro | mb-4 = margem inferior -->
   <nav class="navbar navbar-dark bg-dark mb-4">
+    <!-- [BOOTSTRAP] container = centraliza e limita a largura do conteúdo -->
+    <!-- [HTML PURO] <div> e <span> são contêineres genéricos (sem significado semântico) -->
+    <!-- [BOOTSTRAP] navbar-brand = estilo do nome/título da barra -->
     <div class="container"><span class="navbar-brand">jQuery: DOM e formulário</span></div>
   </nav>
 
+  <!-- [BOOTSTRAP] container principal que envolve todo o conteúdo da página -->
+  <!-- [HTML PURO] <div> genérico (poderia ser <main> em HTML5 semântico) -->
   <div class="container">
+
+    <!-- [BOOTSTRAP] row = linha do grid | g-4 = espaçamento (gutter) maior entre as colunas -->
     <div class="row g-4">
 
-      <!-- LISTA DE TAREFAS -->
+      <!-- ========================================================= -->
+      <!-- COLUNA 1: LISTA DE TAREFAS                                -->
+      <!-- ========================================================= -->
+
+      <!-- [BOOTSTRAP] col-md-6 = metade da largura (6 de 12 colunas) a partir de telas médias -->
       <div class="col-md-6">
+        <!-- [HTML PURO] Título de nível 2 -->
         <h2>Lista de tarefas</h2>
+
+        <!-- [BOOTSTRAP] input-group = junta campo e botão na mesma linha, visualmente conectados | mb-3 = margem inferior -->
         <div class="input-group mb-3">
+          <!-- [HTML PURO] <input> de texto com id único (lido pelo jQuery com .val())
+               [HTML5 SEMÂNTICO] placeholder = dica exibida dentro do campo vazio
+               [BOOTSTRAP] form-control = estilo padrão de campos de formulário -->
           <input id="novaTarefa" class="form-control" placeholder="Nova tarefa">
+          <!-- [HTML PURO] <button> com id | [BOOTSTRAP] btn btn-primary = botão azul -->
           <button id="btnAdd" class="btn btn-primary">Adicionar</button>
         </div>
+
+        <!-- [HTML PURO] <ul> = lista não ordenada, começa VAZIA; o jQuery insere os <li> dinamicamente
+             [BOOTSTRAP] list-group = estilo de lista em "cartões" empilhados -->
         <ul id="tarefas" class="list-group mb-2"></ul>
+
+        <!-- [HTML PURO] Parágrafo que mostra o resumo | [BOOTSTRAP] text-muted = texto cinza suave -->
         <p id="resumo" class="text-muted">Nenhuma tarefa.</p>
+
+        <!-- [BOOTSTRAP] btn-sm = botão pequeno | btn-outline-danger = apenas contorno vermelho -->
         <button id="btnLimpar" class="btn btn-sm btn-outline-danger">Remover concluídas</button>
       </div>
 
-      <!-- FORMULÁRIO -->
+      <!-- ========================================================= -->
+      <!-- COLUNA 2: FORMULÁRIO                                      -->
+      <!-- ========================================================= -->
       <div class="col-md-6">
         <h2>Cadastro com validação</h2>
+
+        <!-- [HTML PURO] Contêiner vazio que receberá a mensagem de sucesso/erro via jQuery -->
         <div id="msg"></div>
+
+        <!-- ---------- Campo Nome ---------- -->
         <div class="mb-3">
+          <!-- [HTML PURO] <label for="nome"> liga o rótulo ao campo (clicar no texto foca o input; ajuda leitores de tela)
+               [BOOTSTRAP] form-label = estilo do rótulo -->
           <label class="form-label" for="nome">Nome</label>
           <input id="nome" class="form-control">
+          <!-- [BOOTSTRAP] invalid-feedback = mensagem de erro; fica OCULTA e só aparece
+               quando o input irmão anterior recebe a classe .is-invalid (aplicada pelo jQuery) -->
           <div class="invalid-feedback">Informe pelo menos 3 letras.</div>
         </div>
+
+        <!-- ---------- Campo E-mail ---------- -->
         <div class="mb-3">
           <label class="form-label" for="email">E-mail</label>
+          <!-- [HTML5 SEMÂNTICO] type="email" é um tipo de input novo do HTML5
+               (teclado adequado no celular e validação nativa do navegador) -->
           <input id="email" type="email" class="form-control">
           <div class="invalid-feedback">Informe um e-mail válido.</div>
         </div>
+
+        <!-- ---------- Campo Curso ---------- -->
         <div class="mb-3">
           <label class="form-label" for="curso">Curso</label>
+          <!-- [HTML PURO] <select> = lista suspensa | [BOOTSTRAP] form-select = estilo da lista suspensa -->
           <select id="curso" class="form-select">
+            <!-- [HTML PURO] value="" = valor vazio; é o que o jQuery compara para saber se nada foi escolhido -->
             <option value="">Selecione...</option>
+            <!-- [HTML PURO] Sem atributo value, o valor enviado é o próprio texto da <option> -->
             <option>Sistemas de Informação</option>
             <option>Engenharia de Software</option>
             <option>Ciência da Computação</option>
           </select>
           <div class="invalid-feedback">Escolha um curso.</div>
         </div>
+
+        <!-- ---------- Checkbox ---------- -->
+        <!-- [BOOTSTRAP] form-check / form-check-input / form-check-label = estilo de checkbox e seu rótulo -->
         <div class="form-check mb-3">
+          <!-- [HTML PURO] type="checkbox" = caixa de marcar -->
           <input id="aceite" type="checkbox" class="form-check-input">
           <label class="form-check-label" for="aceite">Aceito os termos</label>
         </div>
+
+        <!-- [BOOTSTRAP] btn-success = botão verde -->
         <button id="btnEnviar" class="btn btn-success">Enviar</button>
       </div>
     </div>
   </div>
 
+  <!-- [JQUERY] Carrega a biblioteca jQuery via CDN. Precisa vir ANTES do seu código, senão o $ não existe -->
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+  <!-- [HTML PURO] A tag <script> abre um bloco de código; o que está dentro é JavaScript/jQuery -->
   <script>
+
+    // [JQUERY] $(function () { ... }) é o atalho de $(document).ready(...):
+    //          executa o código só quando o HTML terminou de carregar
+    // [JAVASCRIPT] function () { ... } é uma função anônima (callback) nativa do JS
     $(function () {
 
-      // ---------- LISTA DE TAREFAS ----------
+      // =========================================================
+      // LISTA DE TAREFAS
+      // =========================================================
+
+      // [JAVASCRIPT] Declaração de função nomeada: pode ser reaproveitada em vários pontos do código
       function atualizarResumo() {
+        // [JQUERY] "#tarefas li" = seletor descendente: todos os <li> dentro de #tarefas
+        // [JQUERY] .length = quantidade de elementos encontrados
+        // [JAVASCRIPT] var declara variável local da função
         var total = $("#tarefas li").length;
+        // [JQUERY] "li.concluida" = apenas os <li> que possuem a classe .concluida
         var feitas = $("#tarefas li.concluida").length;
+        // [JAVASCRIPT] Operador ternário (condição ? valorSeVerdadeiro : valorSeFalso)
+        //              e === compara valor E tipo
+        // [JAVASCRIPT] + concatena textos e números
+        // [JQUERY] .text() define o texto do elemento
         $("#resumo").text(total === 0 ? "Nenhuma tarefa." : feitas + " de " + total + " concluídas");
       }
 
       function adicionar() {
-        var texto = $.trim($("#novaTarefa").val());   // .val() lê o valor do campo
+        // [JQUERY] .val() lê o valor do campo (getter de formulário)
+        // [JQUERY] $.trim() remove espaços do início e do fim
+        //          (obs.: em versões novas do jQuery está obsoleto; o equivalente nativo é .trim())
+        var texto = $.trim($("#novaTarefa").val());
+
+        // [JAVASCRIPT] if + return: se o texto estiver vazio, interrompe a função aqui
+        // [JQUERY] .focus() coloca o cursor de volta no campo
         if (texto === "") { $("#novaTarefa").focus(); return; }
 
-        // .text() evita injeção de HTML digitado pelo usuário
+        // [JQUERY] $('<html>') com uma string de HTML CRIA um novo elemento na memória (ainda fora da página)
+        // [JAVASCRIPT] A string é montada com + em várias linhas
+        // [JAVASCRIPT] Variável com prefixo $ ($li) é só convenção: indica que guarda um objeto jQuery
+        // [BOOTSTRAP] list-group-item = item da lista | d-flex = layout flexível
+        //             justify-content-between = texto à esquerda e botão à direita
+        //             align-items-center = alinhamento vertical ao centro
+        // [HTML5 SEMÂNTICO] role="button" informa a leitores de tela que o <span> funciona como botão
+        // [BOOTSTRAP] btn btn-sm btn-outline-danger = botão pequeno vermelho de contorno
+        // [HTML PURO] &times; é uma entidade HTML que exibe o símbolo ×
+        // [HTML PURO] classes "texto" e "remover" são os "ganchos" usados pelos eventos delegados mais abaixo
         var $li = $('<li class="list-group-item d-flex justify-content-between align-items-center">' +
                     '<span class="texto" role="button"></span>' +
                     '<button class="btn btn-sm btn-outline-danger remover">&times;</button></li>');
+
+        // [JQUERY] .find() procura um descendente dentro do elemento
+        // [JQUERY] .text() insere como TEXTO PURO: evita que HTML digitado pelo usuário seja executado (segurança)
         $li.find(".texto").text(texto);
 
+        // [JQUERY] .append() insere o <li> no FINAL da lista (agora ele aparece na página)
         $("#tarefas").append($li);
-        $("#novaTarefa").val("").focus();             // .val("") limpa o campo
+
+        // [JQUERY] .val("") com argumento é "setter": limpa o campo; .focus() devolve o cursor (encadeamento de métodos)
+        $("#novaTarefa").val("").focus();
+
+        // [JAVASCRIPT] Chamada da função declarada acima
         atualizarResumo();
       }
 
+      // [JQUERY] Passa a função pelo nome (sem parênteses) como manipulador do clique
       $("#btnAdd").click(adicionar);
+
+      // [JQUERY] .keypress() dispara ao pressionar uma tecla (obs.: atalho antigo; hoje se prefere .on("keydown"))
+      // [JAVASCRIPT] Parâmetro "e" = objeto do evento; e.which traz o código da tecla; 13 = Enter
+      // [JAVASCRIPT] if sem chaves: válido quando há uma única instrução
       $("#novaTarefa").keypress(function (e) { if (e.which === 13) adicionar(); });
 
-      // Delegação: itens são criados dinamicamente
+      // [JQUERY] DELEGAÇÃO: o evento é ligado ao PAI (#tarefas) e vale para filhos ".texto"
+      //          criados DEPOIS (os <li> não existiam quando a página carregou)
       $("#tarefas").on("click", ".texto", function () {
+        // [JQUERY] $(this) = o elemento clicado | .closest("li") sobe na árvore até o <li> mais próximo
+        // [JQUERY] .toggleClass() alterna a classe: o [CSS PRÓPRIO] .concluida risca o texto
         $(this).closest("li").toggleClass("concluida");
         atualizarResumo();
       });
+
+      // [JQUERY] Delegação também para o botão × (".remover")
       $("#tarefas").on("click", ".remover", function () {
+        // [JQUERY] .slideUp(ms, callback) recolhe o item e, ao terminar, executa o callback
+        // [JAVASCRIPT] Função passada como argumento (callback)
+        // [JQUERY] .remove() apaga o elemento do DOM; só então o resumo é recalculado
         $(this).closest("li").slideUp(200, function () { $(this).remove(); atualizarResumo(); });
       });
+
+      // [JQUERY] Remove de uma vez todos os <li> que possuem a classe .concluida
       $("#btnLimpar").click(function () {
         $("#tarefas li.concluida").remove();
         atualizarResumo();
       });
 
-      // ---------- FORMULÁRIO ----------
+      // =========================================================
+      // FORMULÁRIO COM VALIDAÇÃO
+      // =========================================================
+
+      // [JAVASCRIPT] Função com 2 parâmetros: $campo (objeto jQuery) e ok (true/false)
       function validar($campo, ok) {
+        // [JQUERY] .toggleClass("classe", booleano): com o 2º argumento, adiciona a classe se for true
+        //          e remove se for false (não alterna às cegas)
+        // [BOOTSTRAP] is-invalid = borda vermelha + exibe a .invalid-feedback
+        //             is-valid = borda verde
+        // [JAVASCRIPT] !ok = negação lógica | encadeamento de métodos (um .toggleClass após o outro)
         $campo.toggleClass("is-invalid", !ok).toggleClass("is-valid", ok);
+        // [JAVASCRIPT] Devolve o resultado para quem chamou a função
         return ok;
       }
 
-      // Feedback em tempo real
+      // [JQUERY] .on("input", ...) dispara a cada alteração do campo (digitar, colar, apagar):
+      //          validação em tempo real
+      // [JAVASCRIPT] .length >= 3 verifica o tamanho do texto; resultado true/false é passado a validar()
       $("#nome").on("input", function () { validar($(this), $.trim($(this).val()).length >= 3); });
 
       $("#btnEnviar").click(function () {
+        // [JAVASCRIPT] /.../ é uma expressão regular literal; .test() devolve true/false
+        //              (^ início, [^\s@]+ = um ou mais caracteres sem espaço e sem @, depois @, depois domínio, ponto e extensão, $ fim)
+        // [JQUERY] $("#email").val() lê o valor digitado
         var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test($("#email").val());
+
+        // [JAVASCRIPT] Array literal [ ... ]: guarda o resultado (true/false) de cada validação
+        // [JAVASCRIPT] Cada validar() também já aplica as classes visuais, por isso é chamada dentro do array
         var resultados = [
           validar($("#nome"), $.trim($("#nome").val()).length >= 3),
           validar($("#email"), emailOk),
+          // [JAVASCRIPT] !== "" confere se algo foi escolhido no <select>
           validar($("#curso"), $("#curso").val() !== "")
         ];
-        var aceite = $("#aceite").is(":checked");   // checkbox: .is(":checked")
 
-        // $.inArray procura um valor no array
+        // [JQUERY] .is(":checked") devolve true/false: é como se lê um checkbox
+        var aceite = $("#aceite").is(":checked");
+
+        // [JQUERY] $.inArray(valor, array) devolve a posição do valor no array, ou -1 se não achar
+        // [JAVASCRIPT] !== -1 (achou algum false) || (OU lógico) !aceite (termos não marcados)
         var temErro = $.inArray(false, resultados) !== -1 || !aceite;
 
         if (temErro) {
+          // [JQUERY] .html() insere HTML pronto (aqui é seguro: o texto é fixo, não vem do usuário)
+          // [BOOTSTRAP] alert alert-danger = caixa de aviso vermelha
+          // [JAVASCRIPT] (condição ? a : b) dentro da concatenação escolhe o final da frase
           $("#msg").html('<div class="alert alert-danger">Corrija os campos destacados' +
                          (aceite ? "." : " e aceite os termos.") + '</div>');
         } else {
+          // [BOOTSTRAP] alert-success = caixa de aviso verde
+          // [JQUERY] O <b> é criado vazio e preenchido depois com .text(), para que o nome
+          //          digitado pelo usuário NÃO seja interpretado como HTML (evita injeção)
+          // [JQUERY] .find("b") localiza o <b> recém-criado dentro de #msg (encadeamento)
           $("#msg").html('<div class="alert alert-success">Cadastro de <b></b> enviado!</div>')
                    .find("b").text($("#nome").val());
         }
       });
 
-    });
+    }); // [JQUERY] fim do $(function () { ... })
+
   </script>
 </body>
 </html>
